@@ -64,8 +64,8 @@
                         <div class="gnb_oparea">
                             <h3>Account Management</h3>
                             <ul>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "user" ? " on" : "")">User</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "administrator" ? " on" : "")">Administrator</a></li>
+                                <li><a href="#" data-menu="User" class="gnb_2da">User</a></li>
+                                <li><a href="#" data-menu="Administrator" class="gnb_2da">Administrator</a></li>
                             </ul>
                         </div>
                     </div>
@@ -77,15 +77,16 @@
                         <div class="gnb_oparea">
                             <h3>Content Management</h3>
                             <ul>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "highlights" ? " on" : "")">Highlights</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "lore" ? " on" : "")">Lore</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "features" ? " on" : "")">Features</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "news" ? " on" : "")">News</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "update" ? " on" : "")">Update</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "code-of-conduct" ? " on" : "")">Code of Conduct</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "terms-of-use" ? " on" : "")">Terms of use</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "privacy-policy" ? " on" : "")">Privacy Policy</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "playbook" ? " on" : "")">Playbook</a></li>
+                                <li><a href="#" data-menu="Characters" class="gnb_2da">Characters</a></li>
+                                <li><a href="#" data-menu="Highlights" class="gnb_2da">Highlights</a></li>
+                                <li><a href="#" data-menu="Lore" class="gnb_2da">Lore</a></li>
+                                <li><a href="#" data-menu="Features" class="gnb_2da">Features</a></li>
+                                <li><a href="#" data-menu="News" class="gnb_2da">News</a></li>
+                                <li><a href="#" data-menu="Update" class="gnb_2da">Update</a></li>
+                                <li><a href="#" data-menu="CodeOfConduct" class="gnb_2da">Code of Conduct</a></li>
+                                <li><a href="#" data-menu="TermsOfUse" class="gnb_2da">Terms of use</a></li>
+                                <li><a href="#" data-menu="PrivacyPolicy" class="gnb_2da">Privacy Policy</a></li>
+                                <li><a href="#" data-menu="Playbook" class="gnb_2da">Playbook</a></li>
                             </ul>
                         </div>
                     </div>
@@ -96,20 +97,46 @@
 
     <script>
         jQuery(function ($) {
-            $(".tnb_mb_btn").click(function () {
-                $(".tnb_mb_area").toggle();
-            });
-            $("#btn_gnb").click(function () {
-                var $this = $(this);
-                $("#container").toggleClass("container-small");
-                $("#gnb").toggleClass("gnb_small");
-                $this.toggleClass("btn_gnb_open");
-
-            });
-            $(".gnb_ul li .btn_op").click(function () {
-                $(this).parent().addClass("on").siblings().removeClass("on");
-            });
+        $(".tnb_mb_btn").click(function () {
+            $(".tnb_mb_area").toggle();
         });
+
+        $("#btn_gnb").click(function () {
+            var $this = $(this);
+            $("#container").toggleClass("container-small");
+            $("#gnb").toggleClass("gnb_small");
+            $this.toggleClass("btn_gnb_open");
+        });
+
+        $(".gnb_ul li .btn_op").click(function () {
+            $(this).parent().addClass("on").siblings().removeClass("on");
+        });
+
+        $(".gnb_ul li .gnb_2da").click(function () {
+            $(".gnb_ul li .gnb_2da").removeClass("on");
+            $(this).addClass("on");
+
+            const selectedMenu = $(this).data("menu");
+            if (selectedMenu) {
+                loadPartial(selectedMenu);
+            }
+        });
+
+        function loadPartial(selectedMenu) {
+            $.get(`/Home/${selectedMenu}Partial`, function (html) {
+                $('#main-content').html(html);
+                history.pushState(null, '', `?tab=${selectedMenu}`);
+            });
+        }
+
+        // Optionally, handle first load based on tab in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tab = urlParams.get('tab') ?? 'User';
+        if (tab) {
+            loadPartial(tab);
+            $(`.gnb_2da[data-menu="${tab}"]`).addClass("on");
+        }
+    });
     </script>
     <div id="wrapper">
         <div id="container" class="">

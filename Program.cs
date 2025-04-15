@@ -5,7 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AccountDataAccess>();
-builder.Services.AddScoped<CharacterDataAccess>();
 builder.Services.AddScoped<ContentDataAccess>();
 builder.Services.AddScoped<PreviewDataAccess>();
 

@@ -158,17 +158,18 @@ namespace Winterra.DataContexts
 			return accountData;
 		}
 
-         public int GetAccountCount()
+        public int GetAccountCount(int? adminLevel = 0)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-
-                    string query = "SELECT COUNT(*) AS cnt FROM accounts where admin = 0";
+                    string query = "SELECT COUNT(*) AS cnt FROM accounts WHERE admin = @adminLevel";
+                    
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@adminLevel", adminLevel);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -192,8 +193,7 @@ namespace Winterra.DataContexts
 
             return 0;
         }
-
-        public List<Account> GetAccountList()
+        public List<Account> GetAccountList(int? adminLevel = 0)
         {
             List<Account> accountList = new List<Account>();
 
@@ -202,10 +202,11 @@ namespace Winterra.DataContexts
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
+                    string query = "SELECT TOP 10 * FROM accounts WHERE admin = @admin_level";
 
-                    string query = "SELECT TOP 10 * FROM accounts where admin = 0";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@admin_level", adminLevel);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())

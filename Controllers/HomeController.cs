@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Winterra.DataContexts;
 using Winterra.Helpers;
 using Winterra.Models.ViewModels;
+using Winterra.Models.PartialModels;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -14,14 +15,12 @@ namespace Winterra.Controllers
 		private readonly AccountDataAccess _accountDataAccess;
 		private readonly ContentDataAccess _contentDataAccess;
 		private readonly PreviewDataAccess _previewDataAccess;
-        private readonly CharacterDataAccess _characterDataAccess;
 
-		public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess, CharacterDataAccess characterDataAccess)
+		public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess)
         {
 			this._accountDataAccess = accountDataAccess;
 			this._contentDataAccess = contentDataAccess;
 			this._previewDataAccess = previewDataAccess;
-            this._characterDataAccess = characterDataAccess;
 		}
 
         [Authorize(Roles = Roles.Admin)]
@@ -41,11 +40,6 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "user",
                 MenuTitle = "Account Management",
-                AccountCount = _accountDataAccess.GetAccountCount(),
-                AccountList = _accountDataAccess.GetAccountList(),
-                CharacterList = _characterDataAccess.GetCharacterList(),
-				ContentList = _contentDataAccess.GetContentList(),
-                PreviewList = _previewDataAccess.GetPreviewList(),
 				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
 			};
 
@@ -55,16 +49,102 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [HttpGet("UsersPartial")]
-        public IActionResult UsersPartial(){
-            var users = this._accountDataAccess.GetAccountList();
-            return PartialView("_AccountTable", users);
+        public IActionResult UserPartial(){
+            var model = new AccountTablePartialModel{    
+                Title = "User",
+                AccountCount = _accountDataAccess.GetAccountCount(),
+                AccountList = _accountDataAccess.GetAccountList()
+            };
+            return PartialView("_AccountTable", model);
         }
 
-        [HttpGet("AdministratorPartial")]
         public IActionResult AdministratorPartial(){
-            var admins = this._accountDataAccess.GetAccountList();
-            return PartialView("_AccountTable", admins);
+            var model = new AccountTablePartialModel{    
+                Title = "Administrator",
+                AccountCount = _accountDataAccess.GetAccountCount(1),
+                AccountList = _accountDataAccess.GetAccountList(1)
+            };
+            return PartialView("_AccountTable", model);
+        }
+
+        public IActionResult CharactersPartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Characters",
+                CharacterList = _previewDataAccess.GetPreviewList("characters"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+       
+        public IActionResult HighlightsPartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Highlights",
+                HighlightList = _previewDataAccess.GetPreviewList("highlights"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+
+        public IActionResult LorePartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Lore",
+                LoreList = _previewDataAccess.GetPreviewList("lore"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+
+        public IActionResult FeaturesPartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Features",
+                FeaturesList = _previewDataAccess.GetPreviewList("features"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+
+        public IActionResult NewsPartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "News",
+                NewsList = _contentDataAccess.GetContentList("news"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+
+        public IActionResult UpdatePartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Update",
+                UpdateList = _contentDataAccess.GetContentList("update"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+
+        public IActionResult CodeOfConductPartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Code of Conduct",
+                CodeOfConductList = _contentDataAccess.GetContentList("code-of-conduct"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+
+        public IActionResult TermsOfUsePartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Terms of Use",
+                TermsOfUseList = _contentDataAccess.GetContentList("terms-of-use"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+
+        public IActionResult PrivacyPolicyPartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Privacy Policy",
+                PrivacyPolicyList = _contentDataAccess.GetContentList("privacy-policy"),
+            };
+            return PartialView("_ContentTable", model);
+        }
+
+        public IActionResult PlaybookPartial(){
+            var model = new ContentTablePartialModel{    
+                Title = "Playbook",
+                PlaybookList = _contentDataAccess.GetContentList("playbook"),
+            };
+            return PartialView("_ContentTable", model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

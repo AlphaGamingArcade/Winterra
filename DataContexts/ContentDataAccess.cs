@@ -38,17 +38,17 @@ namespace Winterra.DataContexts
             }
             catch (SqlException ex)
             {
-                Console.WriteLine($"SQL-Exception [CharacterDataAccess -> GetCharacterCount]: {ex.Message}");
+                Console.WriteLine($"SQL-Exception [ContentDataAccess -> GetCharacterCount]: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Exception [CharacterDataAccess -> GetCharacterCount]: {ex.Message}");
+                Console.WriteLine($"Exception [ContentDataAccess -> GetCharacterCount]: {ex.Message}");
             }
 
             return 0;
         }
 
-		public List<Content> GetContentList()
+		public List<Content> GetContentList(string? contentType = "")
 		{
 			List<Content> contentList = new List<Content>();
 
@@ -58,9 +58,10 @@ namespace Winterra.DataContexts
 				{
 					connection.Open();
 
-					string query = "SELECT TOP 10 * FROM ww_content";
+					string query = "SELECT TOP 10 * FROM ww_content where content_type = @content_type";
 					using (SqlCommand command = new SqlCommand(query, connection))
 					{
+						command.Parameters.AddWithValue("@content_type", contentType);
 						using (SqlDataReader reader = command.ExecuteReader())
 						{
 							while (reader.Read())
