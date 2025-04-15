@@ -1,0 +1,509 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css",
+      "PackagePath": "staticwebassets\\assets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\jquery-ui-timepicker.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\jquery-ui-timepicker.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\jquery-ui.css",
+      "PackagePath": "staticwebassets\\assets\\css\\jquery-ui.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\morris.css",
+      "PackagePath": "staticwebassets\\assets\\css\\morris.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ajax_loader.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\ajax_loader.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\check.png",
+      "PackagePath": "staticwebassets\\assets\\images\\check.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\close.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\close.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\close.png",
+      "PackagePath": "staticwebassets\\assets\\images\\close.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\hd_bg.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\hd_bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\home_icon.png",
+      "PackagePath": "staticwebassets\\assets\\images\\home_icon.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\link_icon.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\link_icon.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\logo.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-1-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-1-1.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-1.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-2-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-2-1.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-2.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-3-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-3-1.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-3.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-4-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-4-1.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-4.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-6-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-6-1.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-6.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-6.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-7-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-7-1.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-7.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-7.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-cl.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-cl.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu-op.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu-op.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu_default.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu_default.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menu_default_on.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menu_default_on.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\menulist_sub.png",
+      "PackagePath": "staticwebassets\\assets\\images\\menulist_sub.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\naver.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\naver.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\op_btn.png",
+      "PackagePath": "staticwebassets\\assets\\images\\op_btn.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\op_btn1.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\op_btn1.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\page_1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\page_1.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\page_2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\page_2.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\page_3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\page_3.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\page_4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\page_4.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\sch_btn.png",
+      "PackagePath": "staticwebassets\\assets\\images\\sch_btn.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\shop_icon.png",
+      "PackagePath": "staticwebassets\\assets\\images\\shop_icon.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\sub_menu_ico.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\sub_menu_ico.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\tit_op_btn.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\tit_op_btn.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ts01.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\ts01.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ts02.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\ts02.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ts03.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\ts03.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ui-bg_flat_75_ffffff_40x100.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-bg_flat_75_ffffff_40x100.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ui-bg_glass_55_fbf9ee_1x400.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-bg_glass_55_fbf9ee_1x400.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ui-bg_glass_75_dadada_1x400.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-bg_glass_75_dadada_1x400.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ui-bg_glass_75_e6e6e6_1x400.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-bg_glass_75_e6e6e6_1x400.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ui-bg_highlight-soft_75_cccccc_1x100.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-bg_highlight-soft_75_cccccc_1x100.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ui-icons_222222_256x240.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-icons_222222_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\ui-icons_454545_256x240.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ui-icons_454545_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\images\\wrest.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\wrest.gif"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\admin.js",
+      "PackagePath": "staticwebassets\\assets\\js\\admin.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\common.js",
+      "PackagePath": "staticwebassets\\assets\\js\\common.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\jquery-1.12.4.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-1.12.4.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\jquery-migrate-1.4.1.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-migrate-1.4.1.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\jquery-ui-timepicker.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-ui-timepicker.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-ui.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\jquery.anchorScroll.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.anchorScroll.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\jquery.menu.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.menu.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\morris.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\morris.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\placeholders.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\placeholders.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\raphael-min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\raphael-min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\wrest.js",
+      "PackagePath": "staticwebassets\\assets\\js\\wrest.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Winterra.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Winterra.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.Winterra.props",
+      "PackagePath": "build\\Winterra.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.Winterra.props",
+      "PackagePath": "buildMultiTargeting\\Winterra.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.Winterra.props",
+      "PackagePath": "buildTransitive\\Winterra.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
