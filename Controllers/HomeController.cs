@@ -49,11 +49,12 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        // Account Management
         public IActionResult UserPartial(){
             var model = new AccountTablePartialModel{    
                 Title = "User",
-                AccountCount = _accountDataAccess.GetAccountCount(),
-                AccountList = _accountDataAccess.GetAccountList()
+                AccountCount = _accountDataAccess.GetAccountCount(0),
+                AccountList = _accountDataAccess.GetAccountList(0)
             };
             return PartialView("_AccountTable", model);
         }
@@ -67,42 +68,44 @@ namespace Winterra.Controllers
             return PartialView("_AccountTable", model);
         }
 
+        // Content Management
         public IActionResult CharactersPartial(){
-            var model = new ContentTablePartialModel{    
+            var model = new PreviewTablePartialModel{    
                 Title = "Characters",
-                CharacterList = _previewDataAccess.GetPreviewList("characters"),
+                PreviewList = _previewDataAccess.GetPreviewList("characters"),
             };
-            return PartialView("_ContentTable", model);
+            return PartialView("_PreviewTable", model);
         }
        
         public IActionResult HighlightsPartial(){
-            var model = new ContentTablePartialModel{    
+            var model = new PreviewTablePartialModel{    
                 Title = "Highlights",
-                HighlightList = _previewDataAccess.GetPreviewList("highlights"),
+                PreviewList = _previewDataAccess.GetPreviewList("highlights"),
             };
-            return PartialView("_ContentTable", model);
+            return PartialView("_PreviewTable", model);
         }
 
         public IActionResult LorePartial(){
-            var model = new ContentTablePartialModel{    
+            var model = new PreviewTablePartialModel{    
                 Title = "Lore",
-                LoreList = _previewDataAccess.GetPreviewList("lore"),
+                PreviewList = _previewDataAccess.GetPreviewList("lore"),
             };
-            return PartialView("_ContentTable", model);
+            return PartialView("_PreviewTable", model);
         }
 
         public IActionResult FeaturesPartial(){
             var model = new ContentTablePartialModel{    
                 Title = "Features",
-                FeaturesList = _previewDataAccess.GetPreviewList("features"),
+                ContentList = _contentDataAccess.GetContentList("feature"),
             };
+
             return PartialView("_ContentTable", model);
         }
 
         public IActionResult NewsPartial(){
             var model = new ContentTablePartialModel{    
                 Title = "News",
-                NewsList = _contentDataAccess.GetContentList("news"),
+                ContentList = _contentDataAccess.GetContentList("news"),
             };
             return PartialView("_ContentTable", model);
         }
@@ -110,7 +113,7 @@ namespace Winterra.Controllers
         public IActionResult UpdatePartial(){
             var model = new ContentTablePartialModel{    
                 Title = "Update",
-                UpdateList = _contentDataAccess.GetContentList("update"),
+                ContentList = _contentDataAccess.GetContentList("update"),
             };
             return PartialView("_ContentTable", model);
         }
@@ -118,7 +121,7 @@ namespace Winterra.Controllers
         public IActionResult CodeOfConductPartial(){
             var model = new ContentTablePartialModel{    
                 Title = "Code of Conduct",
-                CodeOfConductList = _contentDataAccess.GetContentList("code-of-conduct"),
+                ContentList = _contentDataAccess.GetContentList("code-of-conduct"),
             };
             return PartialView("_ContentTable", model);
         }
@@ -126,7 +129,7 @@ namespace Winterra.Controllers
         public IActionResult TermsOfUsePartial(){
             var model = new ContentTablePartialModel{    
                 Title = "Terms of Use",
-                TermsOfUseList = _contentDataAccess.GetContentList("terms-of-use"),
+                ContentList = _contentDataAccess.GetContentList("terms-of-use"),
             };
             return PartialView("_ContentTable", model);
         }
@@ -134,7 +137,7 @@ namespace Winterra.Controllers
         public IActionResult PrivacyPolicyPartial(){
             var model = new ContentTablePartialModel{    
                 Title = "Privacy Policy",
-                PrivacyPolicyList = _contentDataAccess.GetContentList("privacy-policy"),
+                ContentList = _contentDataAccess.GetContentList("privacy-policy"),
             };
             return PartialView("_ContentTable", model);
         }
@@ -142,7 +145,7 @@ namespace Winterra.Controllers
         public IActionResult PlaybookPartial(){
             var model = new ContentTablePartialModel{    
                 Title = "Playbook",
-                PlaybookList = _contentDataAccess.GetContentList("playbook"),
+                ContentList = _contentDataAccess.GetContentList("playbook"),
             };
             return PartialView("_ContentTable", model);
         }
