@@ -8,7 +8,7 @@
         public int Gems { get; set; }
         public int IsOnline { get; set; }
         public int ClientId { get; set; }
-        public int Tropies { get; set; }
+        public int Trophies { get; set; }
         public int Banned { get; set; }
         public DateTime? Shield { get; set; }
         public int Xp { get; set; }

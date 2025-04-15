@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<AuthDataAccess>();
+builder.Services.AddScoped<AccountDataAccess>();
 builder.Services.AddScoped<CharacterDataAccess>();
 builder.Services.AddScoped<ContentDataAccess>();
 builder.Services.AddScoped<PreviewDataAccess>();
@@ -12,7 +12,7 @@ builder.Services.AddScoped<PreviewDataAccess>();
 builder.Services.AddAuthentication("Auth")
     .AddCookie("Auth", options => { 
         options.Cookie.Name = "Auth"; 
-        options.LoginPath = "/Auth/Login";  
+        options.LoginPath = "/Account/Login";  
         options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
         options.AccessDeniedPath = "/Forbidden/";
     });

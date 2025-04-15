@@ -8,12 +8,12 @@ using Winterra.Helpers;
 
 namespace Winterra.Controllers
 {
-    public class AuthController : Controller
+    public class AccountController : Controller
     {
-        private readonly AuthDataAccess _authDataAccess;
-        public AuthController(AuthDataAccess authDataAccess)
+        private readonly AccountDataAccess _accountDataAccess;
+        public AccountController(AccountDataAccess accountDataAccess)
         {
-            this._authDataAccess = authDataAccess;
+            this._accountDataAccess = accountDataAccess;
         }
 
         public IActionResult Index()
@@ -33,7 +33,7 @@ namespace Winterra.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool isLogin = _authDataAccess.CheckLogin(member);
+                bool isLogin = _accountDataAccess.CheckLogin(member);
                 Console.WriteLine($"IS LOGING {isLogin}");
                 if (isLogin)
                 {
@@ -53,7 +53,7 @@ namespace Winterra.Controllers
 
                     await HttpContext.SignInAsync("Auth", claimsPrincipal);
 
-                    _authDataAccess.UpdateAfterLogin(member.Email, session);
+                    _accountDataAccess.UpdateAfterLogin(member.Email, session);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -70,7 +70,7 @@ namespace Winterra.Controllers
             await HttpContext.SignOutAsync();
 
             if (account != null)
-                _authDataAccess.UpdateAfterLogout(account);
+                _accountDataAccess.UpdateAfterLogout(account);
 
             return RedirectToAction("Index", "Home");
         }

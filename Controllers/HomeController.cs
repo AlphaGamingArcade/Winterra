@@ -11,14 +11,14 @@ namespace Winterra.Controllers
 {
     public class HomeController : Controller
     {
-		private readonly AuthDataAccess _authDataAcces;
+		private readonly AccountDataAccess _accountDataAccess;
 		private readonly ContentDataAccess _contentDataAccess;
 		private readonly PreviewDataAccess _previewDataAccess;
         private readonly CharacterDataAccess _characterDataAccess;
 
-		public HomeController(AuthDataAccess authDataAcces, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess, CharacterDataAccess characterDataAccess)
+		public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess, CharacterDataAccess characterDataAccess)
         {
-			this._authDataAcces = authDataAcces;
+			this._accountDataAccess = accountDataAccess;
 			this._contentDataAccess = contentDataAccess;
 			this._previewDataAccess = previewDataAccess;
             this._characterDataAccess = characterDataAccess;
@@ -38,19 +38,33 @@ namespace Winterra.Controllers
 
             var model = new HomeViewModel
             {
-                MenuOut = 1,
-                MenuIn = "main",
-                MenuTitle = "Main title",
+                MenuOut = 2,
+                MenuIn = "user",
+                MenuTitle = "Account Management",
+                AccountCount = _accountDataAccess.GetAccountCount(),
+                AccountList = _accountDataAccess.GetAccountList(),
                 CharacterList = _characterDataAccess.GetCharacterList(),
 				ContentList = _contentDataAccess.GetContentList(),
                 PreviewList = _previewDataAccess.GetPreviewList(),
-				LoginUserInfo = _authDataAcces.GetLoginMemberData(accountEmail)
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
 			};
 
             if (model.LoginUserInfo?.Session != accountSession)
-				return RedirectToAction("Logout", "Auth");
+				return RedirectToAction("Logout", "Account");
 
 			return View(model);
+        }
+
+        [HttpGet("UsersPartial")]
+        public IActionResult UsersPartial(){
+            var users = this._accountDataAccess.GetAccountList();
+            return PartialView("_AccountTable", users);
+        }
+
+        [HttpGet("AdministratorPartial")]
+        public IActionResult AdministratorPartial(){
+            var admins = this._accountDataAccess.GetAccountList();
+            return PartialView("_AccountTable", admins);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

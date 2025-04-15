@@ -5,11 +5,11 @@ using Winterra.Models.InputModels;
 
 namespace Winterra.DataContexts
 {
-    public class AuthDataAccess
+    public class AccountDataAccess
     {
         private readonly string? _connectionString;
 
-        public AuthDataAccess(IConfiguration configuration)
+        public AccountDataAccess(IConfiguration configuration)
         {
             this._connectionString = configuration.GetConnectionString("DefaultConnection");
         }
@@ -47,11 +47,11 @@ namespace Winterra.DataContexts
             }
             catch (SqlException ex)
             {
-                Console.WriteLine($"SQL-Exception [AuthDataAccess -> CheckLogin]: {ex.Message}");
+                Console.WriteLine($"SQL-Exception [AccountDataAccess -> CheckLogin]: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Exception [AuthDataAccess -> CheckLogin]: {ex.Message}");
+                Console.WriteLine($"Exception [AccountDataAccess -> CheckLogin]: {ex.Message}");
             }
 
             return isLoginSuccessful;
@@ -72,7 +72,6 @@ namespace Winterra.DataContexts
 
             }
         }
-
         public void UpdateAfterLogout(string accountEmail)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -87,9 +86,7 @@ namespace Winterra.DataContexts
                 }
 
             }
-        }
-
-		public Account? GetLoginMemberData(string? email)
+        }		public Account? GetLoginMemberData(string? email)
 		{
 			Account? accountData = null;
 
@@ -118,7 +115,7 @@ namespace Winterra.DataContexts
                                         Gems = Convert.ToInt32(reader["id"]),
                                         IsOnline = Convert.ToInt32(reader["is_online"]),
                                         ClientId = Convert.ToInt32(reader["client_id"]),
-                                        Tropies = Convert.ToInt32(reader["trophies"]),
+                                        Trophies = Convert.ToInt32(reader["trophies"]),
                                         Banned =  Convert.ToInt32(reader["banned"]),
                                         Shield =  Convert.ToDateTime(reader["shield"]),
                                         Xp = Convert.ToInt32(reader["xp"]),
@@ -150,16 +147,120 @@ namespace Winterra.DataContexts
 				}
 				catch (SqlException ex)
 				{
-					Console.WriteLine($"SQL-Exception [AuthDataAccess -> GetLoginMemberData]: {ex.Message}");
+					Console.WriteLine($"SQL-Exception [AccountDataAccess -> GetLoginMemberData]: {ex.Message}");
 				}
 				catch (Exception ex)
 				{
-					Console.WriteLine($"Exception [AuthDataAccess -> GetLoginMemberData]: {ex.Message}");
+					Console.WriteLine($"Exception [AccountDataAccess -> GetLoginMemberData]: {ex.Message}");
 				}
 			}
 
 			return accountData;
 		}
+
+         public int GetAccountCount()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT COUNT(*) AS cnt FROM accounts where admin = 0";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return (int)reader["cnt"];
+                            }
+                        }
+
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL-Exception [AccountDataAccess -> GetCharacterCount]: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception [AccountDataAccess -> GetCharacterCount]: {ex.Message}");
+            }
+
+            return 0;
+        }
+
+        public List<Account> GetAccountList()
+        {
+            List<Account> accountList = new List<Account>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT TOP 10 * FROM accounts where admin = 0";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Account character = new Account
+									{
+										Id = Convert.ToInt32(reader["id"]),
+										Name = Convert.ToString(reader["name"]),
+                                        DevideId = Convert.ToString(reader["device_id"]),
+                                        Gems = Convert.ToInt32(reader["gems"]),
+                                        IsOnline = Convert.ToInt32(reader["is_online"]),
+                                        ClientId = Convert.ToInt32(reader["client_id"]),
+                                        Trophies = Convert.ToInt32(reader["trophies"]),
+                                        Banned =  Convert.ToInt32(reader["banned"]),
+                                        Shield =  Convert.ToDateTime(reader["shield"]),
+                                        Xp = Convert.ToInt32(reader["xp"]),
+										Level = Convert.ToInt32(reader["level"]),
+                                        ClanJoinTimer = reader.IsDBNull(reader.GetOrdinal("clan_join_timer")) ? (DateTime?)null : Convert.ToDateTime(reader["clan_join_timer"]),
+                                        ClanId = Convert.ToInt32(reader["clan_id"]),
+                                        ClanRank = Convert.ToInt32(reader["clan_rank"]),
+                                        WarId = Convert.ToInt32(reader["war_id"]),
+                                        GlobalChatBlocked = Convert.ToInt32(reader["global_chat_blocked"]),
+                                        LastChat = reader.IsDBNull(reader.GetOrdinal("last_chat")) ? (DateTime?)null : Convert.ToDateTime(reader["last_chat"]),
+                                        ChatColor = Convert.ToString(reader["chat_color"]),
+                                        Email = Convert.ToString(reader["email"]),
+                                        Password = Convert.ToString(reader["password"]),
+                                        MapLayout = Convert.ToInt32(reader["map_layout"]),
+                                        ShieldCouldron1 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_1")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_1"]),
+                                        ShieldCouldron2 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_2")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_2"]),
+                                        ShieldCouldron3 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_3")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_3"]),
+                                        LastLogin =  reader.IsDBNull(reader.GetOrdinal("last_login")) ? (DateTime?)null : Convert.ToDateTime(reader["last_login"]),
+                                        CampaignLevel = Convert.ToInt32(reader["campaign_level"]),
+                                        Admin = Convert.ToInt32(reader["admin"]),
+                                        Verified = Convert.ToString(reader["verified"]),
+                                        Session = Convert.ToString(reader["account_session"])
+									};
+                                
+                                accountList.Add(character);
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL-Exception [AccountDataAccess -> GetAccountList]: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception [AccountDataAccess -> GetAccountList]: {ex.Message}");
+            }
+
+            return accountList;
+        }
 
 	}
 }

@@ -32,7 +32,7 @@
                         <button type="button" class="tnb_mb_btn">@(Model.LoginUserInfo.Email)<span class="~/assets/images/btn_gnb.png">Open Menu</span></button>
                         <ul class="tnb_mb_area">
                             <li><a href="#">Admin Info</a></li>
-                            <li id="tnb_logout"><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+                            <li id="tnb_logout"><a asp-controller="Account" asp-action="Logout">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -42,7 +42,7 @@
             <h2>Main Admin Menu</h2>
             <ul class="gnb_ul">
 
-                <li class="gnb_li@(Model.MenuOut == 1 ? " on" : "")">
+                @* <li class="gnb_li@(Model.MenuOut == 1 ? " on" : "")">
                     <button type="button" class="btn_op menu-100 menu-order-1" title="Settings">Settings</button>
                     <div class="gnb_oparea_wr">
                         <div class="gnb_oparea">
@@ -57,8 +57,8 @@
                             </ul>
                         </div>
                     </div>
-                </li>  
-                <li class="gnb_li@(Model.MenuOut == 3 ? " on" : "")">
+                </li>   *@
+                <li class="gnb_li@(Model.MenuOut == 2 ? " on" : "")">
                     <button type="button" class="btn_op menu-200 menu-order-2" title="User Management">Account Management</button>
                     <div class="gnb_oparea_wr">
                         <div class="gnb_oparea">
@@ -66,13 +66,12 @@
                             <ul>
                                 <li><a href="#" class="gnb_2da@(Model.MenuIn == "user" ? " on" : "")">User</a></li>
                                 <li><a href="#" class="gnb_2da@(Model.MenuIn == "administrator" ? " on" : "")">Administrator</a></li>
-                                <li><a href="#" class="gnb_2da@(Model.MenuIn == "player-statistics" ? " on" : "")">Player Statistics</a></li>
                             </ul>
                         </div>
                     </div>
                 </li>
 
-                <li class="gnb_li@(Model.MenuOut == 4 ? " on" : "")">
+                <li class="gnb_li@(Model.MenuOut == 3 ? " on" : "")">
                     <button type="button" class="btn_op menu-300 menu-order-3" title="Content Management">Content Management</button>
                     <div class="gnb_oparea_wr">
                         <div class="gnb_oparea">
@@ -111,14 +110,6 @@
                 $(this).parent().addClass("on").siblings().removeClass("on");
             });
         });
-    </script>
-    <script>
-        function loadContent(tab) {
-            $.get(`/Admin/Get${tab}Content`, function (html) {
-                $('#main-content').html(html);
-                history.pushState({}, '', `?tab=${tab.toLowerCase()}`);
-            });
-        }
     </script>
     <div id="wrapper">
         <div id="container" class="">
