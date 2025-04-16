@@ -1,1 +1,49 @@
-﻿<div class="container_wr" id="main-content"></div>
+﻿@using Winterra.Models.ViewModels
+<div class="container_wr" id="main-content">
+    <section>
+        <h2>@(Model.MenuTitle)</h2>
+        <div class="tbl_head01 tbl_wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gems</th>
+                        <th scope="col">Is Online</th>
+                        <th scope="col">Trophies</th>
+                        <th scope="col">IP</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">XP</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(Model.UserAccountList != null)
+                    {
+                        var i = 1;
+                        var j = 0;
+
+                        @foreach (var p in Model.UserAccountList)
+                        {
+                            <tr class="bg@(j%2)">
+                                <td class="td_num">@i</td>
+                                <td class="td_id">@p.Name</td>
+                                <td class="td_center">@p.Gems</td>
+                                <td class="td_center">@p.IsOnline</td>
+                                <td class="td_center">@p.Trophies</td>
+                                <td class="td_center">@p.Verified</td>
+                                <td class="td_center">@p.Level</td>
+                                <td class="td_center">@p.Xp</td>
+                                <td class="td_mng td_mng_s"><a asp-controller="Account" asp-action="Index" asp-route-id="@p.Id" class="btn btn_03">Edit</a></td>
+                            </tr>
+
+                            i++;
+                            j++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="btn_list03 btn_list"><a asp-controller="Account" asp-action="Index">See All</a></div>
+    </section>
+</div>
