@@ -236,7 +236,6 @@ C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\Winterra.RazorAssemblyInf
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\Winterra.RazorAssemblyInfo.cs
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\Winterra.sourcelink.json
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\scopedcss\bundle\Winterra.styles.css
-C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\compressed\dar6704sf5-jqja54hpea.gz
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\compressed\mtgbk6zmqk-7yv51uoz03.gz
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\compressed\xatis43bvc-f5nnh78psr.gz
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\compressed\7jhomyo5sk-z4oqx9vvhw.gz
@@ -324,3 +323,4 @@ C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\refint\Winterra.dll
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\Winterra.pdb
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\Winterra.genruntimeconfig.cache
 C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\ref\Winterra.dll
+C:\Users\pc\Documents\github\winterra\obj\Debug\net9.0\compressed\dar6704sf5-92zb43uq6h.gz

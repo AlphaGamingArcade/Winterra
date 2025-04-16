@@ -1,10 +1,16 @@
-﻿namespace Winterra.Models.DataModels
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Winterra.Models.DataModels
 {
     public class Account
     {
         public int Id { get; set; }
+        
+        [StringLength(60, MinimumLength = 3)]
+        [Required]
         public string? Name { get; set; }
-        public string? DevideId { get; set; }
+        public string? DeviceId { get; set; }
         public int Gems { get; set; }
         public int IsOnline { get; set; }
         public int ClientId { get; set; }

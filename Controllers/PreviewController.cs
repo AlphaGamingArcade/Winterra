@@ -33,17 +33,19 @@ namespace Winterra.Controllers
 				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
 			}
 
+			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
+
+			if (loginUser?.Session == null || loginUser?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
                 MenuIn = "characters",
                 MenuTitle = "Content Management",
-				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+				LoginUserInfo = loginUser
 			};
-
-            if (model.LoginUserInfo?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+			
 			return View(model);
         }
 
@@ -58,16 +60,19 @@ namespace Winterra.Controllers
 				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
 			}
 
+			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
+
+			if (loginUser?.Session == null || loginUser?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
                 MenuIn = "highlights",
                 MenuTitle = "Content Management",
-				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+				LoginUserInfo = loginUser
 			};
 
-            if (model.LoginUserInfo?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
 
 			return View(model);
         }
@@ -83,17 +88,18 @@ namespace Winterra.Controllers
 				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
 			}
 
+			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
+
+			if (loginUser?.Session == null || loginUser?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
                 MenuIn = "lore",
                 MenuTitle = "Content Management",
-				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+				LoginUserInfo = loginUser
 			};
-
-            if (model.LoginUserInfo?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
 			return View(model);
         }
 
@@ -108,16 +114,18 @@ namespace Winterra.Controllers
 				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
 			}
 
+			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
+
+			if (loginUser?.Session == null || loginUser?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
                 MenuIn = menuIn ?? "characters",
                 MenuTitle = "Content Management",
-				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+				LoginUserInfo = loginUser
 			};
-
-            if (model.LoginUserInfo?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
 
 			return View(model);
         }

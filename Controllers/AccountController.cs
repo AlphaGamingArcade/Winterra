@@ -6,6 +6,7 @@ using Winterra.Models.InputModels;
 using System.Security.Claims;
 using Winterra.Helpers;
 using Winterra.Models.ViewModels;
+using Winterra.Models.DataModels;
 
 namespace Winterra.Controllers
 {
@@ -22,7 +23,7 @@ namespace Winterra.Controllers
 			this._previewDataAccess = previewDataAccess;
 		}
 
-        public IActionResult Index()
+        public IActionResult Index(string? menuIn)
         {
             string? accountEmail = null;
 			string? accountSession = null;
@@ -33,17 +34,20 @@ namespace Winterra.Controllers
 				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
 			}
 
+			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
+
+			if (loginUser?.Session == null || loginUser?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+
             var model = new AccountViewModel
             {
                 MenuOut = 1,
-                MenuIn = "user",
+                MenuIn = menuIn ?? "user",
                 MenuTitle = "Account Management",
-                UserAccountList = _accountDataAccess.GetAccountList(0),
-				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+                UserAccountList = _accountDataAccess.GetAccountList( menuIn == "user" ? 0 : 1),
+				LoginUserInfo = loginUser
 			};
-
-            if (model.LoginUserInfo?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
 
 			return View(model);
         }
@@ -59,22 +63,25 @@ namespace Winterra.Controllers
 				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
 			}
 
+			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
+
+			if (loginUser?.Session == null || loginUser?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
             var model = new AccountViewModel
             {
                 MenuOut = 1,
                 MenuIn = "administrator",
                 MenuTitle = "Account Management",
                 AdminAccountList = _accountDataAccess.GetAccountList(1),
-				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+				LoginUserInfo = loginUser
 			};
-
-            if (model.LoginUserInfo?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
 
 			return View(model);
         }
         
-        public IActionResult Edit(string? menuIn){
+        [HttpGet]
+        public IActionResult Edit(string? menuIn, int id){
             string? accountEmail = null;
 			string? accountSession = null;
 
@@ -84,19 +91,66 @@ namespace Winterra.Controllers
 				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
 			}
 
-            var model = new AccountViewModel
+			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
+
+			if (loginUser?.Session == null || loginUser?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+            var model = new AccountEditViewModel
             {
                 MenuOut = 1,
                 MenuIn = menuIn ?? "user",
                 MenuTitle = "Account Management",
-                AdminAccountList = _accountDataAccess.GetAccountList(1),
-				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+                Account = _accountDataAccess.GetAccountData(id),
+				LoginUserInfo = loginUser
 			};
+            
+            if (model.Account == null){
+                return NotFound();
+            }
 
             if (model.LoginUserInfo?.Session != accountSession)
 				return RedirectToAction("Logout", "Account");
 
 			return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(string? menuIn, int id, Account account)
+        {
+            string? accountEmail = null;
+            string? accountSession = null;
+
+            if (HttpContext.User.Identity?.IsAuthenticated == true)
+            {
+                accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+                accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+            }
+
+            var loginUser = _accountDataAccess.GetLoginMemberData(accountEmail);
+
+            if (loginUser?.Session != accountSession)
+                return RedirectToAction("Logout", "Account");
+
+            if (!ModelState.IsValid)
+            {
+                // repopulate the full view model for redisplay
+                var viewModel = new AccountEditViewModel
+                {
+                    MenuOut = 1,
+                    MenuIn = menuIn ?? "user",
+                    MenuTitle = "Account Management",
+                    Account = account, 
+                    LoginUserInfo = loginUser
+                };
+
+                return View(viewModel);
+            }
+
+            _accountDataAccess.UpdateAfterEdit(account);
+
+            return RedirectToAction(nameof(Index), new { menuIn });
         }
 
         [HttpGet]
@@ -112,7 +166,6 @@ namespace Winterra.Controllers
             if (ModelState.IsValid)
             {
                 bool isLogin = _accountDataAccess.CheckLogin(member);
-                Console.WriteLine($"IS LOGING {isLogin}");
                 if (isLogin)
                 {
                     var nowDate = DateTime.Now.ToString();
