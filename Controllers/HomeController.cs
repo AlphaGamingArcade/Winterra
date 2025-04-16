@@ -24,7 +24,59 @@ namespace Winterra.Controllers
 		}
 
         [Authorize(Roles = Roles.Admin)]
-		public IActionResult Index(string? tab)
+		public IActionResult Index()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 1,
+                MenuIn = "user",
+                MenuTitle = "Account Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
+        }
+
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult Administrator()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 1,
+                MenuIn = "administrator",
+                MenuTitle = "Account Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
+        }
+
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult Characters()
         {
             string? accountEmail = null;
 			string? accountSession = null;
@@ -38,7 +90,7 @@ namespace Winterra.Controllers
             var model = new HomeViewModel
             {
                 MenuOut = 2,
-                MenuIn = "user",
+                MenuIn = "characters",
                 MenuTitle = "Account Management",
 				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
 			};
@@ -49,105 +101,238 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        // Account Management
-        public IActionResult UserPartial(){
-            var model = new AccountTablePartialModel{    
-                Title = "User",
-                AccountCount = _accountDataAccess.GetAccountCount(0),
-                AccountList = _accountDataAccess.GetAccountList(0)
-            };
-            return PartialView("_AccountTable", model);
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult Highlights()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "highlights",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
-        public IActionResult AdministratorPartial(){
-            var model = new AccountTablePartialModel{    
-                Title = "Administrator",
-                AccountCount = _accountDataAccess.GetAccountCount(1),
-                AccountList = _accountDataAccess.GetAccountList(1)
-            };
-            return PartialView("_AccountTable", model);
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult Lore()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "lore",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
-        // Content Management
-        public IActionResult CharactersPartial(){
-            var model = new PreviewTablePartialModel{    
-                Title = "Characters",
-                PreviewList = _previewDataAccess.GetPreviewList("characters"),
-            };
-            return PartialView("_PreviewTable", model);
-        }
-       
-        public IActionResult HighlightsPartial(){
-            var model = new PreviewTablePartialModel{    
-                Title = "Highlights",
-                PreviewList = _previewDataAccess.GetPreviewList("highlights"),
-            };
-            return PartialView("_PreviewTable", model);
-        }
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult Features()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
 
-        public IActionResult LorePartial(){
-            var model = new PreviewTablePartialModel{    
-                Title = "Lore",
-                PreviewList = _previewDataAccess.GetPreviewList("lore"),
-            };
-            return PartialView("_PreviewTable", model);
-        }
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
 
-        public IActionResult FeaturesPartial(){
-            var model = new ContentTablePartialModel{    
-                Title = "Features",
-                ContentList = _contentDataAccess.GetContentList("feature"),
-            };
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "features",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
 
-            return PartialView("_ContentTable", model);
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
-        public IActionResult NewsPartial(){
-            var model = new ContentTablePartialModel{    
-                Title = "News",
-                ContentList = _contentDataAccess.GetContentList("news"),
-            };
-            return PartialView("_ContentTable", model);
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult News()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "news",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
-        public IActionResult UpdatePartial(){
-            var model = new ContentTablePartialModel{    
-                Title = "Update",
-                ContentList = _contentDataAccess.GetContentList("update"),
-            };
-            return PartialView("_ContentTable", model);
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult Update()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "update",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
-        public IActionResult CodeOfConductPartial(){
-            var model = new ContentTablePartialModel{    
-                Title = "Code of Conduct",
-                ContentList = _contentDataAccess.GetContentList("code-of-conduct"),
-            };
-            return PartialView("_ContentTable", model);
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult CodeOfConduct()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "code-of-conduct",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
-        public IActionResult TermsOfUsePartial(){
-            var model = new ContentTablePartialModel{    
-                Title = "Terms of Use",
-                ContentList = _contentDataAccess.GetContentList("terms-of-use"),
-            };
-            return PartialView("_ContentTable", model);
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult TermsOfUse()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "terms-of-use",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
-        public IActionResult PrivacyPolicyPartial(){
-            var model = new ContentTablePartialModel{    
-                Title = "Privacy Policy",
-                ContentList = _contentDataAccess.GetContentList("privacy-policy"),
-            };
-            return PartialView("_ContentTable", model);
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult PrivacyPolicy()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "privacy-policy",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
-        public IActionResult PlaybookPartial(){
-            var model = new ContentTablePartialModel{    
-                Title = "Playbook",
-                ContentList = _contentDataAccess.GetContentList("playbook"),
-            };
-            return PartialView("_ContentTable", model);
+        [Authorize(Roles = Roles.Admin)]
+		public IActionResult Playbook()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new HomeViewModel
+            {
+                MenuOut = 2,
+                MenuIn = "playbook",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

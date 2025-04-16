@@ -12,7 +12,41 @@ namespace Winterra.DataContexts
 		{
 			this._connectionString = configuration.GetConnectionString("DefaultConnection");
 		}
+		public int GetPreviewCount(string? previewType = "")
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) AS cnt FROM ww_preview WHERE preview_type = @preview_type";
+                    
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@preview_type", previewType);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return (int)reader["cnt"];
+                            }
+                        }
 
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL-Exception [PreviewDataAccess -> GetPreviewCount]: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception [PreviewDataAccess -> GetPreviewCount]: {ex.Message}");
+            }
+
+            return 0;
+        }
 		public List<Preview> GetPreviewList(string? previewType = "")
 		{
 			List<Preview> previewList = new List<Preview>();

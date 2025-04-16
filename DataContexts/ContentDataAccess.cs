@@ -13,7 +13,7 @@ namespace Winterra.DataContexts
 			this._connectionString = configuration.GetConnectionString("DefaultConnection");
 		}
 		
-        public int GetContentCount()
+        public int GetContentCount(string? contentType = "")
         {
             try
             {
@@ -21,9 +21,10 @@ namespace Winterra.DataContexts
                 {
                     connection.Open();
 
-                    string query = "SELECT COUNT(*) AS cnt FROM ww_content";
+                    string query = "SELECT COUNT(*) AS cnt FROM ww_content where content_type = @content_type";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+						command.Parameters.AddWithValue("@content_type", contentType);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())

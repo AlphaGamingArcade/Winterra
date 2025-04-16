@@ -5,6 +5,7 @@ using Winterra.DataContexts;
 using Winterra.Models.InputModels;
 using System.Security.Claims;
 using Winterra.Helpers;
+using Winterra.Models.ViewModels;
 
 namespace Winterra.Controllers
 {
@@ -18,7 +19,27 @@ namespace Winterra.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new AccountViewModel
+            {
+                MenuOut = 1,
+                MenuIn = "user",
+                MenuTitle = "Account Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
         }
 
         [HttpGet]

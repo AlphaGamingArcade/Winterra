@@ -41,7 +41,6 @@
         <nav id="gnb" class="gnb_large">
             <h2>Main Admin Menu</h2>
             <ul class="gnb_ul">
-
                 @* <li class="gnb_li@(Model.MenuOut == 1 ? " on" : "")">
                     <button type="button" class="btn_op menu-100 menu-order-1" title="Settings">Settings</button>
                     <div class="gnb_oparea_wr">
@@ -58,35 +57,35 @@
                         </div>
                     </div>
                 </li>   *@
-                <li class="gnb_li@(Model.MenuOut == 2 ? " on" : "")">
+                <li class="gnb_li@(Model.MenuOut == 1 ? " on" : "")">
                     <button type="button" class="btn_op menu-200 menu-order-2" title="User Management">Account Management</button>
                     <div class="gnb_oparea_wr">
                         <div class="gnb_oparea">
                             <h3>Account Management</h3>
                             <ul>
-                                <li><a href="#" data-menu="User" class="gnb_2da">User</a></li>
-                                <li><a href="#" data-menu="Administrator" class="gnb_2da">Administrator</a></li>
+                                <li><a asp-controller="Home" asp-action="Index" class="gnb_2da@(Model.MenuIn == "user" ? " on" : "")">User</a></li>
+                                <li><a asp-controller="Home" asp-action="Administrator" class="gnb_2da@(Model.MenuIn == "administrator" ? " on" : "")">Administrator</a></li>
                             </ul>
                         </div>
                     </div>
                 </li>
 
-                <li class="gnb_li@(Model.MenuOut == 3 ? " on" : "")">
+                <li class="gnb_li@(Model.MenuOut == 2 ? " on" : "")">
                     <button type="button" class="btn_op menu-300 menu-order-3" title="Content Management">Content Management</button>
                     <div class="gnb_oparea_wr">
                         <div class="gnb_oparea">
                             <h3>Content Management</h3>
                             <ul>
-                                <li><a href="#" data-menu="Characters" class="gnb_2da">Characters</a></li>
-                                <li><a href="#" data-menu="Highlights" class="gnb_2da">Highlights</a></li>
-                                <li><a href="#" data-menu="Lore" class="gnb_2da">Lore</a></li>
-                                <li><a href="#" data-menu="Features" class="gnb_2da">Features</a></li>
-                                <li><a href="#" data-menu="News" class="gnb_2da">News</a></li>
-                                <li><a href="#" data-menu="Update" class="gnb_2da">Update</a></li>
-                                <li><a href="#" data-menu="CodeOfConduct" class="gnb_2da">Code of Conduct</a></li>
-                                <li><a href="#" data-menu="TermsOfUse" class="gnb_2da">Terms of use</a></li>
-                                <li><a href="#" data-menu="PrivacyPolicy" class="gnb_2da">Privacy Policy</a></li>
-                                <li><a href="#" data-menu="Playbook" class="gnb_2da">Playbook</a></li>
+                                <li><a asp-controller="Home" asp-action="Characters" class="gnb_2da@(Model.MenuIn == "characters" ? " on" : "")">Characters</a></li>
+                                <li><a asp-controller="Home" asp-action="Highlights" class="gnb_2da@(Model.MenuIn == "highlights" ? " on" : "")">Highlights</a></li>
+                                <li><a asp-controller="Home" asp-action="Lore" class="gnb_2da@(Model.MenuIn == "lore" ? " on" : "")">Lore</a></li>
+                                <li><a asp-controller="Home" asp-action="Features" class="gnb_2da@(Model.MenuIn == "features" ? " on" : "")">Features</a></li>
+                                <li><a asp-controller="Home" asp-action="News" class="gnb_2da@(Model.MenuIn == "news" ? " on" : "")">News</a></li>
+                                <li><a asp-controller="Home" asp-action="Update" class="gnb_2da@(Model.MenuIn == "update" ? " on" : "")">Update</a></li>
+                                <li><a asp-controller="Home" asp-action="CodeOfConduct" class="gnb_2da@(Model.MenuIn == "code-of-conduct" ? " on" : "")">Code of Conduct</a></li>
+                                <li><a asp-controller="Home" asp-action="TermsOfUse" class="gnb_2da@(Model.MenuIn == "terms-of-use" ? " on" : "")">Terms of Use</a></li>
+                                <li><a asp-controller="Home" asp-action="PrivacyPolicy" class="gnb_2da@(Model.MenuIn == "privacy-policy" ? " on" : "")">Privacy Policy</a></li>
+                                <li><a asp-controller="Home" asp-action="Playbook" class="gnb_2da@(Model.MenuIn == "playbook" ? " on" : "")">Playbook</a></li>
                             </ul>
                         </div>
                     </div>
@@ -111,31 +110,6 @@
         $(".gnb_ul li .btn_op").click(function () {
             $(this).parent().addClass("on").siblings().removeClass("on");
         });
-
-        $(".gnb_ul li .gnb_2da").click(function () {
-            $(".gnb_ul li .gnb_2da").removeClass("on");
-            $(this).addClass("on");
-
-            const selectedMenu = $(this).data("menu");
-            if (selectedMenu) {
-                loadPartial(selectedMenu);
-            }
-        });
-
-        function loadPartial(selectedMenu) {
-            $.get(`/Home/${selectedMenu}Partial`, function (html) {
-                $('#main-content').html(html);
-                history.pushState(null, '', `?tab=${selectedMenu}`);
-            });
-        }
-
-        // Optionally, handle first load based on tab in URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const tab = urlParams.get('tab') ?? 'User';
-        if (tab) {
-            loadPartial(tab);
-            $(`.gnb_2da[data-menu="${tab}"]`).addClass("on");
-        }
     });
     </script>
     <div id="wrapper">
