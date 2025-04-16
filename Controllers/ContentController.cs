@@ -195,5 +195,30 @@ namespace Winterra.Controllers
 
 			return View(model);
         }
+
+		public IActionResult Edit(string? menuIn)
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn ?? "features",
+                MenuTitle = "Content Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
+        }
     }
 }

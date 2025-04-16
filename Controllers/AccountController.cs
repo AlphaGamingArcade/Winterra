@@ -22,7 +22,7 @@ namespace Winterra.Controllers
 			this._previewDataAccess = previewDataAccess;
 		}
 
-        public IActionResult User()
+        public IActionResult Index()
         {
             string? accountEmail = null;
 			string? accountSession = null;
@@ -38,6 +38,7 @@ namespace Winterra.Controllers
                 MenuOut = 1,
                 MenuIn = "user",
                 MenuTitle = "Account Management",
+                UserAccountList = _accountDataAccess.GetAccountList(0),
 				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
 			};
 
@@ -63,6 +64,32 @@ namespace Winterra.Controllers
                 MenuOut = 1,
                 MenuIn = "administrator",
                 MenuTitle = "Account Management",
+                AdminAccountList = _accountDataAccess.GetAccountList(1),
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
+        }
+        
+        public IActionResult Edit(string? menuIn){
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new AccountViewModel
+            {
+                MenuOut = 1,
+                MenuIn = menuIn ?? "user",
+                MenuTitle = "Account Management",
+                AdminAccountList = _accountDataAccess.GetAccountList(1),
 				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
 			};
 

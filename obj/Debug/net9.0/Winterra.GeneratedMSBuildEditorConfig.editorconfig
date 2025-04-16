@@ -32,6 +32,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pbmlzdHJhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pc/Documents/github/winterra/Views/Account/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pc/Documents/github/winterra/Views/Account/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,12 +44,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pc/Documents/github/winterra/Views/Account/User.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/pc/Documents/github/winterra/Views/Content/CodeOfConduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGVudFxDb2RlT2ZDb25kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pc/Documents/github/winterra/Views/Content/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGVudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pc/Documents/github/winterra/Views/Content/Features.cshtml]
@@ -122,6 +126,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/pc/Documents/github/winterra/Views/Preview/Characters.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJldmlld1xDaGFyYWN0ZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pc/Documents/github/winterra/Views/Preview/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJldmlld1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pc/Documents/github/winterra/Views/Preview/Highlights.cshtml]
