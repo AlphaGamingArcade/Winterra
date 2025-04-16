@@ -11,13 +11,18 @@ namespace Winterra.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly AccountDataAccess _accountDataAccess;
-        public AccountController(AccountDataAccess accountDataAccess)
-        {
-            this._accountDataAccess = accountDataAccess;
-        }
+		private readonly AccountDataAccess _accountDataAccess;
+		private readonly ContentDataAccess _contentDataAccess;
+		private readonly PreviewDataAccess _previewDataAccess;
 
-        public IActionResult Index()
+		public AccountController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess)
+        {
+			this._accountDataAccess = accountDataAccess;
+			this._contentDataAccess = contentDataAccess;
+			this._previewDataAccess = previewDataAccess;
+		}
+
+        public IActionResult User()
         {
             string? accountEmail = null;
 			string? accountSession = null;
@@ -32,6 +37,31 @@ namespace Winterra.Controllers
             {
                 MenuOut = 1,
                 MenuIn = "user",
+                MenuTitle = "Account Management",
+				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
+			};
+
+            if (model.LoginUserInfo?.Session != accountSession)
+				return RedirectToAction("Logout", "Account");
+
+			return View(model);
+        }
+
+        public IActionResult Administrator()
+        {
+            string? accountEmail = null;
+			string? accountSession = null;
+
+			if (HttpContext.User.Identity?.IsAuthenticated == true)
+			{
+				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
+			}
+
+            var model = new AccountViewModel
+            {
+                MenuOut = 1,
+                MenuIn = "administrator",
                 MenuTitle = "Account Management",
 				LoginUserInfo = _accountDataAccess.GetLoginMemberData(accountEmail)
 			};
