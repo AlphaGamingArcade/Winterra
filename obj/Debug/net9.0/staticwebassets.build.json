@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b41y+DxWB+RgJarNsyUr2yKFYchFr+fijvuehzgBK4U=",
+  "Hash": "ciwWG3v2hyTR0n74lnJWYwSHWNswaaXFtNkpkxWS0/E=",
   "Source": "Winterra",
   "BasePath": "_content/Winterra",
   "Mode": "Default",
@@ -437,12 +437,12 @@
       "OriginalItemSpec": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-92zb43uq6h.gz",
+      "Identity": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-gucgzxbol5.gz",
       "SourceId": "Winterra",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winterra",
-      "RelativePath": "assets/css/admin#[.{fingerprint=92zb43uq6h}]?.css.gz",
+      "RelativePath": "assets/css/admin#[.{fingerprint=gucgzxbol5}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -451,8 +451,8 @@
       "RelatedAsset": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "u2f0zb8v1i",
-      "Integrity": "qmT+pPMikS/XzCtysbLzu2kU03A3e46/pG4rGFhKjls=",
+      "Fingerprint": "m86ahpbko9",
+      "Integrity": "FqOT7aFJajwWvVnmUMV74Hxi0pGuUeMipKstSVbCax4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css"
@@ -1564,8 +1564,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "92zb43uq6h",
-      "Integrity": "QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo=",
+      "Fingerprint": "gucgzxbol5",
+      "Integrity": "CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\css\\admin.css"
@@ -4093,13 +4093,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "assets/css/admin.92zb43uq6h.css",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-92zb43uq6h.gz",
+      "Route": "assets/css/admin.css",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-gucgzxbol5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000072584743"
+          "Quality": "0.000072590012"
         }
       ],
       "ResponseHeaders": [
@@ -4109,19 +4109,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13776"
+          "Value": "13775"
         },
         {
           "Name": "ETag",
-          "Value": "\"qmT+pPMikS/XzCtysbLzu2kU03A3e46/pG4rGFhKjls=\""
+          "Value": "\"FqOT7aFJajwWvVnmUMV74Hxi0pGuUeMipKstSVbCax4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 16 Apr 2025 07:44:45 GMT"
+          "Value": "Wed, 16 Apr 2025 09:05:09 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -4137,26 +4137,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo=\""
+          "Value": "W/\"CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "92zb43uq6h"
-        },
-        {
-          "Name": "label",
-          "Value": "assets/css/admin.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo="
+          "Value": "sha256-CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI="
         }
       ]
     },
     {
-      "Route": "assets/css/admin.92zb43uq6h.css",
+      "Route": "assets/css/admin.css",
       "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -4174,11 +4166,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo=\""
+          "Value": "\"CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 16 Apr 2025 07:44:45 GMT"
+          "Value": "Wed, 16 Apr 2025 09:05:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI="
+        }
+      ]
+    },
+    {
+      "Route": "assets/css/admin.css.gz",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-gucgzxbol5.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FqOT7aFJajwWvVnmUMV74Hxi0pGuUeMipKstSVbCax4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 09:05:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FqOT7aFJajwWvVnmUMV74Hxi0pGuUeMipKstSVbCax4="
+        }
+      ]
+    },
+    {
+      "Route": "assets/css/admin.gucgzxbol5.css",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-gucgzxbol5.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000072590012"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13775"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FqOT7aFJajwWvVnmUMV74Hxi0pGuUeMipKstSVbCax4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 09:05:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gucgzxbol5"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/css/admin.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI="
+        }
+      ]
+    },
+    {
+      "Route": "assets/css/admin.gucgzxbol5.css",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "77927"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 09:05:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4188,7 +4325,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "92zb43uq6h"
+          "Value": "gucgzxbol5"
         },
         {
           "Name": "label",
@@ -4196,13 +4333,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo="
+          "Value": "sha256-CHygQLdtB+MZ2olLCELL2kgnvUsnSm5C36Dv157BkSI="
         }
       ]
     },
     {
-      "Route": "assets/css/admin.92zb43uq6h.css.gz",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-92zb43uq6h.gz",
+      "Route": "assets/css/admin.gucgzxbol5.css.gz",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-gucgzxbol5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4211,7 +4348,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13776"
+          "Value": "13775"
         },
         {
           "Name": "Content-Type",
@@ -4219,11 +4356,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qmT+pPMikS/XzCtysbLzu2kU03A3e46/pG4rGFhKjls=\""
+          "Value": "\"FqOT7aFJajwWvVnmUMV74Hxi0pGuUeMipKstSVbCax4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 16 Apr 2025 07:44:45 GMT"
+          "Value": "Wed, 16 Apr 2025 09:05:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4241,7 +4378,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "92zb43uq6h"
+          "Value": "gucgzxbol5"
         },
         {
           "Name": "label",
@@ -4249,144 +4386,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-qmT+pPMikS/XzCtysbLzu2kU03A3e46/pG4rGFhKjls="
-        }
-      ]
-    },
-    {
-      "Route": "assets/css/admin.css",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-92zb43uq6h.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000072584743"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "13776"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"qmT+pPMikS/XzCtysbLzu2kU03A3e46/pG4rGFhKjls=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 16 Apr 2025 07:44:45 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo="
-        }
-      ]
-    },
-    {
-      "Route": "assets/css/admin.css",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "77927"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 16 Apr 2025 07:44:45 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-QVb/CHujVkI2m+klnvWSSwL5z5E7CP4fa7cOi6oQ0oo="
-        }
-      ]
-    },
-    {
-      "Route": "assets/css/admin.css.gz",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-92zb43uq6h.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "13776"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"qmT+pPMikS/XzCtysbLzu2kU03A3e46/pG4rGFhKjls=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 16 Apr 2025 07:44:45 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-qmT+pPMikS/XzCtysbLzu2kU03A3e46/pG4rGFhKjls="
+          "Value": "sha256-FqOT7aFJajwWvVnmUMV74Hxi0pGuUeMipKstSVbCax4="
         }
       ]
     },

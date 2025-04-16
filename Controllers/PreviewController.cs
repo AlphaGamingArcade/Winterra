@@ -45,7 +45,7 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
 				LoginUserInfo = loginUser
 			};
-			
+
 			return View(model);
         }
 
@@ -103,7 +103,8 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-		public IActionResult Edit(string? menuIn)
+		[HttpGet]
+		public IActionResult Edit(string? menuIn, int? id)
         {
             string? accountEmail = null;
 			string? accountSession = null;
@@ -119,11 +120,12 @@ namespace Winterra.Controllers
 			if (loginUser?.Session == null || loginUser?.Session != accountSession)
 				return RedirectToAction("Logout", "Account");
 
-            var model = new ContentViewModel
+            var model = new PreviewEditViewModel
             {
                 MenuOut = 2,
                 MenuIn = menuIn ?? "characters",
                 MenuTitle = "Content Management",
+				Preview = _previewDataAccess.GetPreviewData(id),
 				LoginUserInfo = loginUser
 			};
 

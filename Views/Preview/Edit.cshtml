@@ -1,7 +1,48 @@
-@using Winterra.Models.ViewModels
+@model Winterra.Models.ViewModels.PreviewEditViewModel
 
 <div class="container_wr" id="main-content">
-    <section>
-        Edit
-    </section>
+    <form asp-action="Edit" asp-route-menuIn="@Model.MenuIn">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Preview.Id" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="tbl_frm02 tbl_wrap">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th><label>Preview Information</label></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td><label asp-for="Preview.Type"></label></td>
+                                <td>
+                                    <input asp-for="Preview.Type" class="frm_input" />
+                                    <span asp-validation-for="Preview.Type" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label asp-for="Preview.Image"></label></td>
+                                <td>
+                                    <input asp-for="Preview.Image" class="frm_input" />
+                                    <span asp-validation-for="Preview.Image" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label asp-for="Preview.Name"></label></td>
+                                <td>
+                                    <input asp-for="Preview.Name" class="frm_input" />
+                                    <span asp-validation-for="Preview.Name" class="text-danger"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button (full width) -->
+        <div class="form-group mt-4 text-center">
+            <input type="submit" value="Save" class="btn btn_03" />
+        </div>
+    </form>
 </div>

@@ -91,5 +91,51 @@ namespace Winterra.DataContexts
 
 			return previewList;
 		}
+		public Preview? GetPreviewData(int? id)
+        {
+           Preview? previewData = null;
+
+            if (id != null)
+            {
+				try
+				{
+					using (SqlConnection connection = new SqlConnection(_connectionString))
+					{
+						connection.Open();
+
+						string query = "SELECT * FROM ww_preview WHERE preview_id = @preview_id";
+						using (SqlCommand command = new SqlCommand(query, connection))
+						{
+							command.Parameters.Add("@preview_id", System.Data.SqlDbType.Int, 32).Value = id;
+
+							using (SqlDataReader reader = command.ExecuteReader())
+							{
+								if (reader.Read())
+								{
+									previewData = new Preview
+									{
+										Id = Convert.ToInt32(reader["preview_id"]),
+										Type = Convert.ToString(reader["preview_type"]),
+										Image = Convert.ToString(reader["preview_image"]),
+										Name = Convert.ToString(reader["preview_name"])
+									};
+								}
+							}
+
+						}
+					}
+				}
+				catch (SqlException ex)
+				{
+					Console.WriteLine($"SQL-Exception [PreviewDataAccess -> GetPreviewData]: {ex.Message}");
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"Exception [PreviewDataAccess -> GetPreviewData]: {ex.Message}");
+				}
+			}
+
+			return previewData;
+        }
 	}
 }

@@ -211,7 +211,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-		public IActionResult Edit(string? menuIn)
+		public IActionResult Edit(string? menuIn, int? id)
         {
             string? accountEmail = null;
 			string? accountSession = null;
@@ -227,11 +227,12 @@ namespace Winterra.Controllers
 			if (loginUser?.Session == null || loginUser?.Session != accountSession)
 				return RedirectToAction("Logout", "Account");
 
-            var model = new ContentViewModel
+            var model = new ContentEditViewModel
             {
                 MenuOut = 2,
                 MenuIn = menuIn ?? "features",
                 MenuTitle = "Content Management",
+				Content = _contentDataAccess.GetContentData(id),
 				LoginUserInfo = loginUser
 			};
 
