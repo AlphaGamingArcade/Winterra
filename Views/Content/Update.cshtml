@@ -1,5 +1,61 @@
-@using Winterra.Models.ViewModels
+<div class="container_wr" id="main-content">
+    <section>
+    <h2>@(Model.MenuIn)</h2>
+    <div class="tbl_head01 tbl_wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(Model.UpdateContentList != null)
+                {
+                    var i = 1;
+                    var j = 0;
 
-<section>
-    <p>Update</p>
+                    @foreach (var p in Model.UpdateContentList)
+                    {
+                        <tr class="bg@(j%2)">
+                            <td class="td_num">@p.Id</td>
+                            <td class="td_id">@p.Type</td>
+                            <td class="td_center">@p.Title</td>
+                            <td class="td_center">@p.PublishedAt</td>
+                             <td class="td_mng td_mng_s"><a asp-controller="Content" asp-action="Edit" asp-route-menuIn="@Model.MenuIn" asp-route-id="@p.Id" class="btn btn_03">Edit</a></td>
+                        </tr>
+
+                        i++;
+                        j++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <ul class="pg_btn_list">
+        <li class="pg_item">
+        <a class="pg_lnk" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+        </li>
+        <li class="pg_item"><a class="pg_lnk active" href="#">1</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">2</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">3</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">4</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">5</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">6</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">7</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">8</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">9</a></li>
+        <li class="pg_item"><a class="pg_lnk" href="#">10</a></li>
+        <li class="pg_item">
+        <a class="pg_lnk" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+        </li>
+    </ul>
 </section>
+</div>

@@ -33,6 +33,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "features",
                 MenuTitle = "Content Management",
+                FeatureContentList = _contentDataAccess.GetContentList("features"),
 				LoginUserInfo = loginUser
 			};
 
@@ -48,6 +49,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "news",
                 MenuTitle = "Content Management",
+                NewsContentList = _contentDataAccess.GetContentList("news"),
 				LoginUserInfo = loginUser
 			};
 
@@ -63,6 +65,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "update",
                 MenuTitle = "Content Management",
+                UpdateContentList = _contentDataAccess.GetContentList("update"),
 				LoginUserInfo = loginUser
 			};
 
@@ -78,6 +81,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "code-of-conduct",
                 MenuTitle = "Content Management",
+                CodeOfConductContentList = _contentDataAccess.GetContentList("code-of-conduct"),
 				LoginUserInfo = loginUser
 			};
 
@@ -93,6 +97,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "terms-of-use",
                 MenuTitle = "Content Management",
+                TermsOfUseContentList = _contentDataAccess.GetContentList("terms-of-use"),
 				LoginUserInfo = loginUser
 			};
 
@@ -108,6 +113,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "privacy-policy",
                 MenuTitle = "Content Management",
+                PrivacyPolicyContentList = _contentDataAccess.GetContentList("privacy-policy"),
 				LoginUserInfo = loginUser
 			};
 
@@ -123,6 +129,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "playbook",
                 MenuTitle = "Content Management",
+                PlaybookContentList = _contentDataAccess.GetContentList("playbook"),
 				LoginUserInfo = loginUser
 			};
 

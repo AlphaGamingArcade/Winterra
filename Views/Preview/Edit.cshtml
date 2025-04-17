@@ -39,10 +39,10 @@
                             </tr>
                             <tr>
                                 <td><label asp-for="Preview.Image"></label></td>
-                                <td>
+                                <td class="td_edt">
                                     <input asp-for="Preview.Image" class="frm_input" />
                                     <span asp-validation-for="Preview.Image" class="text-danger"></span>
-                                    <button type="button" class="btn btn_03">Preview</button>
+                                    <button class="btn btn_03">Preview</button>
                                 </td>
                             </tr>
                             <tr>
@@ -59,7 +59,7 @@
         </div>
 
         <!-- Submit Button (full width) -->
-        <div class="form-group mt-4 text-center">
+        <div class="form-group mt-4 text-center td_edt">
             <button type="submit" class="btn btn_03 edit_btn">Save</button>
         </div>
     </form>

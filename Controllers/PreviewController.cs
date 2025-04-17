@@ -32,6 +32,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn ?? "characters",
                 MenuTitle = "Content Management",
+                CharacterPreviewList = _previewDataAccess.GetPreviewList("characters"),
 				LoginUserInfo = loginUser
 			};
 			return View(model);
@@ -46,6 +47,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "highlights",
                 MenuTitle = "Content Management",
+                HighlightPreviewList = _previewDataAccess.GetPreviewList("highlights"),
 				LoginUserInfo = loginUser
 			};
 
@@ -62,6 +64,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "lore",
                 MenuTitle = "Content Management",
+                LorePreviewList = _previewDataAccess.GetPreviewList("lore"),
 				LoginUserInfo = loginUser
 			};
 			return View(model);
