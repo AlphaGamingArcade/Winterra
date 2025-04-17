@@ -25,8 +25,9 @@ namespace Winterra.Controllers
 
         
         [ValidateSession]
-        public IActionResult Users(string? menuIn)
+        public IActionResult Users(string? menuIn, int? pageNumber = 1, int? pageSize = 10)
         {
+            Console.WriteLine($"{pageNumber} - {pageSize}");
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new AccountViewModel
             {
