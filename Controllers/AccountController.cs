@@ -23,23 +23,11 @@ namespace Winterra.Controllers
 			this._previewDataAccess = previewDataAccess;
 		}
 
+        
+        [ValidateSession]
         public IActionResult Index(string? menuIn)
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
-
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new AccountViewModel
             {
                 MenuOut = 1,
@@ -52,22 +40,10 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [ValidateSession]
         public IActionResult Administrator()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new AccountViewModel
             {
                 MenuOut = 1,
@@ -76,26 +52,13 @@ namespace Winterra.Controllers
                 AdminAccountList = _accountDataAccess.GetAccountList(1),
 				LoginUserInfo = loginUser
 			};
-
 			return View(model);
         }
         
         [HttpGet]
+        [ValidateSession]
         public IActionResult Edit(string? menuIn, int id){
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new AccountEditViewModel
             {
                 MenuOut = 1,
@@ -104,38 +67,17 @@ namespace Winterra.Controllers
                 Account = _accountDataAccess.GetAccountData(id),
 				LoginUserInfo = loginUser
 			};
-            
-            if (model.Account == null){
-                return NotFound();
-            }
-
-            if (model.LoginUserInfo?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
 			return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateSession]
         public IActionResult Edit(string? menuIn, int id, Account account)
         {
-            string? accountEmail = null;
-            string? accountSession = null;
-
-            if (HttpContext.User.Identity?.IsAuthenticated == true)
-            {
-                accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-                accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-            }
-
-            var loginUser = _accountDataAccess.GetLoginMemberData(accountEmail);
-
-            if (loginUser?.Session != accountSession)
-                return RedirectToAction("Logout", "Account");
-
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             if (!ModelState.IsValid)
             {
-                // repopulate the full view model for redisplay
                 var viewModel = new AccountEditViewModel
                 {
                     MenuOut = 1,
@@ -147,9 +89,7 @@ namespace Winterra.Controllers
 
                 return View(viewModel);
             }
-
             _accountDataAccess.UpdateAfterEdit(account);
-
             return RedirectToAction(nameof(Index), new { menuIn });
         }
 
@@ -205,6 +145,5 @@ namespace Winterra.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
     }
 }

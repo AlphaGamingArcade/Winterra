@@ -15,16 +15,31 @@
                             </tr>
                             <tr>
                                 <td><label asp-for="Preview.Type"></label></td>
-                                <td>
-                                    <input asp-for="Preview.Type" class="frm_input" />
-                                    <span asp-validation-for="Preview.Type" class="text-danger"></span>
-                                </td>
+                                @if (Model.Preview != null)
+                                {
+                                    <td>
+                                        @Html.DropDownListFor(
+                                            m => m.Preview.Type,
+                                            Model.Types,
+                                            "-- Select Type --",
+                                            new { @class = "frm_input" }
+                                        )
+                                        <span asp-validation-for="Preview.Type" class="text-danger"></span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <span class="text-danger">Error: Preview data is missing.</span>
+                                    </td>
+                                }
                             </tr>
                             <tr>
                                 <td><label asp-for="Preview.Image"></label></td>
                                 <td>
                                     <input asp-for="Preview.Image" class="frm_input" />
                                     <span asp-validation-for="Preview.Image" class="text-danger"></span>
+                                    <button type="button" class="btn btn_03">Preview</button>
                                 </td>
                             </tr>
                             <tr>
@@ -42,7 +57,7 @@
 
         <!-- Submit Button (full width) -->
         <div class="form-group mt-4 text-center">
-            <input type="submit" value="Save" class="btn btn_03" />
+            <button type="submit" class="btn btn_03 edit_btn">Save</button>
         </div>
     </form>
 </div>

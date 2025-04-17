@@ -209,6 +209,10 @@
       "PackagePath": "staticwebassets\\assets\\js\\admin.js"
     },
     {
+      "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\ckeditor.js",
+      "PackagePath": "staticwebassets\\assets\\js\\ckeditor.js"
+    },
+    {
       "Id": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\js\\common.js",
       "PackagePath": "staticwebassets\\assets\\js\\common.js"
     },

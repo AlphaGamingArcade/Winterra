@@ -94,7 +94,6 @@ namespace Winterra.DataContexts
 		public Preview? GetPreviewData(int? id)
         {
            Preview? previewData = null;
-
             if (id != null)
             {
 				try
@@ -136,6 +135,42 @@ namespace Winterra.DataContexts
 			}
 
 			return previewData;
+        }
+		public void UpdateAfterEdit(Preview preview)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"
+                        UPDATE ww_preview 
+                        SET 
+                            preview_type = @preview_type,
+                            preview_image = @preview_image,
+                            preview_name = @preview_name
+                        WHERE preview_id = @preview_id";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@preview_id", preview.Id);
+						command.Parameters.AddWithValue("@preview_type", preview.Type);
+                        command.Parameters.AddWithValue("@preview_image", preview.Image);
+                        command.Parameters.AddWithValue("@preview_name", preview.Name);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"SQL-Exception [PreviewDataAccess -> UpdateAfterEdit]: {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception [PreviewDataAccess -> UpdateAfterEdit]: {ex.Message}");
+                }
+            }
         }
 	}
 }

@@ -6,6 +6,7 @@ using Winterra.Models.InputModels;
 using Winterra.Models.ViewModels;
 using System.Security.Claims;
 using Winterra.Helpers;
+using Winterra.Models.DataModels;
 
 namespace Winterra.Controllers
 {
@@ -22,23 +23,11 @@ namespace Winterra.Controllers
 			this._previewDataAccess = previewDataAccess;
 		}
 
+		[ValidateSession]
         public IActionResult Characters()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
-            var model = new ContentViewModel
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var model = new PreviewViewModel
             {
                 MenuOut = 2,
                 MenuIn = "characters",
@@ -49,23 +38,11 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+		[ValidateSession]
         public IActionResult Highlights()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
-            var model = new ContentViewModel
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var model = new PreviewViewModel
             {
                 MenuOut = 2,
                 MenuIn = "highlights",
@@ -77,23 +54,11 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+		[ValidateSession]
         public IActionResult Lore()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
-            var model = new ContentViewModel
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var model = new PreviewViewModel
             {
                 MenuOut = 2,
                 MenuIn = "lore",
@@ -104,32 +69,48 @@ namespace Winterra.Controllers
         }
 
 		[HttpGet]
+		[ValidateSession]
 		public IActionResult Edit(string? menuIn, int? id)
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new PreviewEditViewModel
             {
                 MenuOut = 2,
                 MenuIn = menuIn ?? "characters",
                 MenuTitle = "Content Management",
+				Types = PreviewEditViewModel.AvailableTypes,
 				Preview = _previewDataAccess.GetPreviewData(id),
 				LoginUserInfo = loginUser
 			};
 
 			return View(model);
+        }
+
+		
+		[HttpPost]
+		[ValidateSession]
+		public IActionResult Edit(string? menuIn, int? id, Preview preview)
+        {
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            if (!ModelState.IsValid)
+            {
+                // repopulate the full view model for redisplay
+                var viewModel = new PreviewEditViewModel
+                {
+                    MenuOut = 2,
+					MenuIn = menuIn ?? "characters",
+					MenuTitle = "Content Management",
+					Types = PreviewEditViewModel.AvailableTypes,
+					Preview = preview,
+					LoginUserInfo = loginUser
+                };
+
+                return View(viewModel);
+            }
+
+            _previewDataAccess.UpdateAfterEdit(preview);
+
+            return RedirectToAction(nameof(Characters), new { menuIn });
         }
     }
 }

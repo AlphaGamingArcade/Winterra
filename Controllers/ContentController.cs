@@ -6,9 +6,12 @@ using Winterra.Models.InputModels;
 using Winterra.Models.ViewModels;
 using System.Security.Claims;
 using Winterra.Helpers;
+using Winterra.Models.DataModels;
+
 
 namespace Winterra.Controllers
 {
+    [ValidateSession]
     public class ContentController : Controller
     {
 		private readonly AccountDataAccess _accountDataAccess;
@@ -24,20 +27,7 @@ namespace Winterra.Controllers
 
         public IActionResult Features()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -51,20 +41,7 @@ namespace Winterra.Controllers
 
         public IActionResult News()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -76,23 +53,9 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-
         public IActionResult Update()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -106,20 +69,7 @@ namespace Winterra.Controllers
 
         public IActionResult CodeOfConduct()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -133,20 +83,7 @@ namespace Winterra.Controllers
 
         public IActionResult TermsOfUse()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -157,22 +94,10 @@ namespace Winterra.Controllers
 
 			return View(model);
         }
+
         public IActionResult PrivacyPolicy()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+			var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -183,23 +108,10 @@ namespace Winterra.Controllers
 
 			return View(model);
         }
+
         public IActionResult Playbook()
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
-
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -213,25 +125,13 @@ namespace Winterra.Controllers
 
 		public IActionResult Edit(string? menuIn, int? id)
         {
-            string? accountEmail = null;
-			string? accountSession = null;
-
-			if (HttpContext.User.Identity?.IsAuthenticated == true)
-			{
-				accountEmail = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-				accountSession = HttpContext.User.FindFirst(ClaimTypes.Hash)?.Value;
-			}
-
-			var loginUser =  _accountDataAccess.GetLoginMemberData(accountEmail);
-
-			if (loginUser?.Session == null || loginUser?.Session != accountSession)
-				return RedirectToAction("Logout", "Account");
-
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentEditViewModel
             {
                 MenuOut = 2,
                 MenuIn = menuIn ?? "features",
                 MenuTitle = "Content Management",
+				Types = ContentEditViewModel.AvailableTypes,
 				Content = _contentDataAccess.GetContentData(id),
 				LoginUserInfo = loginUser
 			};

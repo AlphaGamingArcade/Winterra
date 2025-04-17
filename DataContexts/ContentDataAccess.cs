@@ -72,6 +72,7 @@ namespace Winterra.DataContexts
 									Id = Convert.ToInt32(reader["content_id"]),
 									Type = Convert.ToString(reader["content_type"]),
 									Title = Convert.ToString(reader["content_title"]),
+									Data = Convert.ToString(reader["content_data"]),
 									PublishedAt = Convert.ToDateTime(reader["content_published_at"]),
 								};
 
@@ -119,6 +120,7 @@ namespace Winterra.DataContexts
 										Id = Convert.ToInt32(reader["content_id"]),
 										Type = Convert.ToString(reader["content_type"]),
 										Title = Convert.ToString(reader["content_title"]),
+										Data = Convert.ToString(reader["content_data"]),
 										PublishedAt = Convert.ToDateTime(reader["content_published_at"]),
 									};
 								}

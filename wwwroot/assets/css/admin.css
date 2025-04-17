@@ -930,6 +930,7 @@ a.ov_listall:hover {
   height: 35px;
   line-height: 32px;
   border: 1px solid #d5d5d5;
+  padding: 6px 6px; /* top/bottom 8px, left/right 12px */
 }
 .frm_input_full {
   width: 100%;
@@ -1496,9 +1497,13 @@ tfoot th {
   border-bottom: 1px solid #e6e6e6;
   background: #6f809a;
   padding: 10px;
-  width: 200px;
   text-align: left;
 }
+
+.tbl_frm02 th:first-child {
+  width: 200px;
+}
+
 .tbl_frm02 td {
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
@@ -1514,6 +1519,11 @@ tfoot th {
 .tbl_frm02 textarea {
   height: 150px;
 }
+
+.tbl_frm02 select {
+  background-color: #ffffff;
+}
+
 .tbl_frm02 #captcha {
   margin: 0;
   padding: 0;
