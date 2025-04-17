@@ -25,7 +25,7 @@ namespace Winterra.Controllers
 
         
         [ValidateSession]
-        public IActionResult Index(string? menuIn)
+        public IActionResult Users(string? menuIn)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new AccountViewModel
@@ -33,7 +33,7 @@ namespace Winterra.Controllers
                 MenuOut = 1,
                 MenuIn = menuIn ?? "user",
                 MenuTitle = "Account Management",
-                UserAccountList = _accountDataAccess.GetAccountList( menuIn == "user" ? 0 : 1),
+                UserAccountList = _accountDataAccess.GetAccountList(0),
 				LoginUserInfo = loginUser
 			};
 
@@ -90,7 +90,14 @@ namespace Winterra.Controllers
                 return View(viewModel);
             }
             _accountDataAccess.UpdateAfterEdit(account);
-            return RedirectToAction(nameof(Index), new { menuIn });
+            
+            var redirectTo = menuIn switch
+            {
+                "user" => nameof(Users),
+                "administrator" => nameof(Administrator),
+                _ => nameof(Users),
+            };
+            return RedirectToAction(redirectTo, new { menuIn });
         }
 
         [HttpGet]

@@ -24,17 +24,16 @@ namespace Winterra.Controllers
 		}
 
 		[ValidateSession]
-        public IActionResult Characters()
+        public IActionResult Characters(string? menuIn)
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new PreviewViewModel
             {
                 MenuOut = 2,
-                MenuIn = "characters",
+                MenuIn = menuIn ?? "characters",
                 MenuTitle = "Content Management",
 				LoginUserInfo = loginUser
 			};
-
 			return View(model);
         }
 
@@ -89,6 +88,7 @@ namespace Winterra.Controllers
 		
 		[HttpPost]
 		[ValidateSession]
+        [ValidateAntiForgeryToken]
 		public IActionResult Edit(string? menuIn, int? id, Preview preview)
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -110,7 +110,14 @@ namespace Winterra.Controllers
 
             _previewDataAccess.UpdateAfterEdit(preview);
 
-            return RedirectToAction(nameof(Characters), new { menuIn });
+            var redirectTo = menuIn switch
+            {
+                "characters" => nameof(Characters),
+                "highlights" => nameof(Highlights),
+                "lore" => nameof(Lore),
+                _ => nameof(Characters),
+            };
+            return RedirectToAction(redirectTo, new { menuIn });
         }
     }
 }

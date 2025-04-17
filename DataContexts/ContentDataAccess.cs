@@ -141,5 +141,44 @@ namespace Winterra.DataContexts
 
 			return contentData;
         }
+
+		public void UpdateAfterEdit(Content content)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"
+                        UPDATE ww_content 
+                        SET 
+                            content_type = @content_type,
+                            content_title = @content_title,
+                            content_published_at = @content_published_at,
+							content_data = @content_data
+                        WHERE content_id = @content_id";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@content_id", content.Id);
+						command.Parameters.AddWithValue("@content_type", content.Type);
+						command.Parameters.AddWithValue("@content_title", content.Title);
+                        command.Parameters.AddWithValue("@content_published_at", content.PublishedAt);
+                        command.Parameters.AddWithValue("@content_data", content.Data);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"SQL-Exception [ContentDataAccess -> UpdateAfterEdit]: {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception [ContentDataAccess -> UpdateAfterEdit]: {ex.Message}");
+                }
+            }
+        }
 	}
 }

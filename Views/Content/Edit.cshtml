@@ -16,24 +16,24 @@
                             </tr>
                             <tr>
                                 <td><label asp-for="Content.Type"></label></td>
-                                @if (Model.Content != null)
-                                {
-                                    <td>
+                                <td>
+                                    @if (Model.Content != null && Model.Types != null)
+                                    {
+                                        var content = Model.Content; // local non-null reference
+                                        var types = Model.Types;
+
                                         @Html.DropDownListFor(
-                                            m => m.Content.Type,
-                                            Model.Types,
+                                            m => content.Type,
+                                            types,
                                             "-- Select Type --",
                                             new { @class = "frm_input" }
                                         )
-                                        <span asp-validation-for="Content.Type" class="text-danger"></span>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
+                                    }
+                                    else
+                                    {
                                         <span class="text-danger">Error: Content data is missing.</span>
-                                    </td>
-                                }
+                                    }
+                                </td>
                             </tr>
                             <tr>
                                 <td><label asp-for="Content.Title"></label></td>

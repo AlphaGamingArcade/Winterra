@@ -15,12 +15,15 @@
                             </tr>
                             <tr>
                                 <td><label asp-for="Preview.Type"></label></td>
-                                @if (Model.Preview != null)
+                                @if (Model.Preview != null && Model.Types != null)
                                 {
+                                    var preview = Model.Preview;
+                                    var types = Model.Types;
+
                                     <td>
                                         @Html.DropDownListFor(
-                                            m => m.Preview.Type,
-                                            Model.Types,
+                                            m => preview.Type,
+                                            types,
                                             "-- Select Type --",
                                             new { @class = "frm_input" }
                                         )

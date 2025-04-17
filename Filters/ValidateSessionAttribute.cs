@@ -16,25 +16,20 @@ public class ValidateSessionAttribute : Attribute, IAuthorizationFilter
             var email = user.FindFirst(ClaimTypes.Name)?.Value;
             var session = user.FindFirst(ClaimTypes.Hash)?.Value;
 
-            Console.WriteLine("AUTHENTICATED");
-
-            // Use DI to get the AccountDataAccess
             var accountDataAccess = httpContext.RequestServices.GetService<AccountDataAccess>();
             var loginUser = accountDataAccess?.GetLoginMemberData(email);
 
             if (loginUser?.Session == null || loginUser.Session != session)
             {
+                Console.WriteLine("NOT AUTHENTICATED");
                 context.Result = new RedirectToActionResult("Logout", "Account", null);
                 return;
             }
 
-            // ✅ Store the validated user object for later use in the controller/action
             httpContext.Items["LoginUser"] = loginUser;
         }
         else
         {
-            Console.WriteLine("NOT AUTHENTICATED");
-            // Not authenticated at all — redirect to logout/login
             context.Result = new RedirectToActionResult("Logout", "Account", null);
         }
     }

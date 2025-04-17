@@ -11,7 +11,6 @@ using Winterra.Models.DataModels;
 
 namespace Winterra.Controllers
 {
-    [ValidateSession]
     public class ContentController : Controller
     {
 		private readonly AccountDataAccess _accountDataAccess;
@@ -25,6 +24,7 @@ namespace Winterra.Controllers
 			this._previewDataAccess = previewDataAccess;
 		}
 
+        [ValidateSession]
         public IActionResult Features()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -39,6 +39,7 @@ namespace Winterra.Controllers
 			return View(model);
         }   
 
+        [ValidateSession]
         public IActionResult News()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -53,6 +54,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [ValidateSession]
         public IActionResult Update()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -67,6 +69,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [ValidateSession]
         public IActionResult CodeOfConduct()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -81,6 +84,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [ValidateSession]
         public IActionResult TermsOfUse()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -95,6 +99,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [ValidateSession]
         public IActionResult PrivacyPolicy()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -109,6 +114,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [ValidateSession]
         public IActionResult Playbook()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -123,6 +129,8 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [HttpGet]
+        [ValidateSession]
 		public IActionResult Edit(string? menuIn, int? id)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -137,6 +145,41 @@ namespace Winterra.Controllers
 			};
 
 			return View(model);
+        }
+
+        [HttpPost]
+        [ValidateSession]
+        [ValidateAntiForgeryToken]
+		public IActionResult Edit(string? menuIn, int? id, Content content)
+        {
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ContentEditViewModel
+                {
+                    MenuOut = 1,
+                    MenuIn = menuIn ?? "features",
+                    MenuTitle = "Content Management",
+                    Content = content, 
+                    LoginUserInfo = loginUser
+                };
+                return View(viewModel);
+            }
+
+            _contentDataAccess.UpdateAfterEdit(content);
+
+            var redirectTo = menuIn switch
+            {
+                "features" => nameof(Features),
+                "news" => nameof(News),
+                "update" => nameof(Update),
+                "code-of-conduct" => nameof(CodeOfConduct),
+                "terms-of-use" => nameof(TermsOfUse),
+                "privacy-policy" => nameof(PrivacyPolicy),
+                "playbook" => nameof(Playbook),
+                _ => nameof(Features)
+            };
+            return RedirectToAction(redirectTo, new { menuIn });
         }
     }
 }
