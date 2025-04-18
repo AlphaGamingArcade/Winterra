@@ -236,5 +236,40 @@ namespace Winterra.DataContexts
 
 			return contentList;
 		}
+
+		public void SaveNewContent(Content content)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					string query = @"
+						INSERT INTO ww_content 
+						(content_type, content_title, content_published_at, content_data) 
+						VALUES 
+						(@content_type, @content_title, @content_published_at, @content_data)";
+
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@content_type", content.Type ?? string.Empty);
+						command.Parameters.AddWithValue("@content_title", content.Title ?? string.Empty);
+						command.Parameters.AddWithValue("@content_published_at", content.PublishedAt);
+						command.Parameters.AddWithValue("@content_data", content.Data ?? string.Empty);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (SqlException ex)
+				{
+					Console.WriteLine($"SQL-Exception [ContentDataAccess -> SaveNewContent]: {ex.Message}");
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"Exception [ContentDataAccess -> SaveNewContent]: {ex.Message}");
+				}
+			}
+		}
 	}
 }

@@ -1,7 +1,7 @@
-@model Winterra.Models.ViewModels.PreviewCreateViewModel
+@model Winterra.Models.ViewModels.ContentCreateViewModel
 
 <div class="container_wr" id="main-content">
-    <form asp-action="Create" asp-route-menuIn="@Model.MenuIn">
+    <form asp-action="Create" asp-route-menuIn="@Model.MenuIn" method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="row">
@@ -10,38 +10,46 @@
                     <table>
                         <tbody>
                             <tr>
-                                <th><label>Create new</label></th>
+                                <th><label>Content Information</label></th>
                                 <th></th>
                             </tr>
+
                             <tr>
-                                <td><label asp-for="Preview!.Type"></label></td>
+                                <td><label asp-for="Content!.Type"></label></td>
                                 <td>
                                     @Html.DropDownListFor(
-                                        m => m.Preview!.Type,
-                                        Model.Types ?? new List<SelectListItem>(),
+                                        m => m.Content!.Type,
+                                        Model.Types,
                                         "-- Select Type --",
                                         new { @class = "frm_input" }
                                     )
-                                    <span asp-validation-for="Preview!.Type" class="text-danger"></span>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td><label asp-for="Preview!.Image"></label></td>
-                                <td class="td_edt">
-                                    <input asp-for="Preview!.Image" class="frm_input" />
-                                    <button class="btn btn_03" type="button">Preview</button>
-                                    <span asp-validation-for="Preview!.Image" class="text-danger"></span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><label asp-for="Preview!.Name"></label></td>
+                                <td><label asp-for="Content!.Title"></label></td>
                                 <td>
-                                    <input asp-for="Preview!.Name" class="frm_input" />
-                                    <span asp-validation-for="Preview!.Name" class="text-danger"></span>
+                                    <input asp-for="Content!.Title" class="frm_input" />
+                                    <span asp-validation-for="Content!.Title" class="text-danger"></span>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td><label asp-for="Content!.Data"></label></td>
+                                <td>
+                                    <textarea asp-for="Content!.Data" id="editor" class="frm_input"></textarea>
+                                    <span asp-validation-for="Content!.Data" class="text-danger"></span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><label asp-for="Content!.PublishedAt"></label></td>
+                                <td>
+                                    <input asp-for="Content!.PublishedAt" class="frm_input" />
+                                    <span asp-validation-for="Content!.PublishedAt" class="text-danger"></span>
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -50,7 +58,7 @@
 
         <!-- Submit Button (full width) -->
         <div class="form-group mt-4 text-center td_edt">
-            <button type="submit" class="btn btn_03 edit_btn">Save</button>
+            <button type="submit" class="btn btn_03 edit_btn">Create</button>
         </div>
     </form>
 </div>

@@ -12,15 +12,11 @@ namespace Winterra.Controllers
     [ValidateSession]
     public class ContentController : Controller
     {
-        private readonly AccountDataAccess _accountDataAccess;
         private readonly ContentDataAccess _contentDataAccess;
-        private readonly PreviewDataAccess _previewDataAccess;
 
-        public ContentController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess)
+        public ContentController(ContentDataAccess contentDataAccess)
         {
-            this._accountDataAccess = accountDataAccess;
             this._contentDataAccess = contentDataAccess;
-            this._previewDataAccess = previewDataAccess;
         }
 
         public IActionResult Features(int? pageNumber, int? pageSize)
@@ -213,5 +209,60 @@ namespace Winterra.Controllers
             };
             return RedirectToAction(redirectTo, new { menuIn });
         }
+
+        [HttpGet]
+        public IActionResult Create(string? menuIn)
+        {
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var model = new ContentCreateViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn ?? "features",
+                MenuTitle = "Content Management",
+                Types = ContentCreateViewModel.AvailableTypes,
+                Content = new Content
+                {
+                    Type = menuIn
+                },
+                LoginUserInfo = loginUser
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(string? menuIn, Content content)
+        {
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            if (!ModelState.IsValid)
+            {
+                var model = new ContentCreateViewModel
+                {
+                    MenuOut = 2,
+                    MenuIn = menuIn ?? "characters",
+                    MenuTitle = "Content Management",
+                    Types = ContentCreateViewModel.AvailableTypes,
+                    Content = content,
+                    LoginUserInfo = loginUser
+                };
+                return View(model);
+            }
+
+            _contentDataAccess.SaveNewContent(content);
+
+            var redirectTo = menuIn switch
+            {
+                "features" => nameof(Features),
+                "news" => nameof(News),
+                "update" => nameof(Update),
+                "code-of-conduct" => nameof(CodeOfConduct),
+                "terms-of-use" => nameof(TermsOfUse),
+                "privacy-policy" => nameof(PrivacyPolicy),
+                "playbook" => nameof(Playbook),
+                _ => nameof(Features)
+            };
+            return RedirectToAction(redirectTo, new { menuIn });
+        }
+
     }
 }
