@@ -8,21 +8,21 @@ using Winterra.Helpers;
 
 namespace Winterra.Controllers
 {
+    [Authorize]
+    [ValidateSession]
     public class ContentController : Controller
     {
-		private readonly AccountDataAccess _accountDataAccess;
-		private readonly ContentDataAccess _contentDataAccess;
-		private readonly PreviewDataAccess _previewDataAccess;
+        private readonly AccountDataAccess _accountDataAccess;
+        private readonly ContentDataAccess _contentDataAccess;
+        private readonly PreviewDataAccess _previewDataAccess;
 
-		public ContentController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess)
+        public ContentController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess)
         {
-			this._accountDataAccess = accountDataAccess;
-			this._contentDataAccess = contentDataAccess;
-			this._previewDataAccess = previewDataAccess;
-		}
+            this._accountDataAccess = accountDataAccess;
+            this._contentDataAccess = contentDataAccess;
+            this._previewDataAccess = previewDataAccess;
+        }
 
-        [Authorize]
-        [ValidateSession]
         public IActionResult Features(int? pageNumber, int? pageSize)
         {
             string menuIn = "features";
@@ -37,14 +37,12 @@ namespace Winterra.Controllers
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
                 FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
-				LoginUserInfo = loginUser
-			};
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
-        }   
+            return View(model);
+        }
 
-        [Authorize]
-        [ValidateSession]
         public IActionResult News(int? pageNumber, int? pageSize)
         {
             string menuIn = "features";
@@ -59,17 +57,15 @@ namespace Winterra.Controllers
                 MenuIn = "news",
                 MenuTitle = "Content Management",
                 NewsContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
-				LoginUserInfo = loginUser
-			};
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-        [ValidateSession]
         public IActionResult Update(int? pageNumber, int? pageSize)
         {
-			 string menuIn = "update";
+            string menuIn = "update";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
@@ -81,17 +77,15 @@ namespace Winterra.Controllers
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
                 UpdateContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
-				LoginUserInfo = loginUser
-			};
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-        [ValidateSession]
         public IActionResult CodeOfConduct(int? pageNumber, int? pageSize)
         {
-			string menuIn = "code-of-conduct";
+            string menuIn = "code-of-conduct";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
@@ -103,17 +97,15 @@ namespace Winterra.Controllers
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
                 CodeOfConductContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
-				LoginUserInfo = loginUser
-			};
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-        [ValidateSession]
         public IActionResult TermsOfUse(int? pageNumber, int? pageSize)
         {
-			string menuIn = "terms-of-use";
+            string menuIn = "terms-of-use";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
@@ -125,17 +117,15 @@ namespace Winterra.Controllers
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
                 TermsOfUseContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
-				LoginUserInfo = loginUser
-			};
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-        [ValidateSession]
         public IActionResult PrivacyPolicy(int? pageNumber, int? pageSize)
         {
-			string menuIn = "privacy-policy";
+            string menuIn = "privacy-policy";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
@@ -147,14 +137,12 @@ namespace Winterra.Controllers
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
                 PrivacyPolicyContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
-				LoginUserInfo = loginUser
-			};
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-        [ValidateSession]
         public IActionResult Playbook(int? pageNumber, int? pageSize)
         {
             string menuIn = "playbook";
@@ -169,16 +157,14 @@ namespace Winterra.Controllers
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
                 PlaybookContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
-				LoginUserInfo = loginUser
-			};
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
         [HttpGet]
-        [Authorize]
-        [ValidateSession]
-		public IActionResult Edit(string? menuIn, int? id)
+        public IActionResult Edit(string? menuIn, int? id)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new ContentEditViewModel
@@ -186,19 +172,17 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn ?? "features",
                 MenuTitle = "Content Management",
-				Types = ContentEditViewModel.AvailableTypes,
-				Content = _contentDataAccess.GetContentData(id),
-				LoginUserInfo = loginUser
-			};
+                Types = ContentEditViewModel.AvailableTypes,
+                Content = _contentDataAccess.GetContentData(id),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
         [HttpPost]
-        [Authorize]
-        [ValidateSession]
         [ValidateAntiForgeryToken]
-		public IActionResult Edit(string? menuIn, int? id, Content content)
+        public IActionResult Edit(string? menuIn, int? id, Content content)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             if (!ModelState.IsValid)
@@ -208,7 +192,7 @@ namespace Winterra.Controllers
                     MenuOut = 1,
                     MenuIn = menuIn ?? "features",
                     MenuTitle = "Content Management",
-                    Content = content, 
+                    Content = content,
                     LoginUserInfo = loginUser
                 };
                 return View(viewModel);

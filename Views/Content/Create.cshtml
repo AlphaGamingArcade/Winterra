@@ -1,0 +1,56 @@
+@model Winterra.Models.ViewModels.PreviewCreateViewModel
+
+<div class="container_wr" id="main-content">
+    <form asp-action="Create" asp-route-menuIn="@Model.MenuIn">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="tbl_frm02 tbl_wrap">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th><label>Create new</label></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td><label asp-for="Preview!.Type"></label></td>
+                                <td>
+                                    @Html.DropDownListFor(
+                                        m => m.Preview!.Type,
+                                        Model.Types ?? new List<SelectListItem>(),
+                                        "-- Select Type --",
+                                        new { @class = "frm_input" }
+                                    )
+                                    <span asp-validation-for="Preview!.Type" class="text-danger"></span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><label asp-for="Preview!.Image"></label></td>
+                                <td class="td_edt">
+                                    <input asp-for="Preview!.Image" class="frm_input" />
+                                    <button class="btn btn_03" type="button">Preview</button>
+                                    <span asp-validation-for="Preview!.Image" class="text-danger"></span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><label asp-for="Preview!.Name"></label></td>
+                                <td>
+                                    <input asp-for="Preview!.Name" class="frm_input" />
+                                    <span asp-validation-for="Preview!.Name" class="text-danger"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button (full width) -->
+        <div class="form-group mt-4 text-center td_edt">
+            <button type="submit" class="btn btn_03 edit_btn">Save</button>
+        </div>
+    </form>
+</div>

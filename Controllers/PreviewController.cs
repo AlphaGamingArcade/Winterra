@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Winterra.DataContexts;
 using Winterra.Models.ViewModels;
 using Winterra.Models.DataModels;
-using Winterra.Models.InputModels;
 
 namespace Winterra.Controllers
 {
+    [Authorize]
+    [ValidateSession]
     public class PreviewController : Controller
     {
         private readonly PreviewDataAccess _previewDataAccess;
@@ -17,7 +18,6 @@ namespace Winterra.Controllers
         }
 
         [Authorize]
-        [ValidateSession]
         public IActionResult Characters(int? pageNumber, int? pageSize)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -38,7 +38,6 @@ namespace Winterra.Controllers
         }
 
         [Authorize]
-        [ValidateSession]
         public IActionResult Highlights(int? pageNumber, int? pageSize)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -60,7 +59,6 @@ namespace Winterra.Controllers
         }
 
         [Authorize]
-        [ValidateSession]
         public IActionResult Lore(int? pageNumber, int? pageSize)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -80,7 +78,6 @@ namespace Winterra.Controllers
         }
 
         [HttpGet]
-        [ValidateSession]
         public IActionResult Edit(string? menuIn, int? id)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -99,7 +96,6 @@ namespace Winterra.Controllers
         }
 
         [HttpPost]
-        [ValidateSession]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(string? menuIn, Preview preview)
         {
@@ -132,7 +128,6 @@ namespace Winterra.Controllers
         }
 
         [HttpGet]
-        [ValidateSession]
         public IActionResult Create(string? menuIn, int? id)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -150,12 +145,12 @@ namespace Winterra.Controllers
             };
             return View(model);
         }
-        
+
         [HttpPost]
-		[ValidateSession]
-		public IActionResult Create(string? menuIn, Preview preview)
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(string? menuIn, Preview preview)
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             if (!ModelState.IsValid)
             {
                 var model = new PreviewCreateViewModel
