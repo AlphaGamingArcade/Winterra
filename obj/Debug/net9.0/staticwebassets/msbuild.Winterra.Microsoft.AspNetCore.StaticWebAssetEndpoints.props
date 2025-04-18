@@ -1,16 +1,16 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/Winterra/assets/css/admin.7xquiv0nb5.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\css\admin.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"7xquiv0nb5"},{"Name":"integrity","Value":"sha256-NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM="},{"Name":"label","Value":"_content/Winterra/assets/css/admin.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"78981"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 18 Apr 2025 01:46:45 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Winterra/assets/css/admin.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\css\admin.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"78981"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 18 Apr 2025 01:46:45 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ak3D28Bj4LbRbSr8ShD1tWdVL1lrlDjB5akzj2jnZ2g="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"79465"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ak3D28Bj4LbRbSr8ShD1tWdVL1lrlDjB5akzj2jnZ2g=\u0022"},{"Name":"Last-Modified","Value":"Fri, 18 Apr 2025 03:59:22 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Winterra/assets/css/admin.mg0lpp4303.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\css\admin.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"mg0lpp4303"},{"Name":"integrity","Value":"sha256-ak3D28Bj4LbRbSr8ShD1tWdVL1lrlDjB5akzj2jnZ2g="},{"Name":"label","Value":"_content/Winterra/assets/css/admin.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"79465"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ak3D28Bj4LbRbSr8ShD1tWdVL1lrlDjB5akzj2jnZ2g=\u0022"},{"Name":"Last-Modified","Value":"Fri, 18 Apr 2025 03:59:22 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Winterra/assets/css/jquery-ui-timepicker.min.7yv51uoz03.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\css\jquery-ui-timepicker.min.css'))</AssetFile>

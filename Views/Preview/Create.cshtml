@@ -1,49 +1,40 @@
-@model Winterra.Models.ViewModels.PreviewEditViewModel
+@model Winterra.Models.ViewModels.PreviewCreateViewModel
+
 <div class="container_wr" id="main-content">
-    <form asp-action="Edit" asp-route-menuIn="@Model.MenuIn">
+    <form asp-action="Create" asp-route-menuIn="@Model.MenuIn">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Preview!.Id" />
+
         <div class="row">
             <div class="col-md-6">
                 <div class="tbl_frm02 tbl_wrap">
                     <table>
                         <tbody>
                             <tr>
-                                <th><label>Preview Information</label></th>
+                                <th><label>Create new</label></th>
                                 <th></th>
                             </tr>
                             <tr>
                                 <td><label asp-for="Preview!.Type"></label></td>
-                                @if (Model.Preview != null && Model.Types != null)
-                                {
-                                    var preview = Model.Preview;
-                                    var types = Model.Types;
-
-                                    <td>
-                                        @Html.DropDownListFor(
-                                            m => preview.Type,
-                                            types,
-                                            "-- Select Type --",
-                                            new { @class = "frm_input" }
-                                        )
-                                        <span asp-validation-for="Preview!.Type" class="text-danger"></span>
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        <span class="text-danger">Error: Preview data is missing.</span>
-                                    </td>
-                                }
+                                <td>
+                                    @Html.DropDownListFor(
+                                        m => m.Preview!.Type,
+                                        Model.Types ?? new List<SelectListItem>(),
+                                        "-- Select Type --",
+                                        new { @class = "frm_input" }
+                                    )
+                                    <span asp-validation-for="Preview!.Type" class="text-danger"></span>
+                                </td>
                             </tr>
+
                             <tr>
                                 <td><label asp-for="Preview!.Image"></label></td>
                                 <td class="td_edt">
                                     <input asp-for="Preview!.Image" class="frm_input" />
+                                    <button class="btn btn_03" type="button">Preview</button>
                                     <span asp-validation-for="Preview!.Image" class="text-danger"></span>
-                                    <button class="btn btn_03">Preview</button>
                                 </td>
                             </tr>
+
                             <tr>
                                 <td><label asp-for="Preview!.Name"></label></td>
                                 <td>

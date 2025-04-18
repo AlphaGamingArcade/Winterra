@@ -172,7 +172,6 @@ namespace Winterra.DataContexts
 				}
 			}
 		}
-
 		public List<Preview> GetPreviewListPaged(int pageNumber, int pageSize, string? previewType = "")
 		{
 			List<Preview> previewList = new List<Preview>();
@@ -226,6 +225,38 @@ namespace Winterra.DataContexts
 			}
 
 			return previewList;
+		}
+
+		public void SaveNewPreview(Preview preview)
+		{
+			using (SqlConnection connection = new SqlConnection(_connectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					string query = @"
+						INSERT INTO ww_preview (preview_type, preview_image, preview_name)
+						VALUES (@preview_type, @preview_image, @preview_name);";
+
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						command.Parameters.AddWithValue("@preview_type", preview.Type);
+						command.Parameters.AddWithValue("@preview_image", preview.Image);
+						command.Parameters.AddWithValue("@preview_name", preview.Name);
+
+						command.ExecuteNonQuery();
+					}
+				}
+				catch (SqlException ex)
+				{
+					Console.WriteLine($"SQL-Exception [PreviewDataAccess -> SaveNewPreview]: {ex.Message}");
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"Exception [PreviewDataAccess -> SaveNewPreview]: {ex.Message}");
+				}
+			}
 		}
 	}
 }
