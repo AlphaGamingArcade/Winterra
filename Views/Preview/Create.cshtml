@@ -29,8 +29,8 @@
                             <tr>
                                 <td><label asp-for="Preview!.Image"></label></td>
                                 <td class="td_edt">
-                                    <input asp-for="Preview!.Image" class="frm_input" />
-                                    <button class="btn btn_03" type="button">Preview</button>
+                                    <input  id="prvw_input" asp-for="Preview!.Image" class="frm_input" />
+                                    <button type="button" onclick="previewImage()" class="btn btn_03">Preview</button>
                                     <span asp-validation-for="Preview!.Image" class="text-danger"></span>
                                 </td>
                             </tr>

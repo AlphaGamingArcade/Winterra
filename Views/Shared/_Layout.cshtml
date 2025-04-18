@@ -128,6 +128,15 @@
             </footer>
         </div>
     </div>
+    
+    <!-- Preview Dialog -->
+    <div id="img_dlg" class="img_dlg hidden">
+        <div class="img_wrap">
+            <img id="prvw_img" class="img_display" />
+            <button type="button" class="img_close" onclick="closeDialog()">✕</button>
+        </div>
+    </div>
+
     <script>
         $(".scroll_top").click(function () {
             $("body,html").animate({ scrollTop: 0 }, 400);
