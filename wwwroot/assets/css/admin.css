@@ -805,6 +805,7 @@ a.btn_submit {
   justify-content: center;
   background-color: #f9f9f9;
   transition: background-color 0.2s, color 0.2s;
+  border: 0.5px solid #f9f9f9;
 }
 
 .pg_item .pg_lnk:hover {
@@ -817,11 +818,19 @@ a.btn_submit {
 }
 
 .pg_item .pg_lnk.active {
-  background-color: #3f51b5; /* or any primary color */
-  color: white;
+  color: #3f51b5;
   border-color: #3f51b5;
 }
 
+.td_hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.td_hd a.btn,
+.td_hd a,
 .td_edt a.btn,
 .td_edt a,
 .td_mng a.btn,
@@ -835,6 +844,9 @@ a.btn_submit {
   margin: 1px;
   font-weight: normal;
 }
+
+.td_hd button,
+.td_hd button.btn,
 .td_edt button,
 .td_edt button.btn,
 .td_mng button,
@@ -893,10 +905,33 @@ a.btn_02 {
   background: #9eacc6;
   color: #fff;
 }
+
 .btn_03,
 a.btn_03 {
   background: #3f51b5;
   color: #fff;
+}
+.btn_03:focus,
+a.btn_03:focus {
+  background: #9eacc6;
+}
+.btn_03:hover,
+a.btn_03:hover {
+  background: #303f9f;
+}
+
+.btn_create,
+a.btn_create {
+  background: #3f51b5;
+  color: #fff;
+}
+.btn_create:focus,
+a.btn_create:focus {
+  background: #9eacc6;
+}
+.btn_create:hover,
+a.btn_create:hover {
+  background: #303f9f;
 }
 
 .btn_frmline {
