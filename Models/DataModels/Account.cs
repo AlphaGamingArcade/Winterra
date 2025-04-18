@@ -11,7 +11,7 @@ namespace Winterra.Models.DataModels
         [Required]
         public string? Name { get; set; }
         public string? DeviceId { get; set; }
-        public int Gems { get; set; }
+        public int Stellar { get; set; }
         public int IsOnline { get; set; }
         public int ClientId { get; set; }
         public int Trophies { get; set; }

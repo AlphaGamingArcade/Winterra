@@ -1,3 +1,5 @@
+EXEC sp_rename 'accounts.gems', 'stellar', 'COLUMN';
+
 create table ww_content (
     content_id INT IDENTITY(1, 1) PRIMARY KEY,
     content_type VARCHAR(20),
