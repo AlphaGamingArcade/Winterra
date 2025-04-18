@@ -24,7 +24,7 @@
                         var i = 1;
                         var j = 0;
 
-                        @foreach (var p in Model.AdminAccountList)
+                        @foreach (var p in Model.AdminAccountList.Items)
                         {
                             <tr class="bg@(j%2)">
                                 <td class="td_num">@i</td>
@@ -46,26 +46,26 @@
             </table>
         </div>
         <ul class="pg_btn_list">
-            <li class="pg_item">
-            <a class="pg_lnk" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-            </li>
-            <li class="pg_item"><a class="pg_lnk active" href="#">1</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">2</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">3</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">4</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">5</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">6</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">7</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">8</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">9</a></li>
-            <li class="pg_item"><a class="pg_lnk" href="#">10</a></li>
-            <li class="pg_item">
-            <a class="pg_lnk" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-            </li>
+            @if(Model.AdminAccountList != null){
+                <li class="pg_item">
+                    <a class="pg_lnk @(Model.AdminAccountList.HasPreviousPage ? "" : "disabled")" 
+                    asp-route-pageNumber="@(Model.AdminAccountList.PageNumber - 1)"
+                    asp-route-pageSize="@Model.AdminAccountList.PageSize">&laquo;</a>
+                </li>
+                @foreach (var pg in Model.AdminAccountList.Pages)
+                {
+                    <li class="pg_item">
+                        <a class="pg_lnk @(Model.AdminAccountList.PageNumber == pg ? "active" : "")"
+                        asp-route-pageNumber="@pg"
+                        asp-route-pageSize="@Model.AdminAccountList.PageSize">@pg</a>
+                    </li>
+                }
+                <li class="pg_item">
+                    <a class="pg_lnk @(Model.AdminAccountList.HasNextPage ? "" : "disabled")" 
+                    asp-route-pageNumber="@(Model.AdminAccountList.PageNumber + 1)"
+                    asp-route-pageSize="@Model.AdminAccountList.PageSize">&raquo;</a>
+                </li>
+            }
         </ul>
     </section>
 </div>

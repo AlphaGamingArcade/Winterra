@@ -25,16 +25,21 @@ namespace Winterra.Controllers
 
         
         [ValidateSession]
-        public IActionResult Users(string? menuIn, int? pageNumber = 1, int? pageSize = 10)
+        public IActionResult Users(int? pageNumber, int? pageSize)
         {
-            Console.WriteLine($"{pageNumber} - {pageSize}");
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _accountDataAccess.GetAccountCount(0);
+            var paged = _accountDataAccess.GetAccountsPaged(currentPage, currentPageSize, 0);
+
             var model = new AccountViewModel
             {
                 MenuOut = 1,
-                MenuIn = menuIn ?? "user",
+                MenuIn = "user",
                 MenuTitle = "Account Management",
-                UserAccountList = _accountDataAccess.GetAccountList(0),
+                UserAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
 				LoginUserInfo = loginUser
 			};
 
@@ -42,15 +47,20 @@ namespace Winterra.Controllers
         }
 
         [ValidateSession]
-        public IActionResult Administrator()
+        public IActionResult Administrator(int? pageNumber, int? pageSize)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _accountDataAccess.GetAccountCount(1);
+            var paged = _accountDataAccess.GetAccountsPaged(currentPage, currentPageSize, 1);
             var model = new AccountViewModel
             {
                 MenuOut = 1,
                 MenuIn = "administrator",
                 MenuTitle = "Account Management",
-                AdminAccountList = _accountDataAccess.GetAccountList(1),
+                AdminAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
 				LoginUserInfo = loginUser
 			};
 			return View(model);
@@ -74,7 +84,7 @@ namespace Winterra.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateSession]
-        public IActionResult Edit(string? menuIn, int id, Account account)
+        public IActionResult Edit(string? menuIn, Account account)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             if (!ModelState.IsValid)

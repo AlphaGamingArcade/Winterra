@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4Sz66Woeyj53IthBiv/ez24PHQPqzpAni5Jqwv8lusk=",
+  "Hash": "jBKtiYllCnb+/odF+ZgzzIW5C+EUw5XrKfkN2uRGzzc=",
   "Source": "Winterra",
   "BasePath": "_content/Winterra",
   "Mode": "Default",
@@ -437,12 +437,12 @@
       "OriginalItemSpec": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-2vi0ladaz2.gz",
+      "Identity": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-7xquiv0nb5.gz",
       "SourceId": "Winterra",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winterra",
-      "RelativePath": "assets/css/admin#[.{fingerprint=2vi0ladaz2}]?.css.gz",
+      "RelativePath": "assets/css/admin#[.{fingerprint=7xquiv0nb5}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -451,8 +451,8 @@
       "RelatedAsset": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "jz6v7691fh",
-      "Integrity": "H0TCwSvlNjhjL6Kd0YVDIx8ULggj1fp7UWeCDeSXNYY=",
+      "Fingerprint": "sj8l063mvj",
+      "Integrity": "iKbAxfYr2fFaeKwoSK/8Y8Tl+ZunO7xK4sPCYS/4ctA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css"
@@ -1585,8 +1585,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "2vi0ladaz2",
-      "Integrity": "grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y=",
+      "Fingerprint": "7xquiv0nb5",
+      "Integrity": "NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\css\\admin.css"
@@ -4135,13 +4135,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "assets/css/admin.2vi0ladaz2.css",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-2vi0ladaz2.gz",
+      "Route": "assets/css/admin.7xquiv0nb5.css",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-7xquiv0nb5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000071321589"
+          "Quality": "0.000071169312"
         }
       ],
       "ResponseHeaders": [
@@ -4151,15 +4151,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14020"
+          "Value": "14050"
         },
         {
           "Name": "ETag",
-          "Value": "\"H0TCwSvlNjhjL6Kd0YVDIx8ULggj1fp7UWeCDeSXNYY=\""
+          "Value": "\"iKbAxfYr2fFaeKwoSK/8Y8Tl+ZunO7xK4sPCYS/4ctA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 08:46:12 GMT"
+          "Value": "Fri, 18 Apr 2025 01:46:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4179,13 +4179,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y=\""
+          "Value": "W/\"NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "2vi0ladaz2"
+          "Value": "7xquiv0nb5"
         },
         {
           "Name": "label",
@@ -4193,12 +4193,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y="
+          "Value": "sha256-NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM="
         }
       ]
     },
     {
-      "Route": "assets/css/admin.2vi0ladaz2.css",
+      "Route": "assets/css/admin.7xquiv0nb5.css",
       "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\wwwroot\\assets\\css\\admin.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -4208,7 +4208,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "78882"
+          "Value": "78981"
         },
         {
           "Name": "Content-Type",
@@ -4216,11 +4216,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y=\""
+          "Value": "\"NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 08:46:12 GMT"
+          "Value": "Fri, 18 Apr 2025 01:46:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4230,7 +4230,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "2vi0ladaz2"
+          "Value": "7xquiv0nb5"
         },
         {
           "Name": "label",
@@ -4238,13 +4238,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y="
+          "Value": "sha256-NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM="
         }
       ]
     },
     {
-      "Route": "assets/css/admin.2vi0ladaz2.css.gz",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-2vi0ladaz2.gz",
+      "Route": "assets/css/admin.7xquiv0nb5.css.gz",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-7xquiv0nb5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4253,7 +4253,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14020"
+          "Value": "14050"
         },
         {
           "Name": "Content-Type",
@@ -4261,11 +4261,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"H0TCwSvlNjhjL6Kd0YVDIx8ULggj1fp7UWeCDeSXNYY=\""
+          "Value": "\"iKbAxfYr2fFaeKwoSK/8Y8Tl+ZunO7xK4sPCYS/4ctA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 08:46:12 GMT"
+          "Value": "Fri, 18 Apr 2025 01:46:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4283,7 +4283,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "2vi0ladaz2"
+          "Value": "7xquiv0nb5"
         },
         {
           "Name": "label",
@@ -4291,18 +4291,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-H0TCwSvlNjhjL6Kd0YVDIx8ULggj1fp7UWeCDeSXNYY="
+          "Value": "sha256-iKbAxfYr2fFaeKwoSK/8Y8Tl+ZunO7xK4sPCYS/4ctA="
         }
       ]
     },
     {
       "Route": "assets/css/admin.css",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-2vi0ladaz2.gz",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-7xquiv0nb5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000071321589"
+          "Quality": "0.000071169312"
         }
       ],
       "ResponseHeaders": [
@@ -4312,15 +4312,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14020"
+          "Value": "14050"
         },
         {
           "Name": "ETag",
-          "Value": "\"H0TCwSvlNjhjL6Kd0YVDIx8ULggj1fp7UWeCDeSXNYY=\""
+          "Value": "\"iKbAxfYr2fFaeKwoSK/8Y8Tl+ZunO7xK4sPCYS/4ctA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 08:46:12 GMT"
+          "Value": "Fri, 18 Apr 2025 01:46:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4340,13 +4340,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y=\""
+          "Value": "W/\"NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y="
+          "Value": "sha256-NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM="
         }
       ]
     },
@@ -4361,7 +4361,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "78882"
+          "Value": "78981"
         },
         {
           "Name": "Content-Type",
@@ -4369,11 +4369,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y=\""
+          "Value": "\"NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 08:46:12 GMT"
+          "Value": "Fri, 18 Apr 2025 01:46:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4383,13 +4383,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-grPtN4skPlKcudnYDuYKOho3ce5vGW+iZ8WyBhTgU4Y="
+          "Value": "sha256-NS6sO7R4P02LvHwzOuh7TeXPYgpDNNendbu59iKSPFM="
         }
       ]
     },
     {
       "Route": "assets/css/admin.css.gz",
-      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-2vi0ladaz2.gz",
+      "AssetFile": "C:\\Users\\pc\\Documents\\github\\winterra\\obj\\Debug\\net9.0\\compressed\\dar6704sf5-7xquiv0nb5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4398,7 +4398,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14020"
+          "Value": "14050"
         },
         {
           "Name": "Content-Type",
@@ -4406,11 +4406,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"H0TCwSvlNjhjL6Kd0YVDIx8ULggj1fp7UWeCDeSXNYY=\""
+          "Value": "\"iKbAxfYr2fFaeKwoSK/8Y8Tl+ZunO7xK4sPCYS/4ctA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 17 Apr 2025 08:46:12 GMT"
+          "Value": "Fri, 18 Apr 2025 01:46:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4428,7 +4428,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-H0TCwSvlNjhjL6Kd0YVDIx8ULggj1fp7UWeCDeSXNYY="
+          "Value": "sha256-iKbAxfYr2fFaeKwoSK/8Y8Tl+ZunO7xK4sPCYS/4ctA="
         }
       ]
     },

@@ -33,7 +33,7 @@ namespace Winterra.Models.DataModels
         public DateTime? ShieldCouldron2 { get; set; }
         public DateTime? ShieldCouldron3 { get; set; }
         public DateTime? LastLogin { get; set; }
-        public int CampaignLevel { get; set; }
+        public int? CampaignLevel { get; set; }
         public int Admin { get; set; }
         public string? Verified { get; set; }
 

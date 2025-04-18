@@ -786,6 +786,12 @@ a.btn_submit {
   gap: 6px;
 }
 
+.pg_item .pg_lnk.disabled {
+  color: #aaa;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .pg_item .pg_lnk {
   display: inline-block;
   height: 26px;

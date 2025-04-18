@@ -20,6 +20,17 @@ namespace Winterra.Models.DataModels
         public int TotalPages => (int)Math.Ceiling((double)TotalItems / PageSize);
         public bool HasPreviousPage => PageNumber > 1;
         public bool HasNextPage => PageNumber < TotalPages;
-        public List<int> Pages => Enumerable.Range(1, TotalPages).ToList();
+
+        public List<int> Pages
+        {
+            get
+            {
+                int maxVisiblePages = 10;
+                int startPage = Math.Max(1, PageNumber - maxVisiblePages / 2);
+                int endPage = Math.Min(TotalPages, startPage + maxVisiblePages - 1);
+                startPage = Math.Max(1, endPage - maxVisiblePages + 1);
+                return Enumerable.Range(startPage, endPage - startPage + 1).ToList();
+            }
+        }
     }
 }
