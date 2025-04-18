@@ -2,7 +2,8 @@
     <section>
     <div class="td_hd">
         <h2>@(Model.MenuIn)</h2>
-        <a href="#" class="btn btn_create">Create</a>
+        <a asp-controller="Preview" 
+        asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
     </div>
     <div class="tbl_head01 tbl_wrap">
         <table>
