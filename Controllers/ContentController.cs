@@ -23,15 +23,20 @@ namespace Winterra.Controllers
 
         [Authorize]
         [ValidateSession]
-        public IActionResult Features()
+        public IActionResult Features(int? pageNumber, int? pageSize)
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            string menuIn = "features";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
             var model = new ContentViewModel
             {
                 MenuOut = 2,
-                MenuIn = "features",
+                MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                FeatureContentList = _contentDataAccess.GetContentList("features"),
+                FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
 				LoginUserInfo = loginUser
 			};
 
@@ -40,15 +45,20 @@ namespace Winterra.Controllers
 
         [Authorize]
         [ValidateSession]
-        public IActionResult News()
+        public IActionResult News(int? pageNumber, int? pageSize)
         {
+            string menuIn = "features";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
             var model = new ContentViewModel
             {
                 MenuOut = 2,
                 MenuIn = "news",
                 MenuTitle = "Content Management",
-                NewsContentList = _contentDataAccess.GetContentList("news"),
+                NewsContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
 				LoginUserInfo = loginUser
 			};
 
@@ -57,83 +67,108 @@ namespace Winterra.Controllers
 
         [Authorize]
         [ValidateSession]
-        public IActionResult Update()
+        public IActionResult Update(int? pageNumber, int? pageSize)
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new ContentViewModel
-            {
-                MenuOut = 2,
-                MenuIn = "update",
-                MenuTitle = "Content Management",
-                UpdateContentList = _contentDataAccess.GetContentList("update"),
-				LoginUserInfo = loginUser
-			};
-
-			return View(model);
-        }
-
-        [Authorize]
-        [ValidateSession]
-        public IActionResult CodeOfConduct()
-        {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new ContentViewModel
-            {
-                MenuOut = 2,
-                MenuIn = "code-of-conduct",
-                MenuTitle = "Content Management",
-                CodeOfConductContentList = _contentDataAccess.GetContentList("code-of-conduct"),
-				LoginUserInfo = loginUser
-			};
-
-			return View(model);
-        }
-
-        [Authorize]
-        [ValidateSession]
-        public IActionResult TermsOfUse()
-        {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new ContentViewModel
-            {
-                MenuOut = 2,
-                MenuIn = "terms-of-use",
-                MenuTitle = "Content Management",
-                TermsOfUseContentList = _contentDataAccess.GetContentList("terms-of-use"),
-				LoginUserInfo = loginUser
-			};
-
-			return View(model);
-        }
-
-        [Authorize]
-        [ValidateSession]
-        public IActionResult PrivacyPolicy()
-        {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new ContentViewModel
-            {
-                MenuOut = 2,
-                MenuIn = "privacy-policy",
-                MenuTitle = "Content Management",
-                PrivacyPolicyContentList = _contentDataAccess.GetContentList("privacy-policy"),
-				LoginUserInfo = loginUser
-			};
-
-			return View(model);
-        }
-
-        [Authorize]
-        [ValidateSession]
-        public IActionResult Playbook()
-        {
+			 string menuIn = "update";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
             var model = new ContentViewModel
             {
                 MenuOut = 2,
-                MenuIn = "playbook",
+                MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                PlaybookContentList = _contentDataAccess.GetContentList("playbook"),
+                UpdateContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+				LoginUserInfo = loginUser
+			};
+
+			return View(model);
+        }
+
+        [Authorize]
+        [ValidateSession]
+        public IActionResult CodeOfConduct(int? pageNumber, int? pageSize)
+        {
+			string menuIn = "code-of-conduct";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                CodeOfConductContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+				LoginUserInfo = loginUser
+			};
+
+			return View(model);
+        }
+
+        [Authorize]
+        [ValidateSession]
+        public IActionResult TermsOfUse(int? pageNumber, int? pageSize)
+        {
+			string menuIn = "terms-of-use";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                TermsOfUseContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+				LoginUserInfo = loginUser
+			};
+
+			return View(model);
+        }
+
+        [Authorize]
+        [ValidateSession]
+        public IActionResult PrivacyPolicy(int? pageNumber, int? pageSize)
+        {
+			string menuIn = "privacy-policy";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                PrivacyPolicyContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+				LoginUserInfo = loginUser
+			};
+
+			return View(model);
+        }
+
+        [Authorize]
+        [ValidateSession]
+        public IActionResult Playbook(int? pageNumber, int? pageSize)
+        {
+            string menuIn = "playbook";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                PlaybookContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
 				LoginUserInfo = loginUser
 			};
 

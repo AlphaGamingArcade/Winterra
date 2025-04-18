@@ -18,7 +18,7 @@
                     var i = 1;
                     var j = 0;
 
-                    @foreach (var p in Model.CodeOfConductContentList)
+                    @foreach (var p in Model.CodeOfConductContentList.Items)
                     {
                         <tr class="bg@(j%2)">
                             <td class="td_num">@p.Id</td>
@@ -36,26 +36,26 @@
         </table>
     </div>
     <ul class="pg_btn_list">
-        <li class="pg_item">
-        <a class="pg_lnk" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-        </a>
-        </li>
-        <li class="pg_item"><a class="pg_lnk active" href="#">1</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">2</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">3</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">4</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">5</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">6</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">7</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">8</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">9</a></li>
-        <li class="pg_item"><a class="pg_lnk" href="#">10</a></li>
-        <li class="pg_item">
-        <a class="pg_lnk" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-        </a>
-        </li>
+        @if(Model.CodeOfConductContentList != null){
+            <li class="pg_item">
+                <a class="pg_lnk @(Model.CodeOfConductContentList.HasPreviousPage ? "" : "disabled")" 
+                asp-route-pageNumber="@(Model.CodeOfConductContentList.PageNumber - 1)"
+                asp-route-pageSize="@Model.CodeOfConductContentList.PageSize">&laquo;</a>
+            </li>
+            @foreach (var pg in Model.CodeOfConductContentList.Pages)
+            {
+                <li class="pg_item">
+                    <a class="pg_lnk @(Model.CodeOfConductContentList.PageNumber == pg ? "active" : "")"
+                    asp-route-pageNumber="@pg"
+                    asp-route-pageSize="@Model.CodeOfConductContentList.PageSize">@pg</a>
+                </li>
+            }
+            <li class="pg_item">
+                <a class="pg_lnk @(Model.CodeOfConductContentList.HasNextPage ? "" : "disabled")" 
+                asp-route-pageNumber="@(Model.CodeOfConductContentList.PageNumber + 1)"
+                asp-route-pageSize="@Model.CodeOfConductContentList.PageSize">&raquo;</a>
+            </li>
+        }
     </ul>
 </section>
 </div>
