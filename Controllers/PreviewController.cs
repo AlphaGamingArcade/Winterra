@@ -1,53 +1,56 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Winterra.DataContexts;
-using Winterra.Models.InputModels;
 using Winterra.Models.ViewModels;
-using System.Security.Claims;
-using Winterra.Helpers;
 using Winterra.Models.DataModels;
 
 namespace Winterra.Controllers
 {
     public class PreviewController : Controller
     {
-       	private readonly AccountDataAccess _accountDataAccess;
-		private readonly ContentDataAccess _contentDataAccess;
 		private readonly PreviewDataAccess _previewDataAccess;
 
-		public PreviewController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess)
+		public PreviewController(PreviewDataAccess previewDataAccess)
         {
-			this._accountDataAccess = accountDataAccess;
-			this._contentDataAccess = contentDataAccess;
 			this._previewDataAccess = previewDataAccess;
 		}
 
+        [Authorize]
 		[ValidateSession]
-        public IActionResult Characters(string? menuIn)
+        public IActionResult Characters(int? pageNumber, int? pageSize)
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _previewDataAccess.GetPreviewCount("characters");
+            var paged = _previewDataAccess.GetPreviewListPaged(currentPage, currentPageSize, "characters");
+            
             var model = new PreviewViewModel
             {
                 MenuOut = 2,
-                MenuIn = menuIn ?? "characters",
+                MenuIn = "characters",
                 MenuTitle = "Content Management",
-                CharacterPreviewList = _previewDataAccess.GetPreviewList("characters"),
+                CharacterPreviewList = new Pagination<Preview>(paged, total, currentPage, currentPageSize),
 				LoginUserInfo = loginUser
 			};
 			return View(model);
         }
 
+        [Authorize]
 		[ValidateSession]
-        public IActionResult Highlights()
+        public IActionResult Highlights(int? pageNumber, int? pageSize)
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _previewDataAccess.GetPreviewCount("highlights");
+            var paged = _previewDataAccess.GetPreviewListPaged(currentPage, currentPageSize, "highlights");
             var model = new PreviewViewModel
             {
                 MenuOut = 2,
                 MenuIn = "highlights",
                 MenuTitle = "Content Management",
-                HighlightPreviewList = _previewDataAccess.GetPreviewList("highlights"),
+                HighlightPreviewList = new Pagination<Preview>(paged, total, currentPage, currentPageSize),
 				LoginUserInfo = loginUser
 			};
 
@@ -55,16 +58,21 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [Authorize]
 		[ValidateSession]
-        public IActionResult Lore()
+        public IActionResult Lore(int? pageNumber, int? pageSize)
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _previewDataAccess.GetPreviewCount("lore");
+            var paged = _previewDataAccess.GetPreviewListPaged(currentPage, currentPageSize, "lore");
             var model = new PreviewViewModel
             {
                 MenuOut = 2,
                 MenuIn = "lore",
                 MenuTitle = "Content Management",
-                LorePreviewList = _previewDataAccess.GetPreviewList("lore"),
+                LorePreviewList = new Pagination<Preview>(paged, total, currentPage, currentPageSize),
 				LoginUserInfo = loginUser
 			};
 			return View(model);

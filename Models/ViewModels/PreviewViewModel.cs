@@ -4,9 +4,9 @@ namespace Winterra.Models.ViewModels
 {
   public class PreviewViewModel : BaseViewModel
   {
-    public IEnumerable<Preview>? CharacterPreviewList { get; set; }
-    public IEnumerable<Preview>? HighlightPreviewList { get; set; }
-    public IEnumerable<Preview>? LorePreviewList { get; set; }
+    public Pagination<Preview>? CharacterPreviewList { get; set; }
+    public Pagination<Preview>? HighlightPreviewList { get; set; }
+    public Pagination<Preview>? LorePreviewList { get; set; }
     public Account? LoginUserInfo { get; set; }
 	}
 }

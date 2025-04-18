@@ -4,7 +4,6 @@ using Winterra.DataContexts;
 using Winterra.Helpers;
 using Winterra.Models.ViewModels;
 using System.Diagnostics;
-using System.Security.Claims;
 using Winterra.Models.DataModels;
 
 
@@ -23,7 +22,7 @@ namespace Winterra.Controllers
 			this._previewDataAccess = previewDataAccess;
 		}
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult Index()
         {
@@ -40,7 +39,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult Administrator()
         {
@@ -57,7 +56,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult Characters()
         {
@@ -74,7 +73,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult Highlights()
         {
@@ -91,7 +90,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult Lore()
         {
@@ -107,7 +106,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult Features()
         {
@@ -124,7 +123,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult News()
         {
@@ -141,7 +140,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult Update()
         {
@@ -158,7 +157,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult CodeOfConduct()
         {
@@ -175,7 +174,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult TermsOfUse()
         {
@@ -191,7 +190,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult PrivacyPolicy()
         {
@@ -208,7 +207,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize]
 		[ValidateSession]
 		public IActionResult Playbook()
         {

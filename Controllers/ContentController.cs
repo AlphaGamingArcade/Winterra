@@ -1,12 +1,9 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Winterra.DataContexts;
-using Winterra.Models.InputModels;
 using Winterra.Models.ViewModels;
-using System.Security.Claims;
-using Winterra.Helpers;
 using Winterra.Models.DataModels;
+using Microsoft.AspNetCore.Authorization;
+using Winterra.Helpers;
 
 
 namespace Winterra.Controllers
@@ -24,6 +21,7 @@ namespace Winterra.Controllers
 			this._previewDataAccess = previewDataAccess;
 		}
 
+        [Authorize]
         [ValidateSession]
         public IActionResult Features()
         {
@@ -40,6 +38,7 @@ namespace Winterra.Controllers
 			return View(model);
         }   
 
+        [Authorize]
         [ValidateSession]
         public IActionResult News()
         {
@@ -56,6 +55,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [Authorize]
         [ValidateSession]
         public IActionResult Update()
         {
@@ -72,6 +72,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [Authorize]
         [ValidateSession]
         public IActionResult CodeOfConduct()
         {
@@ -88,6 +89,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [Authorize]
         [ValidateSession]
         public IActionResult TermsOfUse()
         {
@@ -104,6 +106,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [Authorize]
         [ValidateSession]
         public IActionResult PrivacyPolicy()
         {
@@ -120,6 +123,7 @@ namespace Winterra.Controllers
 			return View(model);
         }
 
+        [Authorize]
         [ValidateSession]
         public IActionResult Playbook()
         {
@@ -137,6 +141,7 @@ namespace Winterra.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [ValidateSession]
 		public IActionResult Edit(string? menuIn, int? id)
         {
@@ -155,6 +160,7 @@ namespace Winterra.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateSession]
         [ValidateAntiForgeryToken]
 		public IActionResult Edit(string? menuIn, int? id, Content content)

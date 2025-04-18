@@ -32,7 +32,7 @@ namespace Winterra.Controllers
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
             int total = _accountDataAccess.GetAccountCount(0);
-            var paged = _accountDataAccess.GetAccountsPaged(currentPage, currentPageSize, 0);
+            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0);
 
             var model = new AccountViewModel
             {
@@ -54,7 +54,7 @@ namespace Winterra.Controllers
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
             int total = _accountDataAccess.GetAccountCount(1);
-            var paged = _accountDataAccess.GetAccountsPaged(currentPage, currentPageSize, 1);
+            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1);
             var model = new AccountViewModel
             {
                 MenuOut = 1,
@@ -133,8 +133,7 @@ namespace Winterra.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, member.Email),
-                        new Claim(ClaimTypes.Hash, session),
-                        new Claim(ClaimTypes.Role, Roles.Admin)
+                        new Claim(ClaimTypes.Hash, session)
                     };
 
                     var claimsIdentity = new ClaimsIdentity(claims, "Auth");

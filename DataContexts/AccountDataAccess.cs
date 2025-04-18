@@ -24,7 +24,7 @@ namespace Winterra.DataContexts
                 {
                     connection.Open();
 
-                    string query = "SELECT password FROM accounts WHERE email = @account_email";
+                    string query = "SELECT password FROM accounts WHERE email = @account_email AND admin = 1";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.Add("@account_email", System.Data.SqlDbType.VarChar, 32).Value = account.Email;
@@ -370,7 +370,7 @@ namespace Winterra.DataContexts
                 }
             }
         }
-        public List<Account> GetAccountsPaged(int pageNumber, int pageSize, int? adminLevel = 0)
+        public List<Account> GetAccountListPaged(int pageNumber, int pageSize, int? adminLevel = 0)
         {
             List<Account> accountList = new List<Account>();
 

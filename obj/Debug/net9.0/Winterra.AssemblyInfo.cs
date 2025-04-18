@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Winterra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad5655e4b4246892a036f624d3929f769782f83d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aee787b7a60d234dba5e831a8a7e670541638ae2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Winterra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Winterra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
