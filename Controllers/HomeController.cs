@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Winterra.DataContexts;
-using Winterra.Helpers;
 using Winterra.Models.ViewModels;
 using System.Diagnostics;
 using Winterra.Models.DataModels;
@@ -39,6 +38,7 @@ namespace Winterra.Controllers
 
 			return View(model);
         }
+
 
         [Authorize]
 		[ValidateSession]

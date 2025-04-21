@@ -157,18 +157,22 @@ namespace Winterra.DataContexts
 
             return accountData;
         }
-        public int GetAccountCount(int? adminLevel = 0)
+        public int GetAccountCount(int? adminLevel = 0, string? search = "")
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT COUNT(*) AS cnt FROM accounts WHERE admin = @adminLevel";
+                    string query = "SELECT COUNT(*) AS cnt FROM accounts WHERE admin = @adminLevel AND (@name IS NULL OR LOWER(name) LIKE LOWER(@name))";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@adminLevel", adminLevel);
+                        if (string.IsNullOrWhiteSpace(search))
+                            command.Parameters.AddWithValue("@name", DBNull.Value);
+                        else
+                            command.Parameters.AddWithValue("@name", $"%{search}%");
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -467,7 +471,7 @@ namespace Winterra.DataContexts
                 }
             }
         }
-        public List<Account> GetAccountListPaged(int pageNumber, int pageSize, int? adminLevel = 0)
+        public List<Account> GetAccountListPaged(int pageNumber, int pageSize, int? adminLevel = 0, string? search = "")
         {
             List<Account> accountList = new List<Account>();
 
@@ -479,7 +483,7 @@ namespace Winterra.DataContexts
 
                     string query = @"
                         SELECT * FROM accounts
-                        WHERE admin = @admin_level
+                        WHERE admin = @admin_level AND (@name IS NULL OR LOWER(name) LIKE LOWER(@name))
                         ORDER BY id
                         OFFSET @offset ROWS
                         FETCH NEXT @page_size ROWS ONLY;";
@@ -489,6 +493,10 @@ namespace Winterra.DataContexts
                         int offset = (pageNumber - 1) * pageSize;
 
                         command.Parameters.AddWithValue("@admin_level", adminLevel ?? 0);
+                        if (string.IsNullOrWhiteSpace(search))
+                            command.Parameters.AddWithValue("@name", DBNull.Value);
+                        else
+                            command.Parameters.AddWithValue("@name", $"%{search}%");
                         command.Parameters.AddWithValue("@offset", offset);
                         command.Parameters.AddWithValue("@page_size", pageSize);
 

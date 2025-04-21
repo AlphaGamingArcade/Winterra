@@ -23,7 +23,7 @@
                 @foreach (var p in Model.Items)
                 {
                     <tr class="bg@(j%2)">
-                        <td class="td_num">@i</td>
+                        <td class="td_num">@p.Id</td>
                         <td class="td_id">@p.Name</td>
                         <td class="td_center">@p.Stellar</td>
                         <td class="td_center">@p.IsOnline</td>
@@ -39,7 +39,7 @@
                 }
             } else {
                 <tr>
-                    <td colspan="5">No content available.</td>
+                    <td colspan="9">No content available.</td>
                 </tr>
             }
         </tbody>

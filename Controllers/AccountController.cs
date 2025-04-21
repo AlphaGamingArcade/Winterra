@@ -19,44 +19,68 @@ namespace Winterra.Controllers
 			this._accountDataAccess = accountDataAccess;
 		}
 
-        
         [ValidateSession]
-        public IActionResult Index(int? pageNumber, int? pageSize)
+        public IActionResult Index(int? pageNumber, int? pageSize, string search)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
 
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
-            int total = _accountDataAccess.GetAccountCount(0);
-            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0);
+            int total = 0;
+            var paged = new List<Account>();
 
+            if (!String.IsNullOrEmpty(search))
+            {
+                total = _accountDataAccess.GetAccountCount(0, search);
+                paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0, search);
+            }
+            else
+            {
+                total = _accountDataAccess.GetAccountCount(0);
+                paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0);
+            }
+            
             var model = new AccountViewModel
             {
                 MenuOut = 1,
                 MenuIn = "user",
                 MenuTitle = "Account Management",
                 UserAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
-				LoginUserInfo = loginUser
+                Search = search,
+                LoginUserInfo = loginUser
 			};
 
 			return View(model);
         }
 
         [ValidateSession]
-        public IActionResult Administrator(int? pageNumber, int? pageSize)
+        public IActionResult Administrator(int? pageNumber, int? pageSize, string? search)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
 
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
-            int total = _accountDataAccess.GetAccountCount(1);
-            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1);
+            int total = 0;
+            var paged = new List<Account>();
+            
+            if (!String.IsNullOrEmpty(search))
+            {
+                total = _accountDataAccess.GetAccountCount(1, search);
+                paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1, search);
+            }
+            else
+            {
+                total = _accountDataAccess.GetAccountCount(1);
+                paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1);
+            }
+
             var model = new AccountViewModel
             {
                 MenuOut = 1,
                 MenuIn = "administrator",
                 MenuTitle = "Account Management",
                 AdminAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
+                Search = search,
 				LoginUserInfo = loginUser
 			};
 			return View(model);

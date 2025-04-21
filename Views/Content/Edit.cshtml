@@ -1,70 +1,74 @@
 @model Winterra.Models.ViewModels.ContentEditViewModel
 
 <div class="container_wr" id="main-content">
-    <form asp-action="Edit" asp-route-menuIn="@Model.MenuIn">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Content!.Id" />
-        
-        <div class="row">
-            <div class="col-md-6">
-                <div class="tbl_frm02 tbl_wrap">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th><label>Content Information</label></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td><label asp-for="Content!.Type"></label></td>
-                                <td>
-                                    @if (Model.Content != null && Model.Types != null)
-                                    {
-                                        var content = Model.Content; // local non-null reference
-                                        var types = Model.Types;
+    @if(Model.Content != null){
+        <form asp-action="Edit" asp-route-menuIn="@Model.MenuIn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@Model.Content.Id" />
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tbl_frm02 tbl_wrap">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th><label>Content Information</label></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="@Model.Content.Type"></label></td>
+                                    <td>
+                                        @if (Model.Content != null && Model.Types != null)
+                                        {
+                                            var content = Model.Content; // local non-null reference
+                                            var types = Model.Types;
 
-                                        @Html.DropDownListFor(
-                                            m => content.Type,
-                                            types,
-                                            "-- Select Type --",
-                                            new { @class = "frm_input" }
-                                        )
-                                    }
-                                    else
-                                    {
-                                        <span class="text-danger">Error: Content data is missing.</span>
-                                    }
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label asp-for="Content!.Title"></label></td>
-                                <td>
-                                    <input asp-for="Content!.Title" class="frm_input" />
-                                    <span asp-validation-for="Content!.Title" class="text-danger"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label asp-for="Content!.Data"></label></td>
-                                <td>
-                                    <textarea asp-for="Content!.Data" id="editor" class="frm_input"></textarea>
-                                    <span asp-validation-for="Content!.Data" class="text-danger"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label asp-for="Content!.PublishedAt"></label></td>
-                                <td>
-                                    <input asp-for="Content!.PublishedAt" class="frm_input" />
-                                    <span asp-validation-for="Content!.PublishedAt" class="text-danger"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                            @Html.DropDownListFor(
+                                                m => content.Type,
+                                                types,
+                                                "-- Select Type --",
+                                                new { @class = "frm_input" }
+                                            )
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">Error: Content data is missing.</span>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="@Model.Content!.Title"></label></td>
+                                    <td>
+                                        <input asp-for="@Model.Content!.Title" class="frm_input" />
+                                        <span asp-validation-for="Content!.Title" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="Content!.Data"></label></td>
+                                    <td>
+                                        <textarea asp-for="@Model.Content!.Data" id="editor" class="frm_input"></textarea>
+                                        <span asp-validation-for="Content!.Data" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="@Model.Content!.PublishedAt"></label></td>
+                                    <td>
+                                        <input asp-for="@Model.Content!.PublishedAt" class="frm_input" />
+                                        <span asp-validation-for="Content!.PublishedAt" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Submit Button (full width) -->
-        <div class="form-group mt-4 text-center td_edt">
-            <button type="submit" class="btn btn_03 edit_btn">Save</button>
-        </div>
-    </form>
+            <!-- Submit Button (full width) -->
+            <div class="form-group mt-4 text-center td_edt">
+                <button type="submit" class="btn btn_03 edit_btn">Save</button>
+            </div>
+        </form>
+    } else {
+        <span>Content not available</span>
+    }
 </div>

@@ -2,7 +2,15 @@
 
 <div class="container_wr" id="main-content">
     <section>
-        <h2>@(Model.MenuIn)</h2>
+        <div class="tbl_hd">
+            <h2>@(Model.MenuTitle)</h2>
+            <form asp-controller="Account" asp-action="Administrator" method="get">
+                <p>
+                    <label>Name: <input class="search_input" type="text" value="@Model.Search" name="search" /></label>
+                    <button type="submit" class="btn btn_03">Search</button>
+                </p>
+            </form>
+        </div>
 
         @await Html.PartialAsync("_AccountTablePartial", new AccountTableModel
         {
@@ -15,6 +23,7 @@
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.AdminAccountList.HasPreviousPage ? "" : "disabled")" 
                     asp-route-pageNumber="@(Model.AdminAccountList.PageNumber - 1)"
+                    asp-route-search="@Model.Search"
                     asp-route-pageSize="@Model.AdminAccountList.PageSize">&laquo;</a>
                 </li>
                 @foreach (var pg in Model.AdminAccountList.Pages)
@@ -22,12 +31,14 @@
                     <li class="pg_item">
                         <a class="pg_lnk @(Model.AdminAccountList.PageNumber == pg ? "active" : "")"
                         asp-route-pageNumber="@pg"
+                        asp-route-search="@Model.Search"
                         asp-route-pageSize="@Model.AdminAccountList.PageSize">@pg</a>
                     </li>
                 }
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.AdminAccountList.HasNextPage ? "" : "disabled")" 
                     asp-route-pageNumber="@(Model.AdminAccountList.PageNumber + 1)"
+                    asp-route-search="@Model.Search"
                     asp-route-pageSize="@Model.AdminAccountList.PageSize">&raquo;</a>
                 </li>
             }
