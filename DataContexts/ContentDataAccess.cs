@@ -142,6 +142,33 @@ namespace Winterra.DataContexts
 			return contentData;
 		}
 
+		public void DeleteContentData(int id)
+		{
+			try
+			{
+				using (SqlConnection connection = new SqlConnection(_connectionString))
+				{
+					connection.Open();
+
+					string query = "DELETE FROM ww_content WHERE content_id = @content_id";
+
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						command.Parameters.Add("@content_id", System.Data.SqlDbType.Int).Value = id;
+						command.ExecuteNonQuery();
+					}
+				}
+			}
+			catch (SqlException ex)
+			{
+				Console.WriteLine($"SQL-Exception [ContentDataAccess -> DeleteContentData]: {ex.Message}");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Exception [ContentDataAccess -> DeleteContentData]: {ex.Message}");
+			}
+		}
+
 		public void UpdateAfterEdit(Content content)
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionString))

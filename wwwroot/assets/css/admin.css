@@ -822,6 +822,27 @@ a.btn_submit {
   border-color: #3f51b5;
 }
 
+.tbl_hd02 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 1px;
+}
+
+.tbl_hd02 .btn_delete {
+  color: #fff;
+  background-color: #e53935;
+}
+
+.tbl_hd02 .btn_delete:hover {
+  background-color: #d32f2f; /* slightly darker on hover */
+}
+
+.tbl_hd02 .btn_delete:focus {
+  background-color: #c62828; /* even deeper on focus */
+}
+
 .tbl_hd {
   display: flex;
   align-items: center;
@@ -829,6 +850,8 @@ a.btn_submit {
   gap: 12px;
 }
 
+.tbl_hd02 a.btn,
+.tbl_hd02 a,
 .tbl_hd a.btn,
 .tbl_hd a,
 .td_edt a.btn,
@@ -847,6 +870,8 @@ a.btn_submit {
 
 .tbl_hd button,
 .tbl_hd button.btn,
+.tbl_hd02 button,
+.tbl_hd02 button.btn,
 .td_edt button,
 .td_edt button.btn,
 .td_mng button,
@@ -1600,7 +1625,7 @@ tfoot th {
   text-align: left;
 }
 
-.tbl_frm02 th:first-child {
+.tbl_frm02 td:first-child {
   width: 200px;
 }
 

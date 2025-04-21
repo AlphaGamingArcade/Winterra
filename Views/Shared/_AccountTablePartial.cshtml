@@ -31,7 +31,9 @@
                         <td class="td_center">@p.Verified</td>
                         <td class="td_center">@p.Level</td>
                         <td class="td_center">@p.Xp</td>
-                        <td class="td_mng td_mng_s"><a asp-controller="Account" asp-action="Edit" asp-route-menuIn="@Model.MenuIn" asp-route-id="@p.Id" class="btn btn_03">Edit</a></td>
+                        <td class="td_mng td_mng_s">
+                            <a asp-controller="Account" asp-action="Edit" asp-route-menuIn="@Model.MenuIn" asp-route-id="@p.Id" class="btn btn_03">Edit</a>
+                        </td>
                     </tr>
 
                     i++;

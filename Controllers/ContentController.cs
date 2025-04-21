@@ -18,7 +18,7 @@ namespace Winterra.Controllers
             this._contentDataAccess = contentDataAccess;
         }
 
-        
+
         public IActionResult Characters(int? pageNumber, int? pageSize)
         {
             string menuIn = "characters";
@@ -313,6 +313,31 @@ namespace Winterra.Controllers
             }
 
             _contentDataAccess.SaveNewContent(content);
+
+            var redirectTo = menuIn switch
+            {
+                "characters" => nameof(Characters),
+                "highlights" => nameof(Highlights),
+                "lore" => nameof(Lore),
+                "features" => nameof(Features),
+                "news" => nameof(News),
+                "update" => nameof(Update),
+                "code-of-conduct" => nameof(CodeOfConduct),
+                "terms-of-use" => nameof(TermsOfUse),
+                "privacy-policy" => nameof(PrivacyPolicy),
+                "playbook" => nameof(Playbook),
+                _ => nameof(Features)
+            };
+            return RedirectToAction(redirectTo, new { menuIn });
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(string? menuIn, int id)
+        {
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            _contentDataAccess.DeleteContentData(id);
 
             var redirectTo = menuIn switch
             {

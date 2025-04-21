@@ -2,6 +2,15 @@
 
 <div class="container_wr" id="main-content">
     @if(Model.Content != null){
+        <div class="tbl_hd02">
+            <form 
+            asp-controller="Content" 
+            asp-action="Delete" 
+            asp-route-menuIn="@Model.MenuIn"
+            asp-route-id="@Model.Content.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this content?');">
+                <button type="submit" class="btn btn_delete">Delete</button>
+            </form>
+        </div>
         <form asp-action="Edit" asp-route-menuIn="@Model.MenuIn">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="@Model.Content.Id" />
@@ -12,8 +21,7 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <th><label>Content Information</label></th>
-                                    <th></th>
+                                    <th colspan="2"><label>Content Information</label></th>
                                 </tr>
                                 <tr>
                                     <td><label asp-for="@Model.Content.Type"></label></td>
