@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Winterra.Helpers;
 using Winterra.Models.ViewModels;
 using Winterra.Models.DataModels;
+using System.Threading.Tasks;
 
 namespace Winterra.Controllers
 {
@@ -26,19 +27,9 @@ namespace Winterra.Controllers
 
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
-            int total = 0;
-            var paged = new List<Account>();
-
-            if (!String.IsNullOrEmpty(search))
-            {
-                total = _accountDataAccess.GetAccountCount(0, search);
-                paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0, search);
-            }
-            else
-            {
-                total = _accountDataAccess.GetAccountCount(0);
-                paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0);
-            }
+            
+            var total = _accountDataAccess.GetAccountCount(0, search);
+            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0, search);
             
             var model = new AccountViewModel
             {
@@ -60,19 +51,8 @@ namespace Winterra.Controllers
 
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
-            int total = 0;
-            var paged = new List<Account>();
-            
-            if (!String.IsNullOrEmpty(search))
-            {
-                total = _accountDataAccess.GetAccountCount(1, search);
-                paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1, search);
-            }
-            else
-            {
-                total = _accountDataAccess.GetAccountCount(1);
-                paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1);
-            }
+            var total = _accountDataAccess.GetAccountCount(1, search);
+            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1, search);
 
             var model = new AccountViewModel
             {
@@ -120,6 +100,7 @@ namespace Winterra.Controllers
 
                 return View(viewModel);
             }
+
             _accountDataAccess.UpdateAfterEdit(account);
             
             var redirectTo = menuIn switch

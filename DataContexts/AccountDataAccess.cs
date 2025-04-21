@@ -61,7 +61,10 @@ namespace Winterra.DataContexts
             {
                 connection.Open();
 
-                string query = "UPDATE accounts SET account_session = @account_session WHERE email = @account_email";
+                string query = @"
+                    UPDATE accounts 
+                    SET account_session = @account_session 
+                    WHERE email = @account_email;";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@account_email", System.Data.SqlDbType.VarChar, 32).Value = accountEmail;
@@ -482,11 +485,11 @@ namespace Winterra.DataContexts
                     connection.Open();
 
                     string query = @"
-                        SELECT * FROM accounts
-                        WHERE admin = @admin_level AND (@name IS NULL OR LOWER(name) LIKE LOWER(@name))
-                        ORDER BY id
-                        OFFSET @offset ROWS
-                        FETCH NEXT @page_size ROWS ONLY;";
+                    SELECT * FROM accounts
+                    WHERE admin = @admin_level AND (@name IS NULL OR LOWER(name) LIKE LOWER(@name))
+                    ORDER BY id
+                    OFFSET @offset ROWS
+                    FETCH NEXT @page_size ROWS ONLY;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
