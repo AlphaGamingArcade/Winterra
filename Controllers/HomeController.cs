@@ -31,6 +31,9 @@ namespace Winterra.Controllers
                 MenuIn = "user",
                 MenuTitle = "Account Management",
 				UserAccountList = _accountDataAccess.GetAccountList(0),
+                OnlinePlayerCount = _accountDataAccess.GetOnlinePlayerCount(),
+                ActivePlayerCount = _accountDataAccess.GetPlayerCount(),
+                InGameStellarCount = _accountDataAccess.GetInGameStellarCount(),
 				LoginUserInfo = loginUser
 			};
 

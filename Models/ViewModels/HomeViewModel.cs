@@ -4,6 +4,9 @@ namespace Winterra.Models.ViewModels
 {
   public class HomeViewModel : BaseViewModel
   {
+    public int ActivePlayerCount { get; set; }
+    public int OnlinePlayerCount { get; set; }
+    public decimal InGameStellarCount { get; set; }
     public IEnumerable<Account>? UserAccountList { get; set; }
     public IEnumerable<Account>? AdminAccountList { get; set; }
     public IEnumerable<Content>? CharacterContentList { get; set; }

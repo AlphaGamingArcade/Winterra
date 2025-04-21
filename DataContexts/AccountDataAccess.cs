@@ -192,6 +192,103 @@ namespace Winterra.DataContexts
 
             return 0;
         }
+        public int GetPlayerCount()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) AS cnt FROM accounts";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return (int)reader["cnt"];
+                            }
+                        }
+
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL-Exception [AccountDataAccess -> GetPlayerCount]: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception [AccountDataAccess -> GetPlayerCount]: {ex.Message}");
+            }
+
+            return 0;
+        }
+        public int GetOnlinePlayerCount()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) AS cnt FROM accounts where is_online = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return (int)reader["cnt"];
+                            }
+                        }
+
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL-Exception [AccountDataAccess -> GetPlayerCount]: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception [AccountDataAccess -> GetPlayerCount]: {ex.Message}");
+            }
+
+            return 0;
+        }
+        public decimal GetInGameStellarCount()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT SUM(CAST(stellar AS DECIMAL(18, 4))) AS cnt FROM accounts;";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read() && reader["cnt"] != DBNull.Value)
+                            {
+                                return (decimal)reader["cnt"];
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL-Exception [AccountDataAccess -> GetInGameStellarCount]: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception [AccountDataAccess -> GetInGameStellarCount]: {ex.Message}");
+            }
+
+            return 0m; // Use 0m for decimal literal
+        }
         public List<Account> GetAccountList(int? adminLevel = 0)
         {
             List<Account> accountList = new List<Account>();
