@@ -131,11 +131,11 @@ namespace Winterra.DataContexts
 				}
 				catch (SqlException ex)
 				{
-					Console.WriteLine($"SQL-Exception [PreviewDataAccess -> GetPreviewData]: {ex.Message}");
+					Console.WriteLine($"SQL-Exception [ContentDataAccess -> GetContentData]: {ex.Message}");
 				}
 				catch (Exception ex)
 				{
-					Console.WriteLine($"Exception [PreviewDataAccess -> GetPreviewData]: {ex.Message}");
+					Console.WriteLine($"Exception [ContentDataAccess -> GetContentData]: {ex.Message}");
 				}
 			}
 

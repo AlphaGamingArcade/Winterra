@@ -3,7 +3,6 @@ using Winterra.DataContexts;
 using Winterra.Models.ViewModels;
 using Winterra.Models.DataModels;
 using Microsoft.AspNetCore.Authorization;
-using Winterra.Helpers;
 
 
 namespace Winterra.Controllers
@@ -18,6 +17,68 @@ namespace Winterra.Controllers
         {
             this._contentDataAccess = contentDataAccess;
         }
+
+        
+        public IActionResult Characters(int? pageNumber, int? pageSize)
+        {
+            string menuIn = "characters";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                CharacterContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                LoginUserInfo = loginUser
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Highlights(int? pageNumber, int? pageSize)
+        {
+            string menuIn = "highlights";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                HighlightContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                LoginUserInfo = loginUser
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Lore(int? pageNumber, int? pageSize)
+        {
+            string menuIn = "highlights";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 10;
+            int total = _contentDataAccess.GetContentCount(menuIn);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                LoreContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                LoginUserInfo = loginUser
+            };
+
+            return View(model);
+        }
+
 
         public IActionResult Features(int? pageNumber, int? pageSize)
         {
@@ -95,7 +156,6 @@ namespace Winterra.Controllers
                 CodeOfConductContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 LoginUserInfo = loginUser
             };
-
             return View(model);
         }
 
@@ -198,6 +258,9 @@ namespace Winterra.Controllers
 
             var redirectTo = menuIn switch
             {
+                "characters" => nameof(Characters),
+                "highlights" => nameof(Highlights),
+                "lore" => nameof(Lore),
                 "features" => nameof(Features),
                 "news" => nameof(News),
                 "update" => nameof(Update),
@@ -222,7 +285,8 @@ namespace Winterra.Controllers
                 Types = ContentCreateViewModel.AvailableTypes,
                 Content = new Content
                 {
-                    Type = menuIn
+                    Type = menuIn,
+                    PublishedAt = DateTime.Now
                 },
                 LoginUserInfo = loginUser
             };
@@ -252,6 +316,9 @@ namespace Winterra.Controllers
 
             var redirectTo = menuIn switch
             {
+                "characters" => nameof(Characters),
+                "highlights" => nameof(Highlights),
+                "lore" => nameof(Lore),
                 "features" => nameof(Features),
                 "news" => nameof(News),
                 "update" => nameof(Update),

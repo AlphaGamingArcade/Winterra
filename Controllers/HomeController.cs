@@ -13,13 +13,11 @@ namespace Winterra.Controllers
     {
 		private readonly AccountDataAccess _accountDataAccess;
 		private readonly ContentDataAccess _contentDataAccess;
-		private readonly PreviewDataAccess _previewDataAccess;
 
-		public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess)
+		public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess)
         {
 			this._accountDataAccess = accountDataAccess;
 			this._contentDataAccess = contentDataAccess;
-			this._previewDataAccess = previewDataAccess;
 		}
 
         [Authorize]
@@ -66,7 +64,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "characters",
                 MenuTitle = "Content Management",
-				CharacterPreviewList = _previewDataAccess.GetPreviewList("characters"),
+				CharacterContentList = _contentDataAccess.GetContentList("characters"),
 				LoginUserInfo = loginUser
 			};
 
@@ -83,7 +81,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "highlights",
                 MenuTitle = "Content Management",
-				HighlightPreviewList = _previewDataAccess.GetPreviewList("highlights"),
+				HighlightContentList = _contentDataAccess.GetContentList("highlights"),
 				LoginUserInfo = loginUser
 			};
 
@@ -100,7 +98,7 @@ namespace Winterra.Controllers
                 MenuOut = 2,
                 MenuIn = "lore",
                 MenuTitle = "Content Management",
-				LorePreviewList = _previewDataAccess.GetPreviewList("lore"),
+				LoreContentList = _contentDataAccess.GetContentList("lore"),
 				LoginUserInfo = loginUser
 			};
 			return View(model);

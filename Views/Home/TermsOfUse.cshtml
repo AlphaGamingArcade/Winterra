@@ -1,42 +1,9 @@
-﻿<div class="container_wr" id="main-content">
-    <section>
-    <h2>@(Model.MenuIn)</h2>
-    <div class="tbl_head01 tbl_wrap">
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Published At</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @if(Model.TermsOfUseContentList != null)
-                {
-                    var i = 1;
-                    var j = 0;
+﻿@using Winterra.Models.ViewModels;
 
-                    @foreach (var p in Model.TermsOfUseContentList)
-                    {
-                        <tr class="bg@(j%2)">
-                            <td class="td_num">@p.Id</td>
-                            <td class="td_id">@p.Type</td>
-                            <td class="td_center">@p.Title</td>
-                            <td class="td_center">@p.PublishedAt</td>
-                            <td class="td_mng td_mng_s">
-                                <a asp-controller="Content" asp-action="Edit" asp-route-menuIn="@Model.MenuIn" asp-route-id="@p.Id" class="btn btn_03">Edit</a>
-                            </td>
-                        </tr>
-
-                        i++;
-                        j++;
-                    }
-                }
-            </tbody>
-        </table>
-    </div>
-    <div class="btn_list03 btn_list"><a asp-controller="Content" asp-action="TermsOfUse">See All</a></div>
-</section>
-</div>
+@await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
+{
+    Title = "Terms of Use",
+    MenuIn = "terms-of-use",
+    SeeAllAction = "TermsOfUse",
+    Items = Model.TermsOfUseContentList
+}) 

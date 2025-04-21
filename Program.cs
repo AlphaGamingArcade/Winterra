@@ -6,7 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AccountDataAccess>();
 builder.Services.AddScoped<ContentDataAccess>();
-builder.Services.AddScoped<PreviewDataAccess>();
 
 builder.Services.AddAuthentication("Auth")
     .AddCookie("Auth", options => { 

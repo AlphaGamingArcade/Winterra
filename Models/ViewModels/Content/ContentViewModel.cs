@@ -4,6 +4,9 @@ namespace Winterra.Models.ViewModels
 {
   public class ContentViewModel : BaseViewModel
   {
+    public Pagination<Content>? CharacterContentList { get; set; }
+    public Pagination<Content>? HighlightContentList { get; set; }
+    public Pagination<Content>? LoreContentList { get; set; }
     public Pagination<Content>? FeatureContentList { get; set; }
     public Pagination<Content>? NewsContentList { get; set; }
     public Pagination<Content>? UpdateContentList { get; set; }

@@ -13,19 +13,15 @@ namespace Winterra.Controllers
     public class AccountController : Controller
     {
 		private readonly AccountDataAccess _accountDataAccess;
-		private readonly ContentDataAccess _contentDataAccess;
-		private readonly PreviewDataAccess _previewDataAccess;
 
-		public AccountController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess, PreviewDataAccess previewDataAccess)
+		public AccountController(AccountDataAccess accountDataAccess)
         {
 			this._accountDataAccess = accountDataAccess;
-			this._contentDataAccess = contentDataAccess;
-			this._previewDataAccess = previewDataAccess;
 		}
 
         
         [ValidateSession]
-        public IActionResult Users(int? pageNumber, int? pageSize)
+        public IActionResult Index(int? pageNumber, int? pageSize)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
 
@@ -104,9 +100,9 @@ namespace Winterra.Controllers
             
             var redirectTo = menuIn switch
             {
-                "user" => nameof(Users),
+                "user" => nameof(Index),
                 "administrator" => nameof(Administrator),
-                _ => nameof(Users),
+                _ => nameof(Index),
             };
             return RedirectToAction(redirectTo, new { menuIn });
         }

@@ -1,0 +1,42 @@
+@using System.Linq
+@using Winterra.Models.ViewModels;
+
+<div class="container_wr" id="main-content">
+    <section>
+    <div class="td_hd">
+        <h2>@(Model.MenuIn)</h2>
+        <a asp-controller="Content" 
+        asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
+    </div>
+    
+    @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
+    {
+        Title = "Characters",
+         MenuIn = Model.MenuIn,
+        Items = Model.LoreContentList.Items
+    })
+
+    <ul class="pg_btn_list">
+        @if(Model.LoreContentList != null){
+            <li class="pg_item">
+                <a class="pg_lnk @(Model.LoreContentList.HasPreviousPage ? "" : "disabled")" 
+                asp-route-pageNumber="@(Model.LoreContentList.PageNumber - 1)"
+                asp-route-pageSize="@Model.LoreContentList.PageSize">&laquo;</a>
+            </li>
+            @foreach (var pg in Model.LoreContentList.Pages)
+            {
+                <li class="pg_item">
+                    <a class="pg_lnk @(Model.LoreContentList.PageNumber == pg ? "active" : "")"
+                    asp-route-pageNumber="@pg"
+                    asp-route-pageSize="@Model.LoreContentList.PageSize">@pg</a>
+                </li>
+            }
+            <li class="pg_item">
+                <a class="pg_lnk @(Model.LoreContentList.HasNextPage ? "" : "disabled")" 
+                asp-route-pageNumber="@(Model.LoreContentList.PageNumber + 1)"
+                asp-route-pageSize="@Model.LoreContentList.PageSize">&raquo;</a>
+            </li>
+        }
+    </ul>
+</section>
+</div>

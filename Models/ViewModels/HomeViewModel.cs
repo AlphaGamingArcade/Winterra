@@ -6,9 +6,9 @@ namespace Winterra.Models.ViewModels
   {
     public IEnumerable<Account>? UserAccountList { get; set; }
     public IEnumerable<Account>? AdminAccountList { get; set; }
-    public IEnumerable<Preview>? CharacterPreviewList { get; set; }
-    public IEnumerable<Preview>? HighlightPreviewList { get; set; }
-    public IEnumerable<Preview>? LorePreviewList { get; set; }
+    public IEnumerable<Content>? CharacterContentList { get; set; }
+    public IEnumerable<Content>? HighlightContentList { get; set; }
+    public IEnumerable<Content>? LoreContentList { get; set; }
     public IEnumerable<Content>? FeatureContentList { get; set; }
     public IEnumerable<Content>? NewsContentList { get; set; }
     public IEnumerable<Content>? UpdateContentList { get; set; }

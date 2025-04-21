@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Winterra.Models.ViewModels
 {
-  public class ContentEditViewModel : BaseViewModel
+  public class ContentCreateViewModel : BaseViewModel
   {
     public static readonly List<SelectListItem> AvailableTypes = new()
     {
+      new SelectListItem { Text = "Characters", Value = "characters" },
+      new SelectListItem { Text = "Highlights", Value = "highlights" },
+      new SelectListItem { Text = "Lore", Value = "lore" },
       new SelectListItem { Text = "Features", Value = "features" },
       new SelectListItem { Text = "News", Value = "news" },
       new SelectListItem { Text = "Update", Value = "update" },
@@ -16,8 +19,9 @@ namespace Winterra.Models.ViewModels
       new SelectListItem { Text = "Playbook", Value = "playbook" },
     };
     public IEnumerable<SelectListItem> Types { get; set; } = AvailableTypes;
-
     public Content? Content { get; set; }
     public Account? LoginUserInfo { get; set; }
   }
 }
+
+
