@@ -2,12 +2,10 @@
 
 <div class="container_wr" id="main-content">
     <section>
-        <h2>@(Model.MenuTitle)</h2>
-        
+        <h2>@(Model.MenuIn)</h2> 
         @await Html.PartialAsync("_AccountTablePartial", new AccountTableModel
         {
-            Title = "Users",
-            MenuIn = "users",
+            MenuIn = Model.MenuIn,
             Items = Model.UserAccountList
         })
 

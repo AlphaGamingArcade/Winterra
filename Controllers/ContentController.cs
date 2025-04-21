@@ -61,7 +61,7 @@ namespace Winterra.Controllers
 
         public IActionResult Lore(int? pageNumber, int? pageSize)
         {
-            string menuIn = "highlights";
+            string menuIn = "lore";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
@@ -102,7 +102,7 @@ namespace Winterra.Controllers
 
         public IActionResult News(int? pageNumber, int? pageSize)
         {
-            string menuIn = "features";
+            string menuIn = "News";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;

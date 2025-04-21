@@ -11,8 +11,7 @@
     
     @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
     {
-        Title = "Characters",
-         MenuIn = Model.MenuIn,
+        MenuIn = Model.MenuIn,
         Items = Model.HighlightContentList.Items
     })
 

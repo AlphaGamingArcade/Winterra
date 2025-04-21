@@ -2,17 +2,15 @@
 
 <div class="container_wr" id="main-content">
     <section>
-        <h2>@(Model.MenuTitle)</h2>
-
+        <h2>@(Model.MenuIn)</h2> 
         @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
         {
-            Title = "Code of Conduct",
-            MenuIn = "code-of-conduct",
+            MenuIn = Model.MenuIn,
             Items = Model.CodeOfConductContentList
         }) 
 
         <div class="btn_list03 btn_list">
-            <a asp-controller="Account" asp-action="CodeOfConduct" asp-route-menuIn="@Model.MenuIn">See All</a>
+            <a asp-controller="Content" asp-action="CodeOfConduct" asp-route-menuIn="@Model.MenuIn">See All</a>
         </div>
     </section>
 </div>
