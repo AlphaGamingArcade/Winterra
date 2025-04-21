@@ -1,9 +1,18 @@
 ﻿@using Winterra.Models.ViewModels;
 
-@await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
-{
-    Title = "Highlights",
-    MenuIn = "highlights",
-    SeeAllAction = "Highlights",
-    Items = Model.HighlightContentList
-}) 
+<div class="container_wr" id="main-content">
+    <section>
+        <h2>@(Model.MenuTitle)</h2>
+
+        @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
+        {
+            Title = "Highlights",
+            MenuIn = "highlights",
+            Items = Model.HighlightContentList
+        }) 
+
+        <div class="btn_list03 btn_list">
+            <a asp-controller="Account" asp-action="Highlights" asp-route-menuIn="@Model.MenuIn">See All</a>
+        </div>
+    </section>
+</div>

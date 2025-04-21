@@ -1,9 +1,18 @@
 ﻿@using Winterra.Models.ViewModels
 
-@await Html.PartialAsync("_AccountTablePartial", new AccountTableModel
-{
-    Title = "Admins",
-    MenuIn = "administrator",
-    SeeAllAction = "Administrator",
-    Items = Model.AdminAccountList
-}) 
+<div class="container_wr" id="main-content">
+    <section>
+        <h2>@(Model.MenuTitle)</h2>
+        
+        @await Html.PartialAsync("_AccountTablePartial", new AccountTableModel
+        {
+            Title = "Admins",
+            MenuIn = "administrator",
+            Items = Model.AdminAccountList
+        })
+
+        <div class="btn_list03 btn_list">
+            <a asp-controller="Account" asp-action="Administrator" asp-route-menuIn="@Model.MenuIn">See All</a>
+        </div>
+    </section>
+</div>
