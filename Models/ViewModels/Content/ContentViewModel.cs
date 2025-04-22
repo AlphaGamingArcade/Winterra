@@ -5,6 +5,7 @@ namespace Winterra.Models.ViewModels
   public class ContentViewModel : BaseViewModel
   {
     public string? Search { get; set; }
+    public string? SortBy { get; set; }
     public Pagination<Content>? CharacterContentList { get; set; }
     public Pagination<Content>? HighlightContentList { get; set; }
     public Pagination<Content>? LoreContentList { get; set; }

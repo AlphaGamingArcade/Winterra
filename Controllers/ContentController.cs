@@ -19,15 +19,19 @@ namespace Winterra.Controllers
         }
 
 
-        public IActionResult Characters(int? pageNumber, int? pageSize, string? search)
+        public IActionResult Characters(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "characters";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
             int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
 
             var model = new ContentViewModel
             {
@@ -36,20 +40,29 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 CharacterContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
+
+            Console.WriteLine(model.SortBy);
 
             return View(model);
         }
 
-        public IActionResult Highlights(int? pageNumber, int? pageSize, string? search)
+        public IActionResult Highlights(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "highlights";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
             int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -57,20 +70,27 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 HighlightContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult Lore(int? pageNumber, int? pageSize, string? search)
+        public IActionResult Lore(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "lore";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+            
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
             int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -78,6 +98,7 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 LoreContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
 
@@ -85,14 +106,20 @@ namespace Winterra.Controllers
         }
 
 
-        public IActionResult Features(int? pageNumber, int? pageSize, string? search)
+        public IActionResult Features(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "features";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
             int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -100,41 +127,55 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult News(int? pageNumber, int? pageSize, string? search)
+        public IActionResult News(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
-            string menuIn = "News";
+            string menuIn = "news";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+            
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
-            int total = _contentDataAccess.GetContentCount(menuIn);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
+            int total = _contentDataAccess.GetContentCount(menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
-                MenuIn = "news",
+                MenuIn = menuIn,
                 MenuTitle = "Content Management",
                 NewsContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult Update(int? pageNumber, int? pageSize, string? search)
+        public IActionResult Update(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "update";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
-            int total = _contentDataAccess.GetContentCount(menuIn);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn);
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
+            int total = _contentDataAccess.GetContentCount(menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -142,20 +183,27 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 UpdateContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult CodeOfConduct(int? pageNumber, int? pageSize, string? search)
+        public IActionResult CodeOfConduct(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "code-of-conduct";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
             int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -163,19 +211,27 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 CodeOfConductContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
+
             return View(model);
         }
 
-        public IActionResult TermsOfUse(int? pageNumber, int? pageSize, string? search)
+        public IActionResult TermsOfUse(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "terms-of-use";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
             int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -183,20 +239,27 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 TermsOfUseContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult PrivacyPolicy(int? pageNumber, int? pageSize, string? search)
+        public IActionResult PrivacyPolicy(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "privacy-policy";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
             int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -204,20 +267,27 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 PrivacyPolicyContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult Playbook(int? pageNumber, int? pageSize, string? search)
+        public IActionResult Playbook(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             string menuIn = "playbook";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
+            
+           // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
             int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+
             var model = new ContentViewModel
             {
                 MenuOut = 2,
@@ -225,6 +295,7 @@ namespace Winterra.Controllers
                 MenuTitle = "Content Management",
                 PlaybookContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
             };
 

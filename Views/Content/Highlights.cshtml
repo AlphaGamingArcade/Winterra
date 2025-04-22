@@ -23,12 +23,24 @@
     })
 
     <ul class="pg_btn_list">
+        <form id="sort_by_form" class="srt_form" asp-controller="Content" asp-action="Highlights" method="get">
+            <input type="hidden" name="pageNumber" value="@Model.HighlightContentList.PageNumber" />
+            <input type="hidden" name="pageSize" value="@Model.HighlightContentList.PageSize" />
+            <input type="hidden" name="search" value="@Model.Search" />
+            
+            <select name="sortBy" onchange="document.getElementById('sort_by_form').submit();">
+                <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
+                <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
+            </select>
+        </form>
+
         @if(Model.HighlightContentList != null){
             <li class="pg_item">
                 <a class="pg_lnk @(Model.HighlightContentList.HasPreviousPage ? "" : "disabled")" 
                 asp-route-pageNumber="@(Model.HighlightContentList.PageNumber - 1)"
                 asp-route-pageSize="@Model.HighlightContentList.PageSize"
-                asp-route-search="@Model.Search">&laquo;</a>
+                asp-route-search="@Model.Search"
+                asp-route-sortBy="@Model.SortBy">&laquo;</a>
             </li>
             @foreach (var pg in Model.HighlightContentList.Pages)
             {
@@ -36,14 +48,16 @@
                     <a class="pg_lnk @(Model.HighlightContentList.PageNumber == pg ? "active" : "")"
                     asp-route-pageNumber="@pg"
                     asp-route-pageSize="@Model.HighlightContentList.PageSize"
-                    asp-route-search="@Model.Search">@pg</a>
+                    asp-route-search="@Model.Search"
+                    asp-route-sortBy="@Model.SortBy">@pg</a>
                 </li>
             }
             <li class="pg_item">
                 <a class="pg_lnk @(Model.HighlightContentList.HasNextPage ? "" : "disabled")" 
                 asp-route-pageNumber="@(Model.HighlightContentList.PageNumber + 1)"
                 asp-route-pageSize="@Model.HighlightContentList.PageSize"
-                asp-route-search="@Model.Search">&raquo;</a>
+                asp-route-search="@Model.Search"
+                asp-route-sortBy="@Model.SortBy">&raquo;</a>
             </li>
         }
     </ul>

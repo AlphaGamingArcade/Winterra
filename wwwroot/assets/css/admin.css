@@ -787,6 +787,13 @@ a.btn_submit {
   gap: 6px;
 }
 
+.pg_btn_list .srt_form select {
+  background-color: #ffffff;
+  height: 27px;
+  line-height: 32px;
+  border: 1px solid #d5d5d5;
+}
+
 .pg_item .pg_lnk.disabled {
   color: #aaa;
   pointer-events: none;
