@@ -783,6 +783,7 @@ a.btn_submit {
   padding: 0;
   margin: 20px 0;
   justify-content: right;
+  align-items: center;
   gap: 6px;
 }
 

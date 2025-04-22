@@ -172,10 +172,7 @@ namespace Winterra.DataContexts
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@adminLevel", adminLevel);
-                        if (string.IsNullOrWhiteSpace(search))
-                            command.Parameters.AddWithValue("@name", DBNull.Value);
-                        else
-                            command.Parameters.AddWithValue("@name", $"%{search}%");
+                        command.Parameters.AddWithValue("@name", string.IsNullOrWhiteSpace(search) ? DBNull.Value : $"%{search}%");
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -496,10 +493,7 @@ namespace Winterra.DataContexts
                         int offset = (pageNumber - 1) * pageSize;
 
                         command.Parameters.AddWithValue("@admin_level", adminLevel ?? 0);
-                        if (string.IsNullOrWhiteSpace(search))
-                            command.Parameters.AddWithValue("@name", DBNull.Value);
-                        else
-                            command.Parameters.AddWithValue("@name", $"%{search}%");
+                        command.Parameters.AddWithValue("@name", string.IsNullOrWhiteSpace(search) ? DBNull.Value : $"%{search}%");
                         command.Parameters.AddWithValue("@offset", offset);
                         command.Parameters.AddWithValue("@page_size", pageSize);
 

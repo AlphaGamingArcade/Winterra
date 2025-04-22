@@ -23,6 +23,12 @@
     })
 
     <ul class="pg_btn_list">
+        <form id="sort_by_form" asp-controller="Content" asp-action="Characters" method="get">
+            <select name="orderBy" onchange="document.getElementById('sort_by_form').submit();">
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+            </select>
+        </form>
         @if(Model.CharacterContentList != null){
             <li class="pg_item">
                 <a class="pg_lnk @(Model.CharacterContentList.HasPreviousPage ? "" : "disabled")" 

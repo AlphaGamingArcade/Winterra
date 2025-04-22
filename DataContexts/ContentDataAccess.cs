@@ -21,15 +21,11 @@ namespace Winterra.DataContexts
 				{
 					connection.Open();
 
-					string query = "SELECT COUNT(*) AS cnt FROM ww_content where content_type = @content_type AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))";
+					string query = @"SELECT COUNT(*) AS cnt FROM ww_content where content_type = @content_type AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))";
 					using (SqlCommand command = new SqlCommand(query, connection))
 					{
 						command.Parameters.AddWithValue("@content_type", contentType);
-						 if (string.IsNullOrWhiteSpace(search))
-                            command.Parameters.AddWithValue("@content_title", DBNull.Value);
-                        else
-                            command.Parameters.AddWithValue("@content_title", $"%{search}%");
-
+						command.Parameters.AddWithValue("@content_title", string.IsNullOrWhiteSpace(search) ? DBNull.Value : $"%{search}%");
 						using (SqlDataReader reader = command.ExecuteReader())
 						{
 							if (reader.Read())
@@ -213,7 +209,14 @@ namespace Winterra.DataContexts
 			}
 		}
 
-		public List<Content> GetContentListPaged(int pageNumber, int pageSize, string? contentType = "", string? search = "")
+		public List<Content> GetContentListPaged(
+			int pageNumber,
+			int pageSize,
+			string? contentType = "",
+			string? search = "",
+			string? orderBy = "content_id",
+			string? sortBy = "asc"
+		)
 		{
 			List<Content> contentList = new List<Content>();
 
@@ -223,10 +226,10 @@ namespace Winterra.DataContexts
 				{
 					connection.Open();
 
-					string query = @"
+					string query = $@"
 						SELECT * FROM ww_content
 						WHERE content_type = @content_type AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))
-						ORDER BY content_id
+						ORDER BY {orderBy} {sortBy}
 						OFFSET @offset ROWS
 						FETCH NEXT @page_size ROWS ONLY;";
 
@@ -236,11 +239,8 @@ namespace Winterra.DataContexts
 
 						command.Parameters.AddWithValue("@content_type", contentType ?? string.Empty);
 						command.Parameters.AddWithValue("@offset", offset);
+						command.Parameters.AddWithValue("@content_title", string.IsNullOrWhiteSpace(search) ? DBNull.Value : $"%{search}%");
 						command.Parameters.AddWithValue("@page_size", pageSize);
-						 if (string.IsNullOrWhiteSpace(search))
-                            command.Parameters.AddWithValue("@content_title", DBNull.Value);
-                        else
-                            command.Parameters.AddWithValue("@content_title", $"%{search}%");
 
 						using (SqlDataReader reader = command.ExecuteReader())
 						{
