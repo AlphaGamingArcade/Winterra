@@ -27,20 +27,23 @@
             <li class="pg_item">
                 <a class="pg_lnk @(Model.NewsContentList.HasPreviousPage ? "" : "disabled")" 
                 asp-route-pageNumber="@(Model.NewsContentList.PageNumber - 1)"
-                asp-route-pageSize="@Model.NewsContentList.PageSize">&laquo;</a>
+                asp-route-pageSize="@Model.NewsContentList.PageSize"
+                asp-route-search="@Model.Search">&laquo;</a>
             </li>
             @foreach (var pg in Model.NewsContentList.Pages)
             {
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.NewsContentList.PageNumber == pg ? "active" : "")"
                     asp-route-pageNumber="@pg"
-                    asp-route-pageSize="@Model.NewsContentList.PageSize">@pg</a>
+                    asp-route-pageSize="@Model.NewsContentList.PageSize"
+                    asp-route-search="@Model.Search">@pg</a>
                 </li>
             }
             <li class="pg_item">
                 <a class="pg_lnk @(Model.NewsContentList.HasNextPage ? "" : "disabled")" 
                 asp-route-pageNumber="@(Model.NewsContentList.PageNumber + 1)"
-                asp-route-pageSize="@Model.NewsContentList.PageSize">&raquo;</a>
+                asp-route-pageSize="@Model.NewsContentList.PageSize"
+                asp-route-search="@Model.Search">&raquo;</a>
             </li>
         }
     </ul>

@@ -27,20 +27,23 @@
             <li class="pg_item">
                 <a class="pg_lnk @(Model.UpdateContentList.HasPreviousPage ? "" : "disabled")" 
                 asp-route-pageNumber="@(Model.UpdateContentList.PageNumber - 1)"
-                asp-route-pageSize="@Model.UpdateContentList.PageSize">&laquo;</a>
+                asp-route-pageSize="@Model.UpdateContentList.PageSize"
+                asp-route-search="@Model.Search">&laquo;</a>
             </li>
             @foreach (var pg in Model.UpdateContentList.Pages)
             {
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.UpdateContentList.PageNumber == pg ? "active" : "")"
                     asp-route-pageNumber="@pg"
-                    asp-route-pageSize="@Model.UpdateContentList.PageSize">@pg</a>
+                    asp-route-pageSize="@Model.UpdateContentList.PageSize"
+                    asp-route-search="@Model.Search">@pg</a>
                 </li>
             }
             <li class="pg_item">
                 <a class="pg_lnk @(Model.UpdateContentList.HasNextPage ? "" : "disabled")" 
                 asp-route-pageNumber="@(Model.UpdateContentList.PageNumber + 1)"
-                asp-route-pageSize="@Model.UpdateContentList.PageSize">&raquo;</a>
+                asp-route-pageSize="@Model.UpdateContentList.PageSize"
+                asp-route-search="@Model.Search">&raquo;</a>
             </li>
         }
     </ul>

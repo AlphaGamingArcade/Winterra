@@ -23,23 +23,23 @@
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.UserAccountList.HasPreviousPage ? "" : "disabled")" 
                     asp-route-pageNumber="@(Model.UserAccountList.PageNumber - 1)"
-                    asp-route-search="@Model.Search"
-                    asp-route-pageSize="@Model.UserAccountList.PageSize">&laquo;</a>
+                    asp-route-pageSize="@Model.UserAccountList.PageSize"
+                    asp-route-search="@Model.Search">&laquo;</a>
                 </li>
                 @foreach (var pg in Model.UserAccountList.Pages)
                 {
                     <li class="pg_item">
                         <a class="pg_lnk @(Model.UserAccountList.PageNumber == pg ? "active" : "")"
                         asp-route-pageNumber="@pg"
-                        asp-route-search="@Model.Search"
-                        asp-route-pageSize="@Model.UserAccountList.PageSize">@pg</a>
+                        asp-route-pageSize="@Model.UserAccountList.PageSize"
+                        asp-route-search="@Model.Search">@pg</a>
                     </li>
                 }
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.UserAccountList.HasNextPage ? "" : "disabled")" 
                     asp-route-pageNumber="@(Model.UserAccountList.PageNumber + 1)"
-                    asp-route-search="@Model.Search"
-                    asp-route-pageSize="@Model.UserAccountList.PageSize">&raquo;</a>
+                    asp-route-pageSize="@Model.UserAccountList.PageSize"
+                    asp-route-search="@Model.Search">&raquo;</a>
                 </li>
             }
         </ul>
