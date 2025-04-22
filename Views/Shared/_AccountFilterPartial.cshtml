@@ -1,0 +1,15 @@
+@model Winterra.Models.ViewModels.AccountFilterModel;
+
+<form asp-controller="@Model.FormController" asp-action="@Model.FormAction" id="fsearch" class="local_sch01 local_sch" method="get">
+    <div class="sch_last">
+        <input type="hidden" name="pageNumber" value="@Model.PageNumber" />
+        <input type="hidden" name="pageSize" value="@Model.PageSize" />
+        
+        <select name="sortBy">
+            <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
+            <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
+        </select>
+        <input type="text" name="search" value="@Model.Search" class="frm_input" />
+        <input type="submit" class="btn_submit" />
+    </div>
+</form>

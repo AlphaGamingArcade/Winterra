@@ -9,8 +9,8 @@
                 {
                     Search = Model.Search,
                     SortBy = Model.SortBy,
-                    PageNumber = Model.CharacterContentList.PageNumber,
-                    PageSize = Model.CharacterContentList.PageSize,
+                    PageNumber = Model.FeatureContentList.PageNumber,
+                    PageSize = Model.FeatureContentList.PageSize,
                     StartDate = Model.StartDate,
                     FinishDate = Model.FinishDate,
                     FormController = "Content",
@@ -23,8 +23,8 @@
                 {
                     Search = Model.Search,
                     SortBy = Model.SortBy,
-                    PageNumber = Model.CharacterContentList.PageNumber,
-                    PageSize = Model.CharacterContentList.PageSize,
+                    PageNumber = Model.FeatureContentList.PageNumber,
+                    PageSize = Model.FeatureContentList.PageSize,
                     StartDate = Model.StartDate,
                     FinishDate = Model.FinishDate,
                     FormController = "Content",
@@ -40,25 +40,7 @@
         })
 
         <ul class="pg_btn_list">
-            <form id="sort_by_form" class="srt_form" asp-controller="Content" asp-action="Features" method="get">
-                <input type="hidden" name="pageNumber" value="@Model.FeatureContentList.PageNumber" />
-                <input type="hidden" name="pageSize" value="@Model.FeatureContentList.PageSize" />
-                <input type="hidden" name="search" value="@Model.Search" />
-                
-                <select name="sortBy" onchange="document.getElementById('sort_by_form').submit();">
-                    <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
-                    <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
-                </select>
-            </form>
-
             @if(Model.FeatureContentList != null){
-                <li class="pg_item">
-                    <a class="pg_lnk @(Model.FeatureContentList.HasPreviousPage ? "" : "disabled")" 
-                    asp-route-pageNumber="@(Model.FeatureContentList.PageNumber - 1)"
-                    asp-route-pageSize="@Model.FeatureContentList.PageSize"
-                    asp-route-search="@Model.Search"
-                    asp-route-sortBy="@Model.SortBy">&laquo;</a>
-                </li>
                 @foreach (var pg in Model.FeatureContentList.Pages)
                 {
                     <li class="pg_item">

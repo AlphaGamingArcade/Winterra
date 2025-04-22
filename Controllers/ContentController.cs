@@ -62,8 +62,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -92,8 +92,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -123,8 +123,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -153,8 +153,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -183,8 +183,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -213,8 +213,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -243,8 +243,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -273,8 +273,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -303,8 +303,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {

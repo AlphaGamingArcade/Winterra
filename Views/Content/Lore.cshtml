@@ -9,8 +9,8 @@
                 {
                     Search = Model.Search,
                     SortBy = Model.SortBy,
-                    PageNumber = Model.CharacterContentList.PageNumber,
-                    PageSize = Model.CharacterContentList.PageSize,
+                    PageNumber = Model.LoreContentList.PageNumber,
+                    PageSize = Model.LoreContentList.PageSize,
                     StartDate = Model.StartDate,
                     FinishDate = Model.FinishDate,
                     FormController = "Content",
@@ -23,8 +23,8 @@
                 {
                     Search = Model.Search,
                     SortBy = Model.SortBy,
-                    PageNumber = Model.CharacterContentList.PageNumber,
-                    PageSize = Model.CharacterContentList.PageSize,
+                    PageNumber = Model.LoreContentList.PageNumber,
+                    PageSize = Model.LoreContentList.PageSize,
                     StartDate = Model.StartDate,
                     FinishDate = Model.FinishDate,
                     FormController = "Content",
@@ -39,18 +39,7 @@
             Items = Model.LoreContentList.Items
         })
 
-        <ul class="pg_btn_list">
-            <form id="sort_by_form" class="srt_form" asp-controller="Content" asp-action="Lore" method="get">
-                <input type="hidden" name="pageNumber" value="@Model.LoreContentList.PageNumber" />
-                <input type="hidden" name="pageSize" value="@Model.LoreContentList.PageSize" />
-                <input type="hidden" name="search" value="@Model.Search" />
-                
-                <select name="sortBy" onchange="document.getElementById('sort_by_form').submit();">
-                    <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
-                    <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
-                </select>
-            </form>
-            
+        <ul class="pg_btn_list"> 
             @if(Model.LoreContentList != null){
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.LoreContentList.HasPreviousPage ? "" : "disabled")" 
