@@ -5,8 +5,15 @@
     <section>
     <div class="tbl_hd">
         <h2>@(Model.MenuIn)</h2>
-        <a asp-controller="Content" 
-        asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
+        <div class="lft_cnt">
+            <form asp-controller="Content" asp-action="Characters" method="get">
+                <p>
+                    <label>Title: <input class="search_input" type="text" value="@Model.Search" name="search" /></label>
+                    <button type="submit" class="btn btn_03">Search</button>
+                </p>
+            </form>
+            <a asp-controller="Content" asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
+        </div>
     </div>
     
     @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel

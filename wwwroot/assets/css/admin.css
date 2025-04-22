@@ -850,6 +850,11 @@ a.btn_submit {
   gap: 12px;
 }
 
+.tbl_hd .lft_cnt {
+  display: flex;
+  gap: 12px;
+}
+
 .tbl_hd02 a.btn,
 .tbl_hd02 a,
 .tbl_hd a.btn,
