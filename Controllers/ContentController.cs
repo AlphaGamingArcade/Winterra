@@ -3,6 +3,7 @@ using Winterra.DataContexts;
 using Winterra.Models.ViewModels;
 using Winterra.Models.DataModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace Winterra.Controllers
@@ -26,7 +27,7 @@ namespace Winterra.Controllers
 
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -44,8 +45,6 @@ namespace Winterra.Controllers
                 LoginUserInfo = loginUser
             };
 
-            Console.WriteLine(model.SortBy);
-
             return View(model);
         }
 
@@ -56,7 +55,7 @@ namespace Winterra.Controllers
 
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -84,7 +83,7 @@ namespace Winterra.Controllers
             
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -113,7 +112,7 @@ namespace Winterra.Controllers
 
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -141,7 +140,7 @@ namespace Winterra.Controllers
             
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -169,7 +168,7 @@ namespace Winterra.Controllers
 
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -197,7 +196,7 @@ namespace Winterra.Controllers
 
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -225,7 +224,7 @@ namespace Winterra.Controllers
 
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -253,7 +252,7 @@ namespace Winterra.Controllers
 
             // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
@@ -281,7 +280,7 @@ namespace Winterra.Controllers
             
            // Pagination config
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 

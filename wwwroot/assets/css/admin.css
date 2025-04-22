@@ -858,8 +858,10 @@ a.btn_submit {
   gap: 12px;
 }
 
+.tbl_hd .rgt_cnt,
 .tbl_hd .lft_cnt {
   display: flex;
+  align-items: center;
   gap: 12px;
 }
 
@@ -960,6 +962,7 @@ a.btn_03:hover {
 
 .btn_create,
 a.btn_create {
+  height: 28px !important;
   background: #3f51b5;
   color: #fff;
 }

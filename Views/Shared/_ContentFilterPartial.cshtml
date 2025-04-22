@@ -1,0 +1,17 @@
+@model Winterra.Models.ViewModels.ContentFilterModel;
+
+<form asp-controller="@Model.FormController" asp-action="@Model.FormAction" id="fsearch" class="local_sch01 local_sch" method="get">
+    <div class="sch_last">
+        <input type="hidden" name="pageNumber" value="@Model.PageNumber" />
+        <input type="hidden" name="pageSize" value="@Model.PageSize" />
+        
+        <input type="date" name="start" class="frm_input" value="@Model.StartDate" size="18" maxlength="20" autocomplete="off"/> ~
+        <input type="date" name="finish" class="frm_input" value="@Model.FinishDate" size="18" maxlength="20" autocomplete="off"/>
+        <select name="sortBy">
+            <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
+            <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
+        </select>
+        <input type="text" name="search" value="@Model.Search" class="frm_input" />
+        <input type="submit" class="btn_submit" />
+    </div>
+</form>

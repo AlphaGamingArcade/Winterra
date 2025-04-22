@@ -1,0 +1,15 @@
+@model Winterra.Models.ViewModels.ContentPageSizesModel;
+
+<form id="pgsize" asp-controller="@Model.FormController" asp-action="@Model.FormAction"method="get" >
+    <input type="hidden" name="pageNumber" value="@Model.PageNumber" />
+    <input type="hidden" name="search" value="@Model.Search" />
+    <input type="hidden" name="start" value="@Model.StartDate"/>
+    <input type="hidden" name="finish" value="@Model.FinishDate"/>
+    <input type="hidden" name="sortBy" value="@Model.SortBy"/>
+
+    <select name="pageSize" onchange="pgsize.submit();">
+        <option value="30" selected="@(Model.PageSize == 30)">30 views each</option>
+        <option value="50" selected="@(Model.PageSize == 50)">50 views each</option>
+        <option value="100" selected="@(Model.PageSize == 100)">100 views each</option>
+    </select>
+</form>

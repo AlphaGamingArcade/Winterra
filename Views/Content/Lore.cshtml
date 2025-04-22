@@ -4,15 +4,30 @@
 <div class="container_wr" id="main-content">
     <section>
     <div class="tbl_hd">
-        <h2>@(Model.MenuIn)</h2>
-        <div class="lft_cnt">
-            <form asp-controller="Content" asp-action="Lore" method="get">
-                <p>
-                    <label>Title: <input class="search_input" type="text" value="@Model.Search" name="search" /></label>
-                    <button type="submit" class="btn btn_03">Search</button>
-                </p>
+        <div class="rgt_cnt">
+            <form asp-controller="Content" asp-action="Lore" id="fsearch" class="local_sch01 local_sch" method="get">
+                <div class="sch_last">
+                    <input type="date" name="start" id="fr_date" class="frm_input" size="18" maxlength="20" autocomplete="off"/> ~
+                    <input type="date" name="finish" id="to_date" class="frm_input" size="18" maxlength="20" autocomplete="off"/>
+                    <select name="sortBy">
+                        <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
+                        <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
+                    </select>
+                    <input type="text" name="search" value="@Model.Search" class="frm_input" />
+                    <input type="submit" class="btn_submit" value="검색" />
+
+                    <a asp-controller="Content" asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
+                </div>
             </form>
-            <a asp-controller="Content" asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
+        </div>
+        <div class="lft_cnt">
+            <form>
+                <select name="pageSize" style="float:right;" onchange="fsearch.submit();">
+                    <option value="30">30 views each</option>
+                    <option value="50">50 views each</option>
+                    <option value="100">100 views each</option>
+                </select>
+            </form>
         </div>
     </div>
     

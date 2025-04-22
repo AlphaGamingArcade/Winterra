@@ -3,62 +3,65 @@
 
 <div class="container_wr" id="main-content">
     <section>
-    <div class="tbl_hd">
-        <h2>@(Model.MenuIn)</h2>
-        <div class="lft_cnt">
-            <form asp-controller="Content" asp-action="Characters" method="get">
-                <p>
-                    <label>Title: <input class="search_input" type="text" value="@Model.Search" name="search" /></label>
-                    <button type="submit" class="btn btn_03">Search</button>
-                </p>
-            </form>
-            <a asp-controller="Content" asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
+        <div class="tbl_hd">
+            <div class="rgt_cnt">
+                @await Html.PartialAsync("_ContentFilterPartial", new ContentFilterModel
+                {
+                    Search = Model.Search,
+                    SortBy = Model.SortBy,
+                    PageNumber = Model.CharacterContentList.PageNumber,
+                    PageSize = Model.CharacterContentList.PageSize,
+                    FormController = "Content",
+                    FormAction = "Characters"
+                })
+                <a asp-controller="Content" asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
+            </div>
+            <div class="lft_cnt">
+                @await Html.PartialAsync("_ContentPageSizesPartial", new ContentPageSizesModel
+                {
+                    Search = Model.Search,
+                    SortBy = Model.SortBy,
+                    PageNumber = Model.CharacterContentList.PageNumber,
+                    PageSize = Model.CharacterContentList.PageSize,
+                    FormController = "Content",
+                    FormAction = "Characters"
+                })
+            </div>
         </div>
-    </div>
     
-    @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
-    {
-        MenuIn = Model.MenuIn,
-        Items = Model.CharacterContentList.Items
-    })
+        @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
+        {
+            MenuIn = Model.MenuIn,
+            Items = Model.CharacterContentList.Items
+        })
 
-    <ul class="pg_btn_list">
-        <form id="sort_by_form" class="srt_form" asp-controller="Content" asp-action="Characters" method="get">
-            <input type="hidden" name="pageNumber" value="@Model.CharacterContentList.PageNumber" />
-            <input type="hidden" name="pageSize" value="@Model.CharacterContentList.PageSize" />
-            <input type="hidden" name="search" value="@Model.Search" />
-            
-            <select name="sortBy" onchange="document.getElementById('sort_by_form').submit();">
-                <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
-                <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
-            </select>
-        </form>
-        @if(Model.CharacterContentList != null){
-            <li class="pg_item">
-                <a class="pg_lnk @(Model.CharacterContentList.HasPreviousPage ? "" : "disabled")" 
-                asp-route-pageNumber="@(Model.CharacterContentList.PageNumber - 1)"
-                asp-route-pageSize="@Model.CharacterContentList.PageSize"
-                asp-route-search="@Model.Search"
-                asp-route-sortBy="@Model.SortBy">&laquo;</a>
-            </li>
-            @foreach (var pg in Model.CharacterContentList.Pages)
-            {
+        <ul class="pg_btn_list">
+            @if(Model.CharacterContentList != null){
                 <li class="pg_item">
-                    <a class="pg_lnk @(Model.CharacterContentList.PageNumber == pg ? "active" : "")"
-                    asp-route-pageNumber="@pg"
+                    <a class="pg_lnk @(Model.CharacterContentList.HasPreviousPage ? "" : "disabled")" 
+                    asp-route-pageNumber="@(Model.CharacterContentList.PageNumber - 1)"
                     asp-route-pageSize="@Model.CharacterContentList.PageSize"
                     asp-route-search="@Model.Search"
-                    asp-route-sortBy="@Model.SortBy">@pg</a>
+                    asp-route-sortBy="@Model.SortBy">&laquo;</a>
+                </li>
+                @foreach (var pg in Model.CharacterContentList.Pages)
+                {
+                    <li class="pg_item">
+                        <a class="pg_lnk @(Model.CharacterContentList.PageNumber == pg ? "active" : "")"
+                        asp-route-pageNumber="@pg"
+                        asp-route-pageSize="@Model.CharacterContentList.PageSize"
+                        asp-route-search="@Model.Search"
+                        asp-route-sortBy="@Model.SortBy">@pg</a>
+                    </li>
+                }
+                <li class="pg_item">
+                    <a class="pg_lnk @(Model.CharacterContentList.HasNextPage ? "" : "disabled")" 
+                    asp-route-pageNumber="@(Model.CharacterContentList.PageNumber + 1)"
+                    asp-route-pageSize="@Model.CharacterContentList.PageSize"
+                    asp-route-search="@Model.Search"
+                    asp-route-sortBy="@Model.SortBy">&raquo;</a>
                 </li>
             }
-            <li class="pg_item">
-                <a class="pg_lnk @(Model.CharacterContentList.HasNextPage ? "" : "disabled")" 
-                asp-route-pageNumber="@(Model.CharacterContentList.PageNumber + 1)"
-                asp-route-pageSize="@Model.CharacterContentList.PageSize"
-                asp-route-search="@Model.Search"
-                asp-route-sortBy="@Model.SortBy">&raquo;</a>
-            </li>
-        }
-    </ul>
-</section>
+        </ul>
+    </section>
 </div>

@@ -1,4 +1,5 @@
-﻿using Winterra.Models.DataModels;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Winterra.Models.DataModels;
 
 namespace Winterra.Models.ViewModels
 {
@@ -6,6 +7,8 @@ namespace Winterra.Models.ViewModels
   {
     public string? Search { get; set; }
     public string? SortBy { get; set; }
+    public DateTime? StartDate { get; set; }
+    public DateTime? FinishDate { get; set; }
     public Pagination<Content>? CharacterContentList { get; set; }
     public Pagination<Content>? HighlightContentList { get; set; }
     public Pagination<Content>? LoreContentList { get; set; }
