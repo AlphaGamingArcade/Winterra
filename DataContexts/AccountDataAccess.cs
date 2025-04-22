@@ -471,7 +471,14 @@ namespace Winterra.DataContexts
                 }
             }
         }
-        public List<Account> GetAccountListPaged(int pageNumber, int pageSize, int? adminLevel = 0, string? search = "")
+        public List<Account> GetAccountListPaged(
+            int pageNumber,
+            int pageSize,
+            int? adminLevel = 0,
+            string? search = "",
+            string? orderBy = "id",
+            string? sortBy = "asc"
+        )
         {
             List<Account> accountList = new List<Account>();
 
@@ -481,12 +488,26 @@ namespace Winterra.DataContexts
                 {
                     connection.Open();
 
-                    string query = @"
-                    SELECT * FROM accounts
-                    WHERE admin = @admin_level AND (@name IS NULL OR LOWER(name) LIKE LOWER(@name))
-                    ORDER BY id
-                    OFFSET @offset ROWS
-                    FETCH NEXT @page_size ROWS ONLY;";
+                    // ✅ Whitelist columns to prevent SQL injection
+                    string safeOrderBy = orderBy?.ToLower() switch
+                    {
+                        "name" => "name",
+                        "email" => "email",
+                        "stellar" => "stellar",
+                        "level" => "level",
+                        "xp" => "xp",
+                        "last_login" => "last_login",
+                        _ => "id" // default
+                    };
+
+                    string safeSortBy = sortBy?.ToLower() == "desc" ? "DESC" : "ASC";
+
+                    string query = $@"
+                        SELECT * FROM accounts
+                        WHERE admin = @admin_level AND (@name IS NULL OR LOWER(name) LIKE LOWER(@name))
+                        ORDER BY {safeOrderBy} {safeSortBy}
+                        OFFSET @offset ROWS
+                        FETCH NEXT @page_size ROWS ONLY;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

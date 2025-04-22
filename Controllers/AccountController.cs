@@ -7,7 +7,6 @@ using System.Security.Claims;
 using Winterra.Helpers;
 using Winterra.Models.ViewModels;
 using Winterra.Models.DataModels;
-using System.Threading.Tasks;
 
 namespace Winterra.Controllers
 {
@@ -21,15 +20,17 @@ namespace Winterra.Controllers
 		}
 
         [ValidateSession]
-        public IActionResult Index(int? pageNumber, int? pageSize, string search)
+        public IActionResult Index(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
 
             int currentPage = pageNumber ?? 1;
-            int currentPageSize = pageSize ?? 10;
+            int currentPageSize = pageSize ?? 30;
+            string currentOrderBy = "id";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
             
             var total = _accountDataAccess.GetAccountCount(0, search);
-            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0, search);
+            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 0, search, currentOrderBy, currentSortBy);
             
             var model = new AccountViewModel
             {
@@ -38,6 +39,7 @@ namespace Winterra.Controllers
                 MenuTitle = "Account Management",
                 UserAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
                 LoginUserInfo = loginUser
 			};
 
@@ -45,14 +47,17 @@ namespace Winterra.Controllers
         }
 
         [ValidateSession]
-        public IActionResult Administrator(int? pageNumber, int? pageSize, string? search)
+        public IActionResult Administrator(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
 
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 10;
+            string currentOrderBy = "id";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
             var total = _accountDataAccess.GetAccountCount(1, search);
-            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1, search);
+            var paged = _accountDataAccess.GetAccountListPaged(currentPage, currentPageSize, 1, search, currentOrderBy, currentSortBy);
 
             var model = new AccountViewModel
             {
@@ -61,6 +66,7 @@ namespace Winterra.Controllers
                 MenuTitle = "Account Management",
                 AdminAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
                 Search = search,
+                SortBy = sortBy,
 				LoginUserInfo = loginUser
 			};
 			return View(model);

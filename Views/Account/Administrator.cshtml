@@ -2,16 +2,6 @@
 
 <div class="container_wr" id="main-content">
     <section>
-        @* <div class="tbl_hd">
-            <h2>@(Model.MenuTitle)</h2>
-            <form asp-controller="Account" asp-action="Administrator" method="get">
-                <p>
-                    <label>Name: <input class="search_input" type="text" value="@Model.Search" name="search" /></label>
-                    <button type="submit" class="btn btn_03">Search</button>
-                </p>
-            </form>
-        </div> *@
-
         <div class="tbl_hd">
             <div class="rgt_cnt">
                 @await Html.PartialAsync("_AccountFilterPartial", new AccountFilterModel
@@ -25,19 +15,17 @@
                 })
             </div>
             
-            @* <div class="lft_cnt">
-                @await Html.PartialAsync("_ContentPageSizesPartial", new ContentPageSizesModel
+            <div class="lft_cnt">
+                @await Html.PartialAsync("_AccountPageSizesPartial", new AccountPageSizesModel
                 {
                     Search = Model.Search,
                     SortBy = Model.SortBy,
-                    PageNumber = Model.CharacterContentList.PageNumber,
-                    PageSize = Model.CharacterContentList.PageSize,
-                    StartDate = Model.StartDate,
-                    FinishDate = Model.FinishDate,
-                    FormController = "Content",
-                    FormAction = "Characters"
+                    PageNumber = Model.AdminAccountList.PageNumber,
+                    PageSize = Model.AdminAccountList.PageSize,
+                    FormController = "Account",
+                    FormAction = "Administrator"
                 })
-            </div> *@
+            </div>
         </div>
 
         @await Html.PartialAsync("_AccountTablePartial", new AccountTableModel
