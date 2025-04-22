@@ -13,7 +13,7 @@ namespace Winterra.DataContexts
 			this._connectionString = configuration.GetConnectionString("DefaultConnection");
 		}
 
-		public int GetContentCount(string? contentType = "", string? search = "")
+		public int GetContentCount(string? contentType = "", string? search = "", DateTime? startDate = null, DateTime? finishDate = null)
 		{
 			try
 			{
@@ -21,30 +21,38 @@ namespace Winterra.DataContexts
 				{
 					connection.Open();
 
-					string query = @"SELECT COUNT(*) AS cnt FROM ww_content where content_type = @content_type AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))";
+					string query = @"
+						SELECT COUNT(*) AS cnt 
+						FROM ww_content 
+						WHERE content_type = @content_type 
+						AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))
+						AND (@start_date IS NULL OR content_published_at >= @start_date)
+						AND (@finish_date IS NULL OR content_published_at <= @finish_date)";
+
 					using (SqlCommand command = new SqlCommand(query, connection))
 					{
-						command.Parameters.AddWithValue("@content_type", contentType);
+						command.Parameters.AddWithValue("@content_type", contentType ?? string.Empty);
 						command.Parameters.AddWithValue("@content_title", string.IsNullOrWhiteSpace(search) ? DBNull.Value : $"%{search}%");
+						command.Parameters.AddWithValue("@start_date", startDate.HasValue ? startDate.Value : DBNull.Value);
+						command.Parameters.AddWithValue("@finish_date", finishDate.HasValue ? finishDate.Value : DBNull.Value);
+
 						using (SqlDataReader reader = command.ExecuteReader())
 						{
 							if (reader.Read())
 							{
-								return (int)reader["cnt"];
+								return Convert.ToInt32(reader["cnt"]);
 							}
 						}
-
 					}
-
 				}
 			}
 			catch (SqlException ex)
 			{
-				Console.WriteLine($"SQL-Exception [ContentDataAccess -> GetCharacterCount]: {ex.Message}");
+				Console.WriteLine($"SQL-Exception [ContentDataAccess -> GetContentCount]: {ex.Message}");
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine($"Exception [ContentDataAccess -> GetCharacterCount]: {ex.Message}");
+				Console.WriteLine($"Exception [ContentDataAccess -> GetContentCount]: {ex.Message}");
 			}
 
 			return 0;
@@ -215,7 +223,9 @@ namespace Winterra.DataContexts
 			string? contentType = "",
 			string? search = "",
 			string? orderBy = "content_id",
-			string? sortBy = "asc"
+			string? sortBy = "asc",
+			DateTime? startDate = null,
+			DateTime? finishDate = null
 		)
 		{
 			List<Content> contentList = new List<Content>();
@@ -226,10 +236,24 @@ namespace Winterra.DataContexts
 				{
 					connection.Open();
 
+					// ⚠️ Sanitize orderBy and sortBy to prevent SQL injection
+					string safeOrderBy = orderBy?.ToLower() switch
+					{
+						"content_title" => "content_title",
+						"content_type" => "content_type",
+						"content_published_at" => "content_published_at",
+						_ => "content_id"
+					};
+
+					string safeSortBy = sortBy?.ToLower() == "desc" ? "DESC" : "ASC";
+
 					string query = $@"
 						SELECT * FROM ww_content
-						WHERE content_type = @content_type AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))
-						ORDER BY {orderBy} {sortBy}
+						WHERE content_type = @content_type 
+						AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))
+						AND (@start_date IS NULL OR content_published_at >= @start_date)
+						AND (@finish_date IS NULL OR content_published_at <= @finish_date)
+						ORDER BY {safeOrderBy} {safeSortBy}
 						OFFSET @offset ROWS
 						FETCH NEXT @page_size ROWS ONLY;";
 
@@ -239,8 +263,10 @@ namespace Winterra.DataContexts
 
 						command.Parameters.AddWithValue("@content_type", contentType ?? string.Empty);
 						command.Parameters.AddWithValue("@offset", offset);
-						command.Parameters.AddWithValue("@content_title", string.IsNullOrWhiteSpace(search) ? DBNull.Value : $"%{search}%");
 						command.Parameters.AddWithValue("@page_size", pageSize);
+						command.Parameters.AddWithValue("@content_title", string.IsNullOrWhiteSpace(search) ? DBNull.Value : $"%{search}%");
+						command.Parameters.AddWithValue("@start_date", startDate.HasValue ? startDate.Value : DBNull.Value);
+						command.Parameters.AddWithValue("@finish_date", finishDate.HasValue ? finishDate.Value : DBNull.Value);
 
 						using (SqlDataReader reader = command.ExecuteReader())
 						{

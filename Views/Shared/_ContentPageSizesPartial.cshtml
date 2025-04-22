@@ -3,8 +3,8 @@
 <form id="pgsize" asp-controller="@Model.FormController" asp-action="@Model.FormAction"method="get" >
     <input type="hidden" name="pageNumber" value="@Model.PageNumber" />
     <input type="hidden" name="search" value="@Model.Search" />
-    <input type="hidden" name="start" value="@Model.StartDate"/>
-    <input type="hidden" name="finish" value="@Model.FinishDate"/>
+    <input type="hidden" name="startDate" value="@Model.StartDate?.ToString("yyyy-MM-dd")"/>
+    <input type="hidden" name="finishDate" value="@Model.FinishDate?.ToString("yyyy-MM-dd")"/>
     <input type="hidden" name="sortBy" value="@Model.SortBy"/>
 
     <select name="pageSize" onchange="pgsize.submit();">

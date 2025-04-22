@@ -4,6 +4,7 @@ using Winterra.Models.ViewModels;
 using Winterra.Models.DataModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Dynamic;
 
 
 namespace Winterra.Controllers
@@ -20,7 +21,7 @@ namespace Winterra.Controllers
         }
 
 
-        public IActionResult Characters(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult Characters(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "characters";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -31,8 +32,8 @@ namespace Winterra.Controllers
             string currentOrderBy = "content_published_at";
             string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
 
-            int total = _contentDataAccess.GetContentCount(menuIn, search);
-            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy);
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
 
             var model = new ContentViewModel
             {
@@ -42,6 +43,8 @@ namespace Winterra.Controllers
                 CharacterContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
