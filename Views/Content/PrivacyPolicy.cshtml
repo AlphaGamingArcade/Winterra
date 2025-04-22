@@ -3,78 +3,80 @@
 
 <div class="container_wr" id="main-content">
     <section>
-    <div class="tbl_hd">
-        <div class="rgt_cnt">
-            <form asp-controller="Content" asp-action="PrivacyPolicy" id="fsearch" class="local_sch01 local_sch" method="get">
-                <div class="sch_last">
-                    <input type="date" name="start" id="fr_date" class="frm_input" size="18" maxlength="20" autocomplete="off"/> ~
-                    <input type="date" name="finish" id="to_date" class="frm_input" size="18" maxlength="20" autocomplete="off"/>
-                    <select name="sortBy">
-                        <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
-                        <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
-                    </select>
-                    <input type="text" name="search" value="@Model.Search" class="frm_input" />
-                    <input type="submit" class="btn_submit" value="검색" />
-
-                    <a asp-controller="Content" asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
-                </div>
-            </form>
+        <div class="tbl_hd">
+            <div class="rgt_cnt">
+                @await Html.PartialAsync("_ContentFilterPartial", new ContentFilterModel
+                {
+                    Search = Model.Search,
+                    SortBy = Model.SortBy,
+                    PageNumber = Model.CharacterContentList.PageNumber,
+                    PageSize = Model.CharacterContentList.PageSize,
+                    StartDate = Model.StartDate,
+                    FinishDate = Model.FinishDate,
+                    FormController = "Content",
+                    FormAction = "PrivacyPolicy"
+                })
+                <a asp-controller="Content" asp-action="Create" asp-route-menuIn="@Model.MenuIn" class="btn btn_create">Create</a>
+            </div>
+            <div class="lft_cnt">
+                @await Html.PartialAsync("_ContentPageSizesPartial", new ContentPageSizesModel
+                {
+                    Search = Model.Search,
+                    SortBy = Model.SortBy,
+                    PageNumber = Model.CharacterContentList.PageNumber,
+                    PageSize = Model.CharacterContentList.PageSize,
+                    StartDate = Model.StartDate,
+                    FinishDate = Model.FinishDate,
+                    FormController = "Content",
+                    FormAction = "PrivacyPolicy"
+                })
+            </div>
         </div>
-        <div class="lft_cnt">
-            <form>
-                <select name="pageSize" style="float:right;" onchange="fsearch.submit();">
-                    <option value="30">30 views each</option>
-                    <option value="50">50 views each</option>
-                    <option value="100">100 views each</option>
+    
+        @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
+        {
+            MenuIn = Model.MenuIn,
+            Items = Model.PrivacyPolicyContentList.Items
+        })
+
+        <ul class="pg_btn_list">
+            <form id="sort_by_form" class="srt_form" asp-controller="Content" asp-action="PrivacyPolicy" method="get">
+                <input type="hidden" name="pageNumber" value="@Model.PrivacyPolicyContentList.PageNumber" />
+                <input type="hidden" name="pageSize" value="@Model.PrivacyPolicyContentList.PageSize" />
+                <input type="hidden" name="search" value="@Model.Search" />
+                
+                <select name="sortBy" onchange="document.getElementById('sort_by_form').submit();">
+                    <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
+                    <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
                 </select>
             </form>
-        </div>
-    </div>
-    
-    @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
-    {
-        MenuIn = Model.MenuIn,
-        Items = Model.PrivacyPolicyContentList.Items
-    })
-
-    <ul class="pg_btn_list">
-        <form id="sort_by_form" class="srt_form" asp-controller="Content" asp-action="PrivacyPolicy" method="get">
-            <input type="hidden" name="pageNumber" value="@Model.PrivacyPolicyContentList.PageNumber" />
-            <input type="hidden" name="pageSize" value="@Model.PrivacyPolicyContentList.PageSize" />
-            <input type="hidden" name="search" value="@Model.Search" />
             
-            <select name="sortBy" onchange="document.getElementById('sort_by_form').submit();">
-                <option value="newest" selected="@(Model.SortBy == "newest")">Newest</option>
-                <option value="oldest" selected="@(Model.SortBy == "oldest")">Oldest</option>
-            </select>
-        </form>
-        
-        @if(Model.PrivacyPolicyContentList != null){
-            <li class="pg_item">
-                <a class="pg_lnk @(Model.PrivacyPolicyContentList.HasPreviousPage ? "" : "disabled")" 
-                asp-route-pageNumber="@(Model.PrivacyPolicyContentList.PageNumber - 1)"
-                asp-route-pageSize="@Model.PrivacyPolicyContentList.PageSize"
-                asp-route-search="@Model.Search"
-                asp-route-sortBy="@Model.SortBy">&laquo;</a>
-            </li>
-            @foreach (var pg in Model.PrivacyPolicyContentList.Pages)
-            {
+            @if(Model.PrivacyPolicyContentList != null){
                 <li class="pg_item">
-                    <a class="pg_lnk @(Model.PrivacyPolicyContentList.PageNumber == pg ? "active" : "")"
-                    asp-route-pageNumber="@pg"
+                    <a class="pg_lnk @(Model.PrivacyPolicyContentList.HasPreviousPage ? "" : "disabled")" 
+                    asp-route-pageNumber="@(Model.PrivacyPolicyContentList.PageNumber - 1)"
                     asp-route-pageSize="@Model.PrivacyPolicyContentList.PageSize"
                     asp-route-search="@Model.Search"
-                    asp-route-sortBy="@Model.SortBy">@pg</a>
+                    asp-route-sortBy="@Model.SortBy">&laquo;</a>
+                </li>
+                @foreach (var pg in Model.PrivacyPolicyContentList.Pages)
+                {
+                    <li class="pg_item">
+                        <a class="pg_lnk @(Model.PrivacyPolicyContentList.PageNumber == pg ? "active" : "")"
+                        asp-route-pageNumber="@pg"
+                        asp-route-pageSize="@Model.PrivacyPolicyContentList.PageSize"
+                        asp-route-search="@Model.Search"
+                        asp-route-sortBy="@Model.SortBy">@pg</a>
+                    </li>
+                }
+                <li class="pg_item">
+                    <a class="pg_lnk @(Model.PrivacyPolicyContentList.HasNextPage ? "" : "disabled")" 
+                    asp-route-pageNumber="@(Model.PrivacyPolicyContentList.PageNumber + 1)"
+                    asp-route-pageSize="@Model.PrivacyPolicyContentList.PageSize"
+                    asp-route-search="@Model.Search"
+                    asp-route-sortBy="@Model.SortBy">&raquo;</a>
                 </li>
             }
-            <li class="pg_item">
-                <a class="pg_lnk @(Model.PrivacyPolicyContentList.HasNextPage ? "" : "disabled")" 
-                asp-route-pageNumber="@(Model.PrivacyPolicyContentList.PageNumber + 1)"
-                asp-route-pageSize="@Model.PrivacyPolicyContentList.PageSize"
-                asp-route-search="@Model.Search"
-                asp-route-sortBy="@Model.SortBy">&raquo;</a>
-            </li>
-        }
-    </ul>
-</section>
+        </ul>
+    </section>
 </div>

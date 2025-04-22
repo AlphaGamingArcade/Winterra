@@ -51,7 +51,7 @@ namespace Winterra.Controllers
             return View(model);
         }
 
-        public IActionResult Highlights(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult Highlights(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "highlights";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -73,13 +73,15 @@ namespace Winterra.Controllers
                 HighlightContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult Lore(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult Lore(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "lore";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -101,6 +103,8 @@ namespace Winterra.Controllers
                 LoreContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
@@ -108,7 +112,7 @@ namespace Winterra.Controllers
         }
 
 
-        public IActionResult Features(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult Features(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "features";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -130,13 +134,15 @@ namespace Winterra.Controllers
                 FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult News(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult News(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "news";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -158,13 +164,15 @@ namespace Winterra.Controllers
                 NewsContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult Update(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult Update(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "update";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -186,13 +194,15 @@ namespace Winterra.Controllers
                 UpdateContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult CodeOfConduct(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult CodeOfConduct(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "code-of-conduct";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -214,13 +224,15 @@ namespace Winterra.Controllers
                 CodeOfConductContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult TermsOfUse(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult TermsOfUse(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "terms-of-use";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -242,13 +254,15 @@ namespace Winterra.Controllers
                 TermsOfUseContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult PrivacyPolicy(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult PrivacyPolicy(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "privacy-policy";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -270,13 +284,15 @@ namespace Winterra.Controllers
                 PrivacyPolicyContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
             return View(model);
         }
 
-        public IActionResult Playbook(int? pageNumber, int? pageSize, string? search, string? sortBy)
+        public IActionResult Playbook(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
             string menuIn = "playbook";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -298,6 +314,8 @@ namespace Winterra.Controllers
                 PlaybookContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
                 LoginUserInfo = loginUser
             };
 
