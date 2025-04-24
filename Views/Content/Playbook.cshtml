@@ -40,7 +40,7 @@
         })
 
         <ul class="pg_btn_list">
-            @if(Model.PlaybookContentList != null){
+            @if(Model.PlaybookContentList != null && Model.PlaybookContentList.Pages.Count > 0){
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.PlaybookContentList.HasPreviousPage ? "" : "disabled")" 
                     asp-route-pageNumber="@(Model.PlaybookContentList.PageNumber - 1)"

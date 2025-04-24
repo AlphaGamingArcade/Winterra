@@ -34,7 +34,7 @@
         })
         
         <ul class="pg_btn_list">
-            @if(Model.UserAccountList != null){
+            @if(Model.UserAccountList != null  && Model.UserAccountList.Pages.Count > 0){
                 <li class="pg_item">
                     <a class="pg_lnk @(Model.UserAccountList.HasPreviousPage ? "" : "disabled")" 
                     asp-route-pageNumber="@(Model.UserAccountList.PageNumber - 1)"

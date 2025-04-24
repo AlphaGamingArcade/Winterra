@@ -40,7 +40,7 @@
         })
 
         <ul class="pg_btn_list">
-            @if(Model.FeatureContentList != null){
+            @if(Model.FeatureContentList != null && Model.FeatureContentList.Pages.Count > 0){
                 @foreach (var pg in Model.FeatureContentList.Pages)
                 {
                     <li class="pg_item">
