@@ -66,8 +66,8 @@
                         <div class="gnb_oparea">
                             <h3>Account Management</h3>
                             <ul>
-                                <li><a asp-controller="Home" asp-action="Index" class="gnb_2da@(Model.MenuIn == "user" ? " on" : "")">User</a></li>
-                                <li><a asp-controller="Home" asp-action="Administrator" class="gnb_2da@(Model.MenuIn == "administrator" ? " on" : "")">Administrator</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Index" class="gnb_2da@(Model.MenuIn == "user" ? " on" : "")">User</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Administrator" class="gnb_2da@(Model.MenuIn == "administrator" ? " on" : "")">Administrator</a></li>
                             </ul>
                         </div>
                     </div>
@@ -79,16 +79,16 @@
                         <div class="gnb_oparea">
                             <h3>Content Management</h3>
                             <ul>
-                                <li><a asp-controller="Home" asp-action="Characters" class="gnb_2da@(Model.MenuIn == "characters" ? " on" : "")">Characters</a></li>
-                                <li><a asp-controller="Home" asp-action="Highlights" class="gnb_2da@(Model.MenuIn == "highlights" ? " on" : "")">Highlights</a></li>
-                                <li><a asp-controller="Home" asp-action="Lore" class="gnb_2da@(Model.MenuIn == "lore" ? " on" : "")">Lore</a></li>
-                                <li><a asp-controller="Home" asp-action="Features" class="gnb_2da@(Model.MenuIn == "features" ? " on" : "")">Features</a></li>
-                                <li><a asp-controller="Home" asp-action="News" class="gnb_2da@(Model.MenuIn == "news" ? " on" : "")">News</a></li>
-                                <li><a asp-controller="Home" asp-action="Update" class="gnb_2da@(Model.MenuIn == "update" ? " on" : "")">Update</a></li>
-                                <li><a asp-controller="Home" asp-action="CodeOfConduct" class="gnb_2da@(Model.MenuIn == "code-of-conduct" ? " on" : "")">Code of Conduct</a></li>
-                                <li><a asp-controller="Home" asp-action="TermsOfUse" class="gnb_2da@(Model.MenuIn == "terms-of-use" ? " on" : "")">Terms of Use</a></li>
-                                <li><a asp-controller="Home" asp-action="PrivacyPolicy" class="gnb_2da@(Model.MenuIn == "privacy-policy" ? " on" : "")">Privacy Policy</a></li>
-                                <li><a asp-controller="Home" asp-action="Playbook" class="gnb_2da@(Model.MenuIn == "playbook" ? " on" : "")">Playbook</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Characters" class="gnb_2da@(Model.MenuIn == "characters" ? " on" : "")">Characters</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Highlights" class="gnb_2da@(Model.MenuIn == "highlights" ? " on" : "")">Highlights</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Lore" class="gnb_2da@(Model.MenuIn == "lore" ? " on" : "")">Lore</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Features" class="gnb_2da@(Model.MenuIn == "features" ? " on" : "")">Features</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="News" class="gnb_2da@(Model.MenuIn == "news" ? " on" : "")">News</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Update" class="gnb_2da@(Model.MenuIn == "update" ? " on" : "")">Update</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="CodeOfConduct" class="gnb_2da@(Model.MenuIn == "code-of-conduct" ? " on" : "")">Code of Conduct</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="TermsOfUse" class="gnb_2da@(Model.MenuIn == "terms-of-use" ? " on" : "")">Terms of Use</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="PrivacyPolicy" class="gnb_2da@(Model.MenuIn == "privacy-policy" ? " on" : "")">Privacy Policy</a></li>
+                                <li><a asp-area="Admin" asp-controller="Home" asp-action="Playbook" class="gnb_2da@(Model.MenuIn == "playbook" ? " on" : "")">Playbook</a></li>
                             </ul>
                         </div>
                     </div>

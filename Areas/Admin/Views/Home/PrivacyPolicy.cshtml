@@ -1,0 +1,14 @@
+﻿<div class="container_wr" id="main-content">
+    <section>
+        <h2>Privacy Policy</h2>
+        @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
+        {
+            MenuIn = Model.MenuIn,
+            Items = Model.PrivacyPolicyContentList
+        }) 
+
+        <div class="btn_list03 btn_list">
+            <a asp-controller="Content" asp-action="PrivacyPolicy" asp-route-menuIn="@Model.MenuIn">See All</a>
+        </div>
+    </section>
+</div>

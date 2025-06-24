@@ -1,0 +1,49 @@
+@model AccountTableModel
+
+<div class="tbl_head01 tbl_wrap">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Stellar</th>
+                <th scope="col">Is Online</th>
+                <th scope="col">Trophies</th>
+                <th scope="col">IP</th>
+                <th scope="col">Level</th>
+                <th scope="col">XP</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model.Items != null && Model.Items.Any())
+            {
+                var i = 1;
+                var j = 0;
+                @foreach (var p in Model.Items)
+                {
+                    <tr class="bg@(j%2)">
+                        <td class="td_num">@p.Id</td>
+                        <td class="td_id">@p.Name</td>
+                        <td class="td_center">@p.Stellar</td>
+                        <td class="td_center">@p.IsOnline</td>
+                        <td class="td_center">@p.Trophies</td>
+                        <td class="td_center">@p.Verified</td>
+                        <td class="td_center">@p.Level</td>
+                        <td class="td_center">@p.Xp</td>
+                        <td class="td_mng td_mng_s">
+                            <a asp-controller="Account" asp-action="Edit" asp-route-menuIn="@Model.MenuIn" asp-route-id="@p.Id" class="btn btn_03">Edit</a>
+                        </td>
+                    </tr>
+
+                    i++;
+                    j++;
+                }
+            } else {
+                <tr>
+                    <td colspan="9">No content available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

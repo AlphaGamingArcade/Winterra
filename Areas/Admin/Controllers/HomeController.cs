@@ -1,16 +1,13 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Winterra.Areas.Admin.Models.ViewModels;
 using Winterra.DataContexts;
-using Winterra.Models.ViewModels;
-using System.Diagnostics;
 using Winterra.Models.DataModels;
 
-
-namespace Winterra.Controllers
+namespace Winterra.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
-    {
-		private readonly AccountDataAccess _accountDataAccess;
+    public class HomeController : BaseController {
+        private readonly AccountDataAccess _accountDataAccess;
 		private readonly ContentDataAccess _contentDataAccess;
 
 		public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess)
@@ -24,7 +21,7 @@ namespace Winterra.Controllers
 		public IActionResult Index()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 1,
                 MenuIn = "user",
@@ -45,7 +42,7 @@ namespace Winterra.Controllers
 		public IActionResult Administrator()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 1,
                 MenuIn = "administrator",
@@ -62,7 +59,7 @@ namespace Winterra.Controllers
 		public IActionResult Characters()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "characters",
@@ -79,7 +76,7 @@ namespace Winterra.Controllers
 		public IActionResult Highlights()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "highlights",
@@ -96,7 +93,7 @@ namespace Winterra.Controllers
 		public IActionResult Lore()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "lore",
@@ -112,7 +109,7 @@ namespace Winterra.Controllers
 		public IActionResult Features()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "features",
@@ -129,7 +126,7 @@ namespace Winterra.Controllers
 		public IActionResult News()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "news",
@@ -146,7 +143,7 @@ namespace Winterra.Controllers
 		public IActionResult Update()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "update",
@@ -163,7 +160,7 @@ namespace Winterra.Controllers
 		public IActionResult CodeOfConduct()
         {
 			var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "code-of-conduct",
@@ -180,7 +177,7 @@ namespace Winterra.Controllers
 		public IActionResult TermsOfUse()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "terms-of-use",
@@ -196,7 +193,7 @@ namespace Winterra.Controllers
 		public IActionResult PrivacyPolicy()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "privacy-policy",
@@ -213,7 +210,7 @@ namespace Winterra.Controllers
 		public IActionResult Playbook()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeViewModel
+            var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "playbook",
@@ -224,11 +221,5 @@ namespace Winterra.Controllers
 
 			return View(model);
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+    } 
 }

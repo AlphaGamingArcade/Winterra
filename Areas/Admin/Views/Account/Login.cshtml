@@ -1,0 +1,62 @@
+@using Winterra.Models.InputModels;
+@model Login
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>Admin Login</title>
+	<link type="text/css" href="~/assets/css/jquery-ui.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/assets/css/admin.css" />
+	<script src="~/assets/js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<div class="content" style="width:300px;margin:0 auto;margin-top:100px;">
+	<form asp-controller="Account" asp-action="Login" method="post">
+		<h2 style="text-align:center;">LOGIN</h2>
+		<div style="text-align: center;" asp-validation-summary="ModelOnly"></div>
+		<div class="tbl_frm01 tbl_wrap">
+			<table>
+				<tbody>
+					<tr>
+						<th scope="row">
+							<label for="po_subject">@Html.DisplayNameFor(m => m.Email)</label>
+						</th>
+						<td>
+							<input type="text" class="frm_input required" asp-for="Email" placeholder="@Html.DisplayNameFor(m=>m.Email)" />
+							<span class="text-danger" asp-validation-for="Email"></span>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<label for="po_subject">@Html.DisplayNameFor(m => m.Password)</label>
+						</th>
+						<td>
+							<input type="password" class="frm_input required" asp-for="Password" placeholder="@Html.DisplayNameFor(m=>m.Password)" />
+							<span class="text-danger" asp-validation-for="Password"></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        <div class="btn_confirm win_btn">
+			<button type="submit" class="btn btn_03" style="width:100%;">Login</button>
+		</div>
+    </form>
+</div>
+<script>
+	$(document).ready(function(){
+	 $(document).bind("contextmenu", function(e) {
+	  return false;
+	 });
+	});
+	$(document).bind('selectstart',function() {return false;}); 
+	$(document).bind('dragstart',function(){return false;}); 
+</script>
+</body>
+</html>

@@ -33,9 +33,12 @@ app.UseAuthorization();
 app.MapStaticAssets();
 
 app.MapControllerRoute(
+    name: "admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
