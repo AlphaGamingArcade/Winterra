@@ -35,7 +35,7 @@
                         <button type="button" class="tnb_mb_btn">@(Model.LoginUserInfo.Email)<span class="~/assets/images/btn_gnb.png">Open Menu</span></button>
                         <ul class="tnb_mb_area">
                             <li><a href="#">Admin Info</a></li>
-                            <li id="tnb_logout"><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+                            <li id="tnb_logout"><a asp-area="Admin" asp-controller="Account" asp-action="Logout">Logout</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -18,7 +18,7 @@ namespace Winterra.Areas.Admin.Controllers
 
         public AccountController(AccountDataAccess accountDataAccess)
         {
-            this._accountDataAccess = accountDataAccess;
+            _accountDataAccess = accountDataAccess;
         }
 
         [ValidateSession]
@@ -170,7 +170,7 @@ namespace Winterra.Areas.Admin.Controllers
             if (account != null)
                 _accountDataAccess.UpdateAfterLogout(account);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { area = "Admin" });
         }
     }
 }

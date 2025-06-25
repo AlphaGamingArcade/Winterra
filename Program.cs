@@ -10,7 +10,7 @@ builder.Services.AddScoped<ContentDataAccess>();
 builder.Services.AddAuthentication("Auth")
     .AddCookie("Auth", options => { 
         options.Cookie.Name = "Auth"; 
-        options.LoginPath = "/Account/Login";  
+        options.LoginPath = "/Admin/Account/Login";  
         options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
         options.AccessDeniedPath = "/Forbidden/";
     });
