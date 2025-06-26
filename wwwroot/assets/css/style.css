@@ -764,6 +764,7 @@ strong h3 {
   border-radius: 4px;
   bottom: -50px;
   top: unset;
+  z-index: 2;
 }
 .center .slick-next {
   right: 0px;
