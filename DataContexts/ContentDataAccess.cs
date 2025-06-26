@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
+using Winterra.Helpers;
 using Winterra.Models.DataModels;
 
 namespace Winterra.DataContexts
@@ -68,7 +69,7 @@ namespace Winterra.DataContexts
 				{
 					connection.Open();
 
-					string query = "SELECT TOP 10 * FROM ww_content where content_type = @content_type";
+					string query = "SELECT TOP 10 * FROM ww_content where content_type = @content_type order by content_published_at DESC";
 					using (SqlCommand command = new SqlCommand(query, connection))
 					{
 						command.Parameters.AddWithValue("@content_type", contentType);
@@ -150,7 +151,6 @@ namespace Winterra.DataContexts
 
 			return contentData;
 		}
-
 		public void DeleteContentData(int id)
 		{
 			try
@@ -177,7 +177,6 @@ namespace Winterra.DataContexts
 				Console.WriteLine($"Exception [ContentDataAccess -> DeleteContentData]: {ex.Message}");
 			}
 		}
-
 		public void UpdateAfterEdit(Content content)
 		{
 			using (SqlConnection connection = new SqlConnection(_connectionString))

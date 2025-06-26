@@ -1,16 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Winterra.Models.ViewModels;
 using System.Diagnostics;
+using Winterra.Services;
 
 namespace Winterra.Controllers
 {
     public class HomeController : Controller
     {
-		public HomeController(){}
+        private readonly ContentService _contentService;
+        public HomeController(ContentService contentService) {
+            _contentService = contentService;    
+        }
 
 		public IActionResult Index()
         {
-			return View();
+            var model = _contentService.GetHomeIndexViewModel();
+			return View(model);
         }
 
 

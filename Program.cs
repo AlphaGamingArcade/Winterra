@@ -1,4 +1,5 @@
 using Winterra.DataContexts;
+using Winterra.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AccountDataAccess>();
 builder.Services.AddScoped<ContentDataAccess>();
+builder.Services.AddScoped<ContentService>();
 
 
 // Add Services
