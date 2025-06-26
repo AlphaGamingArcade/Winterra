@@ -238,7 +238,7 @@ h2 {
   position: absolute;
   top: 0;
   right: 0;
-  background: url(../images/op_btn.png) 50% 50% no-repeat #5969c3;
+  background: url(/assets/images/op_btn.png) 50% 50% no-repeat #5969c3;
 }
 #tnb button:hover {
   background: #5969c3;
@@ -314,46 +314,46 @@ h2 {
   overflow: hidden;
 }
 #gnb .gnb_li .btn_op {
-  background: url(../images/menu_default.png) 50% 50% no-repeat #ebebeb;
+  background: url(/assets/images/menu_default.png) 50% 50% no-repeat #ebebeb;
 }
 #gnb .on .btn_op {
-  background: url(../images/menu_default_on.png) 50% 50% no-repeat #fff;
+  background: url(/assets/images/menu_default_on.png) 50% 50% no-repeat #fff;
 }
 #gnb .gnb_li .btn_op.menu-100 {
-  background: url(../images/menu-1-1.png) 50% 50% no-repeat #ebebeb;
+  background: url(/assets/images/menu-1-1.png) 50% 50% no-repeat #ebebeb;
 }
 #gnb .on .btn_op.menu-100 {
-  background: url(../images/menu-1.png) 50% 50% no-repeat #fff;
+  background: url(/assets/images/menu-1.png) 50% 50% no-repeat #fff;
 }
 #gnb .gnb_li .btn_op.menu-200 {
-  background: url(../images/menu-2-1.png) 50% 50% no-repeat #ebebeb;
+  background: url(/assets/images/menu-2-1.png) 50% 50% no-repeat #ebebeb;
 }
 #gnb .on .btn_op.menu-200 {
-  background: url(../images/menu-2.png) 50% 50% no-repeat #fff;
+  background: url(/assets/images/menu-2.png) 50% 50% no-repeat #fff;
 }
 #gnb .gnb_li .btn_op.menu-300 {
-  background: url(../images/menu-3-1.png) 50% 50% no-repeat #ebebeb;
+  background: url(/assets/images/menu-3-1.png) 50% 50% no-repeat #ebebeb;
 }
 #gnb .on .btn_op.menu-300 {
-  background: url(../images/menu-3.png) 50% 50% no-repeat #fff;
+  background: url(/assets/images/menu-3.png) 50% 50% no-repeat #fff;
 }
 #gnb .gnb_li .btn_op.menu-400 {
-  background: url(../images/menu-7-1.png) 50% 50% no-repeat #ebebeb;
+  background: url(/assets/images/menu-7-1.png) 50% 50% no-repeat #ebebeb;
 }
 #gnb .on .btn_op.menu-400 {
-  background: url(../images/menu-7.png) 50% 50% no-repeat #fff;
+  background: url(/assets/images/menu-7.png) 50% 50% no-repeat #fff;
 }
 #gnb .gnb_li .btn_op.menu-500 {
-  background: url(../images/menu-6-1.png) 50% 50% no-repeat #ebebeb;
+  background: url(/assets/images/menu-6-1.png) 50% 50% no-repeat #ebebeb;
 }
 #gnb .on .btn_op.menu-500 {
-  background: url(../images/menu-6.png) 50% 50% no-repeat #fff;
+  background: url(/assets/images/menu-6.png) 50% 50% no-repeat #fff;
 }
 #gnb .gnb_li .btn_op.menu-900 {
-  background: url(../images/menu-4-1.png) 50% 50% no-repeat #ebebeb;
+  background: url(/assets/images/menu-4-1.png) 50% 50% no-repeat #ebebeb;
 }
 #gnb .on .btn_op.menu-900 {
-  background: url(../images/menu-4.png) 50% 50% no-repeat #fff;
+  background: url(/assets/images/menu-4.png) 50% 50% no-repeat #fff;
 }
 #gnb .gnb_li button:hover {
   background-color: #f3f3f3;
@@ -1268,7 +1268,7 @@ legend {
   float: left;
   border: 1px solid #dcdcdc;
   border-left: 0;
-  background: url(../images/sch_btn.png) no-repeat 50% 50%;
+  background: url(/assets/images/sch_btn.png) no-repeat 50% 50%;
   text-indent: -999px;
   overflow: hidden;
 }
@@ -1277,7 +1277,7 @@ legend {
   height: 35px;
   padding: 0;
   border: 1px solid #dcdcdc;
-  background: url(../images/sch_btn.png) no-repeat 50% 50% #eee;
+  background: url(/assets/images/sch_btn.png) no-repeat 50% 50% #eee;
   text-indent: -999px;
   overflow: hidden;
 }
@@ -1308,7 +1308,7 @@ legend {
   height: 30px;
   border: 1px solid #dcdcdc;
   padding: 0;
-  background: url(../images/sch_btn.png) no-repeat 50% 50% #eee;
+  background: url(/assets/images/sch_btn.png) no-repeat 50% 50% #eee;
   text-indent: -999px;
   overflow: hidden;
 }
@@ -1658,7 +1658,7 @@ tfoot th {
 }
 
 .tbl_frm02 textarea {
-  height: 150px;
+  height: 320px;
 }
 
 .tbl_frm02 select {
@@ -4689,4 +4689,9 @@ strong.sodr_nonpay {
 
 .hidden {
   display: none;
+}
+
+/* Target the editable area of CKEditor */
+.ck-editor__editable {
+  min-height: 300px; /* Adjust this value as needed */
 }

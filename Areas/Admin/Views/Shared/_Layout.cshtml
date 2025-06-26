@@ -9,7 +9,7 @@
     <title>@Model.MenuTitle</title>
     <link type="text/css" href="~/assets/css/jquery-ui.css" rel="stylesheet" />
     <link type="text/css" href="~/assets/css/jquery-ui-timepicker.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/assets/css/admin.css?v=1" />
+    <link rel="stylesheet" href="~/assets/css/admin/admin.css?v=1" />
     @* CK EDITOR *@
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.css" crossorigin>
 	<link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5-premium-features/45.0.0/ckeditor5-premium-features.css" crossorigin>
@@ -32,7 +32,7 @@
                 <ul>
                     <li class="tnb_li"><a href="/" class="tnb_community" target="_blank" title="Go to Site">Go to Site</a></li>
                     <li class="tnb_li">
-                        <button type="button" class="tnb_mb_btn">@(Model.LoginUserInfo.Email)<span class="~/assets/images/btn_gnb.png">Open Menu</span></button>
+                        <button type="button" class="tnb_mb_btn">@(Model.LoginUserInfo.Email)<span>Open Menu</span></button>
                         <ul class="tnb_mb_area">
                             <li><a href="#">Admin Info</a></li>
                             <li id="tnb_logout"><a asp-area="Admin" asp-controller="Account" asp-action="Logout">Logout</a></li>
@@ -141,12 +141,11 @@
             $("body,html").animate({ scrollTop: 0 }, 400);
         });
     </script>
-    <script src="~/assets/js/admin.js"></script>
     <!-- #CKEDITOR-->
-    <script src="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.umd.js" crossorigin></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5-premium-features/45.0.0/ckeditor5-premium-features.umd.js" crossorigin></script>
-    <script src="https://cdn.ckbox.io/ckbox/2.6.1/ckbox.js" crossorigin></script>
-    <script src="~/assets/js/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
+    <script src="~/assets/js/ckeditor.js" asp-append-version="true"></script>
+   
+    <script src="~/assets/js/admin.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

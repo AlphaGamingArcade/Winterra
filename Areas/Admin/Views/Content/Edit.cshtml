@@ -11,7 +11,7 @@
                 <button type="submit" class="btn btn_delete">Delete</button>
             </form>
         </div>
-        <form asp-action="Edit" asp-route-menuIn="@Model.MenuIn">
+        <form id="edit-content-form" asp-action="Edit" asp-route-menuIn="@Model.MenuIn">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="@Model.Content.Id" />
             
@@ -80,3 +80,20 @@
         <span>Content not available</span>
     }
 </div>
+
+
+@section Scripts {
+    <script>
+        function initEditor() {
+            ClassicEditor.create(document.querySelector("#editor"), {
+                extraPlugins: [CustomUploadAdapterPluginFactory("edit-content-form")],
+            })
+                .then(() => {})
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+
+        initEditor();
+    </script>
+}

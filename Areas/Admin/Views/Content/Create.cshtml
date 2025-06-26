@@ -1,7 +1,7 @@
 @model ContentCreateViewModel
 
 <div class="container_wr" id="main-content">
-    <form asp-action="Create" asp-route-menuIn="@Model.MenuIn" method="post">
+    <form id="create-content-form" asp-action="Create" asp-route-menuIn="@Model.MenuIn" method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="row">
@@ -60,3 +60,20 @@
         </div>
     </form>
 </div>
+
+
+@section Scripts {
+    <script>
+        function initEditor() {
+            ClassicEditor.create(document.querySelector("#editor"), {
+                extraPlugins: [CustomUploadAdapterPluginFactory("create-content-form")],
+            })
+                .then(() => {})
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+
+        initEditor();
+    </script>
+}
