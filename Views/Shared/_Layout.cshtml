@@ -24,45 +24,45 @@
                 <nav class="header-menu">
                     <ul>
                         <li>
-                            <a href="" class="menu-item">Home</a>
+                            <a asp-controller="Home" asp-action="Index" class="menu-item">Home</a>
                         </li>
                         <li>
-                            <a href="" class="menu-item">Lore</a>
+                            <a asp-controller="Lore" asp-action="Index" class="menu-item">Lore</a>
                         </li>
                         <li>
-                            <a href="" class="menu-item">News</a>
+                            <a asp-controller="News" asp-action="Index" class="menu-item">News</a>
                         </li>
-                        <li>
-                            <a href="" class="menu-item">Stellar</a>
-                        </li>
-                        <li>
+                        @* <li>
+                            <a asp-controller="News" asp-action="Index" class="menu-item">Stellar</a>
+                        </li> *@
+                        @* <li>
                             <a href="" class="menu-item">Playbook</a>
-                        </li>
+                        </li> *@
                         <li>
-                            <a href="" class="menu-item">
+                            <a href="#" class="menu-item">
                                 Terms & Policies
                                 @* <svg class="menu-item_arrowIcon__W61OP menu-item-arrow" style="fill:currentColor" viewBox="0 0 24 24" width="16" height="16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6.22 9.375a1 1 0 0 1 1.405-.156L12 12.72l4.375-3.5a1 1 0 0 1 1.25 1.562l-5 4a1 1 0 0 1-1.25 0l-5-4a1 1 0 0 1-.156-1.406Z" fill="currentColor">
                                     </path>
                                 </svg> *@
                             </a>
-                            @* <ul class="sub-menu">
+                            <ul class="sub-menu">
                                 <li>
-                                    <a href="" class="menu-item">
-                                        privacy Policy
+                                    <a asp-controller="TermsAndPolicy" asp-action="PrivacyPolicy" class="menu-item">
+                                        Privacy Policy
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" class="menu-item">
-                                        Terms of User
+                                    <a asp-controller="TermsAndPolicy" asp-action="TermsofUse"  class="menu-item">
+                                        Terms of Use
                                     </a>
                                 </li>
                                <li>
-                                    <a href="" class="menu-item">
+                                    <a asp-controller="TermsAndPolicy" asp-action="CodeOfConduct" class="menu-item">
                                         Code of Conduct
                                     </a>
                                </li>
-                            </ul> *@
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -78,6 +78,55 @@
     </header>
     <main>
         @RenderBody()
+
+        <!-- Mobile menu -->
+        <section>
+            <div class="menu-nav">
+                <div class="menu-header">
+                    <img src="~/assets/images/logo-wintera-white.png" alt="">
+                    <button>
+                        <i class="fa-solid fa-xmark close-nav"></i>
+                    </button>
+                </div>
+                <div class="mobile-menu">
+                    <div class="mobile-menu-item">
+                        <span>About</span>
+                        <button>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        
+                    </div>
+                    <div class="mobile-menu-item">
+                        <span>NEWS</span>
+                    </div>
+                    <div class="mobile-menu-item">
+                        <span>LORE</span>
+                    </div>
+                    <div class="mobile-menu-item">
+                        <span>STELLAR</span>
+                    </div>
+                    <div class="mobile-menu-item">
+                        <span>Privacy Policy</span>
+                        <button>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="mobile-menu-item">
+                        <span>Terms Of Use</span>
+                        <button>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="mobile-menu-item">
+                        <span>Code of Conduct</span>
+                        <button>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>

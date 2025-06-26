@@ -4,11 +4,21 @@ using System.Diagnostics;
 
 namespace Winterra.Controllers
 {
-    public class HomeController : Controller
+    public class TermsAndPolicyController : Controller
     {
-		public HomeController(){}
+		public TermsAndPolicyController(){}
 
-		public IActionResult Index()
+		public IActionResult PrivacyPolicy()
+        {
+			return View();
+        }
+
+        public IActionResult TermsOfUse()
+        {
+			return View();
+        }
+
+        public IActionResult CodeOfConduct()
         {
 			return View();
         }

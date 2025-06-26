@@ -4,9 +4,9 @@ using System.Diagnostics;
 
 namespace Winterra.Controllers
 {
-    public class HomeController : Controller
+    public class LoreController : Controller
     {
-		public HomeController(){}
+		public LoreController(){}
 
 		public IActionResult Index()
         {
