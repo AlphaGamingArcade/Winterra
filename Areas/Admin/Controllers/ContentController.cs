@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Winterra.Areas.Admin.Models.ViewModels;
 using Winterra.DataContexts;
@@ -5,7 +6,10 @@ using Winterra.Models.DataModels;
 
 namespace Winterra.Areas.Admin.Controllers
 {
-    public class ContentController : BaseController {
+    [Authorize]
+    [ValidateSession]
+    public class ContentController : BaseController
+    {
         private readonly ContentDataAccess _contentDataAccess;
 
         public ContentController(ContentDataAccess contentDataAccess)
@@ -77,7 +81,7 @@ namespace Winterra.Areas.Admin.Controllers
         {
             string menuIn = "lore";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
-            
+
             // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 30;
@@ -138,7 +142,7 @@ namespace Winterra.Areas.Admin.Controllers
         {
             string menuIn = "news";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
-            
+
             // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 30;
@@ -288,8 +292,8 @@ namespace Winterra.Areas.Admin.Controllers
         {
             string menuIn = "playbook";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
-            
-           // Pagination config
+
+            // Pagination config
             int currentPage = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 30;
             string currentOrderBy = "content_published_at";
@@ -425,7 +429,7 @@ namespace Winterra.Areas.Admin.Controllers
             };
             return RedirectToAction(redirectTo, new { menuIn });
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(string? menuIn, int id)

@@ -7,6 +7,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AccountDataAccess>();
 builder.Services.AddScoped<ContentDataAccess>();
 
+
+// Add Services
+builder.Services.AddScoped<Winterra.Areas.Admin.Services.AccountService>();
+builder.Services.AddScoped<Winterra.Areas.Admin.Services.ContentService>();
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddAuthentication("Auth")
     .AddCookie("Auth", options => { 
         options.Cookie.Name = "Auth"; 

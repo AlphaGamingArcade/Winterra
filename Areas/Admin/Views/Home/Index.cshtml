@@ -14,35 +14,6 @@
     	
     <section style="float:left;width:49%;">
 		<h2>Recent Earning Activity</h2>
-		@* @if (Model.VisitList != null)
-		{
-			<link rel="stylesheet" href="assets/css/morris.css" />
-			<script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
-			<script type="text/javascript" src="assets/js/morris.min.js"></script>
-			<script type="text/javascript" src="assets/js/raphael-min.js"></script>
-
-			<div class="tbl_head01 tbl_wrap">
-				<div id="morris_chart_1" style="height:350px;"></div>
-			</div>
-			<script type="text/javascript">
-				const items = [
-					@foreach (var p in Model.VisitList)
-					{
-						<text>{ y: '@p.Date', a: '@p.Total', b: '@p.Web', c: '@p.Mobile' },</text>
-					}
-				];
-
-				jQuery(document).ready(function () {
-					new Morris.Line({
-					element: 'morris_chart_1',
-					data: items,
-					xkey: 'y',
-					ykeys: ['a', 'b', 'c'],
-					labels: ['방문자수', '웹', '모바일']
-					});
-				});
-			</script>
-		} *@
 	</section>
 	<section style="float:right;width:49%;">
 		<h2>Full Status Record</h2>

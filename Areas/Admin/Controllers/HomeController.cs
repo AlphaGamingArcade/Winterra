@@ -6,19 +6,20 @@ using Winterra.Models.DataModels;
 
 namespace Winterra.Areas.Admin.Controllers
 {
-    public class HomeController : BaseController {
+    [Authorize]
+    [ValidateSession]
+    public class HomeController : BaseController
+    {
         private readonly AccountDataAccess _accountDataAccess;
-		private readonly ContentDataAccess _contentDataAccess;
+        private readonly ContentDataAccess _contentDataAccess;
 
-		public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess)
+        public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess)
         {
-			_accountDataAccess = accountDataAccess;
-			_contentDataAccess = contentDataAccess;
-		}
+            _accountDataAccess = accountDataAccess;
+            _contentDataAccess = contentDataAccess;
+        }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult Index()
+        public IActionResult Index()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
@@ -26,37 +27,33 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 1,
                 MenuIn = "user",
                 MenuTitle = "Account Management",
-				UserAccountList = _accountDataAccess.GetAccountList(0),
+                UserAccountList = _accountDataAccess.GetAccountList(0),
                 OnlinePlayerCount = _accountDataAccess.GetOnlinePlayerCount(),
                 ActivePlayerCount = _accountDataAccess.GetPlayerCount(),
                 InGameStellarCount = _accountDataAccess.GetInGameStellarCount(),
-				LoginUserInfo = loginUser
-			};
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult Administrator()
+        public IActionResult Administrator()
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
             {
                 MenuOut = 1,
                 MenuIn = "administrator",
                 MenuTitle = "Account Management",
-				AdminAccountList = _accountDataAccess.GetAccountList(1),
-				LoginUserInfo = loginUser
-			};
+                AdminAccountList = _accountDataAccess.GetAccountList(1),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult Characters()
+        public IActionResult Characters()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
@@ -64,117 +61,102 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = "characters",
                 MenuTitle = "Content Management",
-				CharacterContentList = _contentDataAccess.GetContentList("characters"),
-				LoginUserInfo = loginUser
-			};
+                CharacterContentList = _contentDataAccess.GetContentList("characters"),
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult Highlights()
+        public IActionResult Highlights()
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "highlights",
                 MenuTitle = "Content Management",
-				HighlightContentList = _contentDataAccess.GetContentList("highlights"),
-				LoginUserInfo = loginUser
-			};
+                HighlightContentList = _contentDataAccess.GetContentList("highlights"),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult Lore()
+        public IActionResult Lore()
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "lore",
                 MenuTitle = "Content Management",
-				LoreContentList = _contentDataAccess.GetContentList("lore"),
-				LoginUserInfo = loginUser
-			};
-			return View(model);
+                LoreContentList = _contentDataAccess.GetContentList("lore"),
+                LoginUserInfo = loginUser
+            };
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult Features()
+        public IActionResult Features()
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "features",
                 MenuTitle = "Content Management",
-				FeatureContentList = _contentDataAccess.GetContentList("features"),
-				LoginUserInfo = loginUser
-			};
+                FeatureContentList = _contentDataAccess.GetContentList("features"),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult News()
+        public IActionResult News()
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "news",
                 MenuTitle = "Content Management",
-				NewsContentList = _contentDataAccess.GetContentList("news"),
-				LoginUserInfo = loginUser
-			};
+                NewsContentList = _contentDataAccess.GetContentList("news"),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult Update()
+        public IActionResult Update()
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "update",
                 MenuTitle = "Content Management",
-				UpdateContentList = _contentDataAccess.GetContentList("update"),
-				LoginUserInfo = loginUser
-			};
+                UpdateContentList = _contentDataAccess.GetContentList("update"),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult CodeOfConduct()
+        public IActionResult CodeOfConduct()
         {
-			var loginUser = HttpContext.Items["LoginUser"] as Account;
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
             {
                 MenuOut = 2,
                 MenuIn = "code-of-conduct",
                 MenuTitle = "Content Management",
-				CodeOfConductContentList = _contentDataAccess.GetContentList("code-of-conduct"),
-				LoginUserInfo = loginUser
-			};
+                CodeOfConductContentList = _contentDataAccess.GetContentList("code-of-conduct"),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult TermsOfUse()
+        public IActionResult TermsOfUse()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
@@ -182,15 +164,14 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = "terms-of-use",
                 MenuTitle = "Content Management",
-				TermsOfUseContentList = _contentDataAccess.GetContentList("terms-of-use"),
-				LoginUserInfo = loginUser
-			};
-			return View(model);
+                TermsOfUseContentList = _contentDataAccess.GetContentList("terms-of-use"),
+                LoginUserInfo = loginUser
+                
+            };
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult PrivacyPolicy()
+        public IActionResult PrivacyPolicy()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
@@ -198,16 +179,14 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = "privacy-policy",
                 MenuTitle = "Content Management",
-				PrivacyPolicyContentList = _contentDataAccess.GetContentList("privacy-policy"),
-				LoginUserInfo = loginUser
-			};
+                PrivacyPolicyContentList = _contentDataAccess.GetContentList("privacy-policy"),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
 
-        [Authorize]
-		[ValidateSession]
-		public IActionResult Playbook()
+        public IActionResult Playbook()
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
             var model = new HomeIndexViewModel
@@ -215,11 +194,11 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = "playbook",
                 MenuTitle = "Content Management",
-				PlaybookContentList = _contentDataAccess.GetContentList("playbook"),
-				LoginUserInfo = loginUser
-			};
+                PlaybookContentList = _contentDataAccess.GetContentList("playbook"),
+                LoginUserInfo = loginUser
+            };
 
-			return View(model);
+            return View(model);
         }
     } 
 }

@@ -21,6 +21,7 @@ namespace Winterra.Areas.Admin.Controllers
             _accountDataAccess = accountDataAccess;
         }
 
+        [Authorize]
         [ValidateSession]
         public IActionResult Index(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
@@ -48,6 +49,7 @@ namespace Winterra.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize]
         [ValidateSession]
         public IActionResult Administrator(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
