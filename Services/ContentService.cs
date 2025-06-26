@@ -1,5 +1,6 @@
 using Winterra.DataContexts;
 using Winterra.Helpers;
+using Winterra.Infrastructure.Exceptions;
 using Winterra.Models.DataModels;
 using Winterra.Models.ViewModels;
 
@@ -13,7 +14,8 @@ namespace Winterra.Services
             _contentDataAccess = contentDataAccess;
         }
 
-        private CharacterItemViewModel GetCharacterItemViewModel(Content content) {
+        private CharacterItemViewModel GetCharacterItemViewModel(Content content)
+        {
             return new CharacterItemViewModel
             {
                 Image = StringHelper.ExtractImageSrc(content.Data ?? string.Empty),
@@ -30,7 +32,8 @@ namespace Winterra.Services
             };
         }
 
-        private FeatureItemViewModel GetFeatureItemViewModel(Content content) {
+        private FeatureItemViewModel GetFeatureItemViewModel(Content content)
+        {
             return new FeatureItemViewModel
             {
                 Image = StringHelper.ExtractImageSrc(content.Data ?? string.Empty),
@@ -49,7 +52,8 @@ namespace Winterra.Services
         }
 
 
-        private NewsItemViewModel GetNewsItemViewModel(Content content) {
+        private NewsItemViewModel GetNewsItemViewModel(Content content)
+        {
             return new NewsItemViewModel
             {
                 Id = content.Id,
@@ -67,7 +71,8 @@ namespace Winterra.Services
             };
         }
 
-        private UpdateItemViewModel GetUpdateItemViewModel(Content content) {
+        private UpdateItemViewModel GetUpdateItemViewModel(Content content)
+        {
             return new UpdateItemViewModel
             {
                 Image = StringHelper.ExtractImageSrc(content.Data ?? string.Empty),
@@ -84,10 +89,11 @@ namespace Winterra.Services
             };
         }
 
-        private HighlightItemViewModel GetHighlightItemViewModel(Content content) {
+        private HighlightItemViewModel GetHighlightItemViewModel(Content content)
+        {
             return new HighlightItemViewModel
             {
-                // Image = content.Image,
+                Image = StringHelper.ExtractImageSrc(content.Data ?? string.Empty),
                 Name = content.Title ?? "",
             };
         }
@@ -100,7 +106,7 @@ namespace Winterra.Services
                 ItemList = contentItemList.ToList(),
             };
         }
-        
+
 
         public HomeIndexViewModel GetHomeIndexViewModel()
         {
@@ -108,15 +114,61 @@ namespace Winterra.Services
             var featureList = _contentDataAccess.GetContentList("features");
             var newsList = _contentDataAccess.GetContentList("news");
             var updateList = _contentDataAccess.GetContentList("update");
-            var highlightList = _contentDataAccess.GetContentList("highlight");
+            var highlightList = _contentDataAccess.GetContentList("highlights");
 
             return new HomeIndexViewModel
             {
+                MenuOut = 1,
                 CharacterItemList = GetCharacterItemListViewModel(characterList),
                 FeatureItemList = GetFeatureItemListViewModel(featureList),
                 NewsItemList = GetNewsItemListViewModel(newsList),
                 UpdateItemList = GetUpdateItemListViewModel(updateList),
                 HighlightItemList = GetHighlightItemListViewModel(highlightList),
+            };
+        }
+
+
+        private LoreItemViewModel GetLoreItemViewModel(Content content)
+        {
+            return new LoreItemViewModel
+            {
+                Id = content.Id,
+                Image = StringHelper.ExtractImageSrc(content.Data ?? ""),
+                Title = content.Title ?? "",
+                Content = content.Data ?? ""
+            };
+        }
+
+        private LoreItemListViewModel GetLoreItemListViewModel(List<Content> contentList)
+        {
+            var contentItemList = contentList.Select(GetLoreItemViewModel);
+            return new LoreItemListViewModel
+            {
+                ItemList = contentItemList.ToList(),
+            };
+        }
+
+        public LoreIndexViewModel GetLoreIndexViewModel()
+        {
+            var loreList = _contentDataAccess.GetContentList("lore");
+            return new LoreIndexViewModel
+            {
+                MenuOut = 2,
+                LoreItemList = GetLoreItemListViewModel(loreList)
+            };
+        }
+
+        public LoreDetailsViewModel GetLoreDetailsViewModel(long id)
+        {
+            var lore = _contentDataAccess.GetContentData(id);
+            if (lore == null)
+            {
+                throw new NotFoundException("Lore not found");
+            }
+            return new LoreDetailsViewModel
+            {
+                MenuOut = 2,
+                Item = GetLoreItemViewModel(lore)
             };
         }
     }

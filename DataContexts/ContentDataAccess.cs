@@ -104,7 +104,7 @@ namespace Winterra.DataContexts
 
 			return contentList;
 		}
-		public Content? GetContentData(int? id)
+		public Content? GetContentData(long? id)
 		{
 			Content? contentData = null;
 

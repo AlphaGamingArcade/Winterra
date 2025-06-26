@@ -15,65 +15,54 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link href="https://fonts.cdnfonts.com/css/grobold" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="header-container">
-            <div class="header-content"> 
-                <a href=""><img class="header-logo" src="~/assets/images/logo-wintera-white.png" alt=""></a>
+             <div class="header-content"> 
+                <a asp-controller="Home" asp-action="Index"><img class="header-logo" src="~/assets/images/logo-wintera-white.png" alt=""></a>
                 <nav class="header-menu">
                     <ul>
-                        <li>
-                            <a asp-controller="Home" asp-action="Index" class="menu-item">Home</a>
+                        <li >
+                            <a asp-controller="Home" asp-action="Index" class="menu-item @(Model.MenuOut == 1 ? "active" : "")">Home</a>
                         </li>
                         <li>
-                            <a asp-controller="Lore" asp-action="Index" class="menu-item">Lore</a>
+                            <a asp-controller="Lore" asp-action="Index" class="menu-item @(Model.MenuOut == 2 ? "active" : "")">Lore</a>
                         </li>
                         <li>
-                            <a asp-controller="News" asp-action="Index" class="menu-item">News</a>
+                            <a asp-controller="News" asp-action="Index" class="menu-item @(Model.MenuOut == 3 ? "active" : "")">News</a>
                         </li>
-                        @* <li>
-                            <a asp-controller="News" asp-action="Index" class="menu-item">Stellar</a>
-                        </li> *@
-                        @* <li>
-                            <a href="" class="menu-item">Playbook</a>
-                        </li> *@
                         <li>
-                            <a href="#" class="menu-item">
-                                Terms & Policies
-                                @* <svg class="menu-item_arrowIcon__W61OP menu-item-arrow" style="fill:currentColor" viewBox="0 0 24 24" width="16" height="16">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.22 9.375a1 1 0 0 1 1.405-.156L12 12.72l4.375-3.5a1 1 0 0 1 1.25 1.562l-5 4a1 1 0 0 1-1.25 0l-5-4a1 1 0 0 1-.156-1.406Z" fill="currentColor">
-                                    </path>
-                                </svg> *@
+                            <a asp-controller="Stellar" asp-action="Index" class="menu-item @(Model.MenuOut == 4 ? "active" : "")" class="menu-item">Stellar</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Playbook" asp-action="Index" class="menu-item @(Model.MenuOut == 5 ? "active" : "")">Playbook</a>
+                        </li>
+                        <li>
+                            <a class="menu-item @(Model.MenuOut == 6 ? "active" : "")" >
+                                Terms & Policies 
+                                <svg class="menu-item_arrowIcon__W61OP menu-item-arrow" style="fill:currentColor" viewBox="0 0 24 24" width="16" height="16"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.22 9.375a1 1 0 0 1 1.405-.156L12 12.72l4.375-3.5a1 1 0 0 1 1.25 1.562l-5 4a1 1 0 0 1-1.25 0l-5-4a1 1 0 0 1-.156-1.406Z" fill="currentColor"></path></svg>
                             </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a asp-controller="TermsAndPolicy" asp-action="PrivacyPolicy" class="menu-item">
-                                        Privacy Policy
-                                    </a>
-                                </li>
-                                <li>
-                                    <a asp-controller="TermsAndPolicy" asp-action="TermsofUse"  class="menu-item">
-                                        Terms of Use
-                                    </a>
-                                </li>
-                               <li>
-                                    <a asp-controller="TermsAndPolicy" asp-action="CodeOfConduct" class="menu-item">
-                                        Code of Conduct
-                                    </a>
-                               </li>
-                            </ul>
+                            <div class="sub-menu">
+                                <a asp-controller="TermsAndPolicy" asp-action="PrivacyPolicy" class="menu-item">Privacy Policy</a>
+                                <a asp-controller="TermsAndPolicy" asp-action="TermsOfUse" class="menu-item">Terms of use</a>
+                                <a asp-controller="TermsAndPolicy" asp-action="CodeOfConduct" class="menu-item">Code of conduct</a>
+                            </div>
                         </li>
                     </ul>
                 </nav>
              
                 <div class="mobile-menu-nav">
-                    <a href="" class="menu-item">Pre-register</a>
+                    <a href="#" class="menu-item" id="openDownload">Download</a>
                     <button id="openSideNav">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
             </div>
+            
+           
         </div>
     </header>
     <main>
@@ -128,6 +117,18 @@
             </div>
         </section>
     </main>
+    
+    
+    <div class="popup-download">
+        <span>DOWNLOAD ON</span>
+        <a href=""><img src="~/assets/images/googleplay.png" alt=""></a>
+        <a href=""><img src="~/assets/images/applestore.png" alt=""></a>
+        <button id="closeDownload">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M4.39573 25.605C2.96308 24.2213 1.82034 22.5661 1.03421 20.7361C0.248073 18.906 -0.16572 16.9377 -0.183027 14.946C-0.200335 12.9543 0.179191 10.9791 0.933404 9.13569C1.68762 7.29224 2.80141 5.61746 4.2098 4.20907C5.6182 2.80068 7.29297 1.68689 9.13642 0.932672C10.9799 0.178458 12.9551 -0.201067 14.9467 -0.18376C16.9384 -0.166453 18.9067 0.247341 20.7368 1.03348C22.5669 1.81961 24.222 2.96234 25.6057 4.395C28.3381 7.22403 29.85 11.0131 29.8158 14.946C29.7817 18.879 28.2041 22.6412 25.423 25.4223C22.6419 28.2034 18.8797 29.7809 14.9467 29.8151C11.0138 29.8493 7.22476 28.3374 4.39573 25.605ZM17.1007 15L21.3457 10.755L19.2307 8.64L15.0007 12.885L10.7557 8.64L8.64073 10.755L12.8857 15L8.64073 19.245L10.7557 21.36L15.0007 17.115L19.2457 21.36L21.3607 19.245L17.1157 15H17.1007Z" fill="black"/>
+                </svg>
+        </button>
+    </div>
 
     <footer>
         <div class="container_container py-1">

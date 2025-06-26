@@ -1,27 +1,21 @@
+@model LoreIndexViewModel
+
 <section class="lore-container">
     <div class="lore-header">
         <h2>Chronicles of Winterra</h2>
         <p>Unravel the stories of Winterra and the Terrarians</p>
     </div>
-    <div class="lore-body">
-        <div class="chapter-item">
-            <img src="~/assets/images/cover.jpg" alt="">
-            <h5>Issue #1: The Forgotten Temple</h5>
-            <div class="chapter-overlay"></div>
-        </div> 
-    </div>
-    <div class="lore-body">
-        <div class="chapter-item">
-            <img src="~/assets/images/cover.jpg" alt="">
-            <h5>Issue #1: The Forgotten Temple</h5>
-            <div class="chapter-overlay"></div>
-        </div> 
-    </div>
-    <div class="lore-body">
-        <div class="chapter-item">
-            <img src="~/assets/images/cover.jpg" alt="">
-            <h5>Issue #1: The Forgotten Temple</h5>
-            <div class="chapter-overlay"></div>
-        </div> 
+    <div class="lore-list">
+        @foreach(var lore in Model.LoreItemList.ItemList){
+            <div class="lore-body">
+                <a asp-controller="Lore" asp-action="Details" asp-route-id="@lore.Id">
+                    <div class="chapter-item">
+                        <img src="~/assets/images/cover.png" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
+                        <h5>@lore.Title</h5>
+                        <div class="chapter-overlay"></div>
+                    </div> 
+                </a>
+            </div>
+        }
     </div>
 </section>

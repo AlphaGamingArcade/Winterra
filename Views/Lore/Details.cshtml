@@ -1,3 +1,5 @@
+@model LoreDetailsViewModel
+
 <section class="lore-container">
     <div class="lore-header">
         <h2>Chronicles of Winterra</h2>
@@ -5,7 +7,7 @@
     </div>
     <div class="lore-body-view">
         <div class="page-item">
-            <img src="img/page 1.png" alt="">
+            @Html.Raw(Model.Item.Content)
         </div> 
     </div>
 </section>

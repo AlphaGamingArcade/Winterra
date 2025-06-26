@@ -1,6 +1,6 @@
 ﻿namespace Winterra.Models.ViewModels
 {
-  public class HomeIndexViewModel
+  public class HomeIndexViewModel : BaseViewModel
   {
     public CharacterItemListViewModel CharacterItemList { get; set; } = new();
     public FeatureItemListViewModel FeatureItemList { get; set; } = new(); 

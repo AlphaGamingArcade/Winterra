@@ -1,4 +1,5 @@
 using Winterra.DataContexts;
+using Winterra.Infrastructure.Middleware;
 using Winterra.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,9 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+// Global exception handling should be as early as possible
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseStaticFiles();
 app.UseHttpsRedirection();

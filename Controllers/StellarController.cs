@@ -5,22 +5,16 @@ using Winterra.Services;
 
 namespace Winterra.Controllers
 {
-    public class LoreController : Controller
+    public class StellarController : Controller
     {
         private readonly ContentService _contentService;
-        public LoreController(ContentService contentService) {
+        public StellarController(ContentService contentService) {
             _contentService = contentService;    
         }
 
 		public IActionResult Index()
         {
             var model = _contentService.GetLoreIndexViewModel();
-			return View(model);
-        }
-
-        public IActionResult Details(long id)
-        {
-            var model = _contentService.GetLoreDetailsViewModel(id);
 			return View(model);
         }
 
