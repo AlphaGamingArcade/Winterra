@@ -1,10 +1,13 @@
+@model StellarIndexViewModel
+
 <section>
     <div class="stellar-container">
-        <img class="stellar-coin" src="img/stellar-coin.gif" alt="">
+        <img class="stellar-coin" src="~/assets/images/stellar-coin.gif" alt="">
         <div class="stellar-paper">
-            <!-- <img src="img/stellar-paper.png" alt=""> -->
-            <p>Stellar is the native governance token of the WINTERRA universe, built using Substrate’s pallet-assets module. It empowers the community to participate in governance, propose and vote on key decisions, and help shape the ongoing development of the WINTERRA ecosystem.
-                Holders of Stellar can influence game updates, economic changes, and the allocation of assets from the Community Treasury, making them an integral part of WINTERRA’s future.</p>
-            </div>
+            @foreach(var stellar in Model.StellarItemList.ItemList){
+                <h3>@stellar.Title</h3>
+                @Html.Raw(stellar.Content)
+                <br />
+            }
     </div>
 </section>

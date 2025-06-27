@@ -14,7 +14,7 @@ namespace Winterra.Controllers
 
 		public IActionResult Index()
         {
-            var model = _contentService.GetLoreIndexViewModel();
+            var model = _contentService.GetStellarIndexViewModel();
 			return View(model);
         }
 

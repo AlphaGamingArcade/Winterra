@@ -148,6 +148,26 @@ namespace Winterra.Services
             };
         }
 
+        private StellarItemViewModel GetStellarItemViewModel(Content content)
+        {
+            return new StellarItemViewModel
+            {
+                Id = content.Id,
+                Title = content.Title ?? "",
+                Content = content.Data ?? ""
+            };
+        }
+
+        private StellarItemListViewModel GetStellarItemListViewModel(List<Content> contentList)
+        {
+            var contentItemList = contentList.Select(GetStellarItemViewModel);
+            return new StellarItemListViewModel
+            {
+                ItemList = contentItemList.ToList(),
+            };
+        }
+
+
         public LoreIndexViewModel GetLoreIndexViewModel()
         {
             var loreList = _contentDataAccess.GetContentList("lore");
@@ -171,5 +191,54 @@ namespace Winterra.Services
                 Item = GetLoreItemViewModel(lore)
             };
         }
+
+        public NewsIndexViewModel GetNewsIndexViewModel()
+        {
+            var newsList = _contentDataAccess.GetContentList("news");
+            return new NewsIndexViewModel
+            {
+                MenuOut = 3,
+                NewsItemList = GetNewsItemListViewModel(newsList),
+            };
+        }
+
+        public StellarIndexViewModel GetStellarIndexViewModel()
+        {
+            var newsList = _contentDataAccess.GetContentList("stellar");
+            return new StellarIndexViewModel
+            {
+                MenuOut = 4,
+                StellarItemList = GetStellarItemListViewModel(newsList),
+            };
+        } 
+
+        private PlaybookItemViewModel GetPlaybookItemViewModel(Content content)
+        {
+            return new PlaybookItemViewModel
+            {
+                Id = content.Id,
+                Title = content.Title ?? "",
+                Content = content.Data ?? ""
+            };
+        }
+
+        private PlaybookItemListViewModel GetPlaybookItemListViewModel(List<Content> contentList)
+        {
+            var contentItemList = contentList.Select(GetPlaybookItemViewModel);
+            return new PlaybookItemListViewModel
+            {
+                ItemList = contentItemList.ToList(),
+            };
+        }
+        
+        public PlaybookIndexViewModel GetPlaybookIndexViewModel()
+        {
+            var newsList = _contentDataAccess.GetContentList("playbook");
+            return new PlaybookIndexViewModel
+            {
+                MenuOut = 5,
+                PlaybookItemList = GetPlaybookItemListViewModel(newsList),
+            };
+        } 
     }
 }

@@ -1,7 +1,7 @@
 namespace Winterra.Models.ViewModels
 {
-  public class PlaybookIndexViewModel
+  public class PlaybookIndexViewModel : BaseViewModel
   {
-    public LoreItemListViewModel LoreItemList { get; set; } = new();
+    public PlaybookItemListViewModel PlaybookItemList { get; set; } = new();
 	}
 }
