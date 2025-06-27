@@ -15,78 +15,91 @@
 
 <section class="legacy-section">
     <img class="top-wave" src="~/assets/images/paper.png" alt="">
-    <div class="legacy-background ">
-        <div class="legacy-container ">
-            <span class="legacy-title">MEET THE TERRARIANS</span>
-            <div class="center">
-                 @foreach(var character in Model.CharacterItemList.ItemList){                                   
-                    <div>
-                        <div class="terrarians">
-                            <img src="@character.Image" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
-                        </div>
-                        <button class="terrarians-btn">
-                                <span>
-                                    @character.Name
-                                </span>
-                        </button>
-                    </div>
-                }
-                <!-- Add more slides here -->
-            </div>
-        </div>
-    </div>
-    <div class="legacy-background ">
-        <div class="legacy-container ">
-            <span class="legacy-title">FEATURES</span>
-            <div class="one-time">
-                 @foreach(var feature in Model.FeatureItemList.ItemList){
-                    <div class="one-time-content">
-                        <img src="@feature.Image" alt="@feature.Title" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
-                        <h1>@feature.Title</h1>
-                        <p>@feature.Description</p>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
-    <div class="legacy-background ">
-        <div class="legacy-container ">
-            <span class="legacy-title">NEWS</span>
-            <div class="d-flex w-100 legacy-news">
-                <div class="news-image">
-                    <div class="fades">
-                        @foreach(var update in Model.UpdateItemList.ItemList){
-                            <img src="@update.Image" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
-                        }
-                    </div>
-                    
-                </div>
-                <div class="news-list">
-                    <h1>Latest</h1>
-                    @foreach(var news in Model.NewsItemList.ItemList){
-                        <div class="item-list d-flex align-items-center justify-content-between">
-                            <a asp-controller="News" asp-action="Details" asp-route-id="@news.Id" asp-route-t="latest">@news.Title</a>
-                            <span>@news.PublishDate.ToString("MMM dd, yyyy")</span>
+    <!-- CHARACTERS -->
+    @if(Model.CharacterItemList.ItemList.Any()){
+        <div class="legacy-background ">
+            <div class="legacy-container ">
+                <span class="legacy-title">MEET THE TERRARIANS</span>
+                <div class="center">
+                    @foreach(var character in Model.CharacterItemList.ItemList){                                   
+                        <div>
+                            <div class="terrarians">
+                                <img src="@character.Image" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
+                            </div>
+                            <button class="terrarians-btn">
+                                    <span>
+                                        @character.Name
+                                    </span>
+                            </button>
                         </div>
                     }
                 </div>
             </div>
-        
         </div>
-    </div>
-    <div class="legacy-background ">
-        <div class="legacy-container ">
-            <div class="highlights-container">
-                @foreach(var highlight in Model.HighlightItemList.ItemList){
-                    <div class="ipad-container">
-                        <img class="ipad-content" src="@highlight.Image" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
-                    </div>
-                }
-                <img class="banner-highlights" src="~/assets/images/group-highlights.png" alt="">
-                <img class="char1" src="~/assets/images/char-rocket.png" alt="">
-                <img class="char2" src="~/assets/images/char-goblin.png" alt="">
+    }
+
+    <!-- Features -->
+    @if(Model.FeatureItemList.ItemList.Any()){
+        <div class="legacy-background ">
+            <div class="legacy-container" style="min-height: 400px;">
+                <span class="legacy-title">FEATURES</span>
+                <div class="one-time">
+                    @foreach(var feature in Model.FeatureItemList.ItemList){
+                        <div class="one-time-content">
+                            <img src="@feature.Image" alt="@feature.Title" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
+                            <h1>@feature.Title</h1>
+                            <p>@feature.Description</p>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    }
 
+    <!-- NEWS -->
+    @if(Model.UpdateItemList.ItemList.Any() || Model.NewsItemList.ItemList.Any()){
+        <div class="legacy-background ">
+            <div class="legacy-container ">
+                <span class="legacy-title">NEWS</span>
+                <div class="d-flex w-100 legacy-news">
+                    <div class="news-image">
+                        <div class="fades">
+                            @foreach(var update in Model.UpdateItemList.ItemList){
+                                <img src="@update.Image" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
+                            }
+                        </div>
+                        
+                    </div>
+                    <div class="news-list">
+                        <h1>Latest</h1>
+                        @foreach(var news in Model.NewsItemList.ItemList){
+                            <div class="item-list d-flex align-items-center justify-content-between">
+                                <a asp-controller="News" asp-action="Details" asp-route-id="@news.Id" asp-route-t="latest">@news.Title</a>
+                                <span>@news.PublishDate.ToString("MMM dd, yyyy")</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    }
+    
+    <!-- HIGHLIGHTS -->
+    @if(Model.HighlightItemList.ItemList.Any()){
+        <div class="legacy-background ">
+            <div class="legacy-container ">
+                <div class="highlights-container">
+                    @foreach(var highlight in Model.HighlightItemList.ItemList){
+                        <div class="ipad-container">
+                            <img class="ipad-content" src="@highlight.Image" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
+                        </div>
+                    }
+                    <img class="banner-highlights" src="~/assets/images/group-highlights.png" alt="">
+                    <img class="char1" src="~/assets/images/char-rocket.png" alt="">
+                    <img class="char2" src="~/assets/images/char-goblin.png" alt="">
+                </div>
+            </div>
+        </div>
+    }
+</section>
