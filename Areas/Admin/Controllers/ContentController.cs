@@ -386,7 +386,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn ?? "features",
                 MenuTitle = "Content Management",
-                Types = ContentEditViewModel.AvailableTypes,
+                Types = ContentTypeOptions.AvailableTypes,
                 Content = _contentDataAccess.GetContentData(id),
                 LoginUserInfo = loginUser
             };
@@ -442,7 +442,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn ?? "features",
                 MenuTitle = "Content Management",
-                Types = ContentCreateViewModel.AvailableTypes,
+                Types = ContentTypeOptions.AvailableTypes,
                 Content = new Content
                 {
                     Type = menuIn,
@@ -465,7 +465,7 @@ namespace Winterra.Areas.Admin.Controllers
                     MenuOut = 2,
                     MenuIn = menuIn ?? "characters",
                     MenuTitle = "Content Management",
-                    Types = ContentCreateViewModel.AvailableTypes,
+                    Types = ContentTypeOptions.AvailableTypes,
                     Content = content,
                     LoginUserInfo = loginUser
                 };
