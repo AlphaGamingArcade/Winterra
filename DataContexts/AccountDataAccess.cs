@@ -115,7 +115,7 @@ namespace Winterra.DataContexts
                                         Id = Convert.ToInt32(reader["id"]),
                                         Name = Convert.ToString(reader["name"]),
                                         DeviceId = Convert.ToString(reader["device_id"]),
-                                        Stellar = Convert.ToInt32(reader["stellar"]),
+                                        Stellar = Convert.ToInt32(reader["gems"]),
                                         IsOnline = Convert.ToInt32(reader["is_online"]),
                                         ClientId = Convert.ToInt32(reader["client_id"]),
                                         Trophies = Convert.ToInt32(reader["trophies"]),
@@ -269,7 +269,7 @@ namespace Winterra.DataContexts
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT SUM(CAST(stellar AS DECIMAL(18, 4))) AS cnt FROM accounts;";
+                    string query = "SELECT SUM(CAST(gems AS DECIMAL(18, 4))) AS cnt FROM accounts;";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -316,7 +316,7 @@ namespace Winterra.DataContexts
                                     Id = Convert.ToInt32(reader["id"]),
                                     Name = Convert.ToString(reader["name"]),
                                     DeviceId = Convert.ToString(reader["device_id"]),
-                                    Stellar = Convert.ToInt32(reader["stellar"]),
+                                    Stellar = Convert.ToInt32(reader["gems"]),
                                     IsOnline = Convert.ToInt32(reader["is_online"]),
                                     ClientId = Convert.ToInt32(reader["client_id"]),
                                     Trophies = Convert.ToInt32(reader["trophies"]),
@@ -388,7 +388,7 @@ namespace Winterra.DataContexts
                                         Id = Convert.ToInt32(reader["id"]),
                                         Name = Convert.ToString(reader["name"]),
                                         DeviceId = Convert.ToString(reader["device_id"]),
-                                        Stellar = Convert.ToInt32(reader["stellar"]),
+                                        Stellar = Convert.ToInt32(reader["gems"]),
                                         IsOnline = Convert.ToInt32(reader["is_online"]),
                                         ClientId = Convert.ToInt32(reader["client_id"]),
                                         Trophies = Convert.ToInt32(reader["trophies"]),
@@ -445,7 +445,7 @@ namespace Winterra.DataContexts
                         UPDATE accounts 
                         SET 
                             name = @account_name,
-                            stellar = @account_stellar,
+                            gems = @account_gems,
                             verified = @account_verified,
                             banned = @account_banned
                         WHERE id = @account_id";
@@ -454,7 +454,7 @@ namespace Winterra.DataContexts
                     {
                         command.Parameters.AddWithValue("@account_id", account.Id);
                         command.Parameters.AddWithValue("@account_name", account.Name);
-                        command.Parameters.AddWithValue("@account_stellar", account.Stellar);
+                        command.Parameters.AddWithValue("@account_gems", account.Stellar);
                         command.Parameters.AddWithValue("@account_verified", account.Verified);
                         command.Parameters.AddWithValue("@account_banned", account.Banned);
 
@@ -493,7 +493,7 @@ namespace Winterra.DataContexts
                     {
                         "name" => "name",
                         "email" => "email",
-                        "stellar" => "stellar",
+                        "gems" => "gems",
                         "level" => "level",
                         "xp" => "xp",
                         "last_login" => "last_login",
@@ -527,7 +527,7 @@ namespace Winterra.DataContexts
                                     Id = Convert.ToInt32(reader["id"]),
                                     Name = Convert.ToString(reader["name"]),
                                     DeviceId = Convert.ToString(reader["device_id"]),
-                                    Stellar = Convert.ToInt32(reader["stellar"]),
+                                    Stellar = Convert.ToInt32(reader["gems"]),
                                     IsOnline = Convert.ToInt32(reader["is_online"]),
                                     ClientId = Convert.ToInt32(reader["client_id"]),
                                     Trophies = Convert.ToInt32(reader["trophies"]),
