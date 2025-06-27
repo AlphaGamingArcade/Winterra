@@ -65,7 +65,7 @@
                     <h1>Latest</h1>
                     @foreach(var news in Model.NewsItemList.ItemList){
                         <div class="item-list d-flex align-items-center justify-content-between">
-                            <a asp-controller="News" asp-action="Details" asp-route-id="@news.Id">@news.Title</a>
+                            <a asp-controller="News" asp-action="Details" asp-route-id="@news.Id" asp-route-t="latest">@news.Title</a>
                             <span>@news.PublishDate.ToString("MMM dd, yyyy")</span>
                         </div>
                     }
@@ -89,3 +89,4 @@
         </div>
     </div>
 </section>
+
