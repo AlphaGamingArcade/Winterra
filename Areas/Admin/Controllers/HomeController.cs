@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Winterra.Areas.Admin.Models.ViewModels;
-using Winterra.DataContexts;
-using Winterra.Models.DataModels;
+using Winterra.Areas.Admin.Services;
 
 namespace Winterra.Areas.Admin.Controllers
 {
@@ -10,46 +8,23 @@ namespace Winterra.Areas.Admin.Controllers
     [ValidateSession]
     public class HomeController : BaseController
     {
-        private readonly AccountDataAccess _accountDataAccess;
-        private readonly ContentDataAccess _contentDataAccess;
+        private readonly AccountService _accountService;
 
-        public HomeController(AccountDataAccess accountDataAccess, ContentDataAccess contentDataAccess)
+        public HomeController(AccountService accountService)
         {
-            _accountDataAccess = accountDataAccess;
-            _contentDataAccess = contentDataAccess;
+            _accountService = accountService;
         }
 
         public IActionResult Index()
         {
-            var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeIndexViewModel
-            {
-                MenuOut = 1,
-                MenuIn = "user",
-                MenuTitle = "Account Management",
-                UserAccountList = _accountDataAccess.GetAccountList(0),
-                OnlinePlayerCount = _accountDataAccess.GetOnlinePlayerCount(),
-                ActivePlayerCount = _accountDataAccess.GetPlayerCount(),
-                InGameStellarCount = _accountDataAccess.GetInGameStellarCount(),
-                LoginUserInfo = loginUser
-            };
-
+            var model = _accountService.GetHomeIndexViewModel();
             return View(model);
         }
 
 
         public IActionResult Administrator()
         {
-            var loginUser = HttpContext.Items["LoginUser"] as Account;
-            var model = new HomeIndexViewModel
-            {
-                MenuOut = 1,
-                MenuIn = "administrator",
-                MenuTitle = "Account Management",
-                AdminAccountList = _accountDataAccess.GetAccountList(1),
-                LoginUserInfo = loginUser
-            };
-
+             var model = _accountService.GetHomeAdministratorViewModel();
             return View(model);
         }
     } 

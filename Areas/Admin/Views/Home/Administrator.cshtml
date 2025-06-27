@@ -1,10 +1,12 @@
-﻿<div class="container_wr" id="main-content">
+﻿@model HomeAdminstratorViewModel
+
+<div class="container_wr" id="main-content">
     <section>
         <h2>Administrator</h2>
         @await Html.PartialAsync("_AccountTablePartial", new AccountTableModel
         {
             MenuIn = Model.MenuIn,
-            Items = Model.AdminAccountList
+            Items = Model.AccountList
         })
 
         <div class="btn_list03 btn_list">

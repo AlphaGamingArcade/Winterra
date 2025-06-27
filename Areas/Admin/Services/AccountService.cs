@@ -14,65 +14,30 @@ namespace Winterra.Areas.Admin.Services
             _accountDataAccess = accountDataAccess;
         }
 
-        public AccountViewModel GetHomeIndexViewModel(SearchFilter filter)
+        public HomeIndexViewModel GetHomeIndexViewModel()
         {
             var loginUser = GetLoginUser();
-
-            int currentPage = filter.PageNumber ?? 1;
-            int currentPageSize = filter.PageSize ?? 30;
-            string currentOrderBy = "id";
-            string currentSortBy = SQLHelper.SanitizeSortBy(filter.SortBy);
-
-            int memberLevel = 1;
-            var total = _accountDataAccess.GetAccountCount(memberLevel, filter.Search);
-            var paged = _accountDataAccess.GetAccountListPaged(
-                currentPage,
-                currentPageSize,
-                memberLevel,
-                filter.Search,
-                currentOrderBy,
-                currentSortBy
-            );
-
-            return new AccountViewModel
+            return new HomeIndexViewModel
             {
                 MenuOut = 1,
                 MenuIn = "user",
                 MenuTitle = "Account Management",
-                UserAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
-                Search = filter.Search,
-                SortBy = filter.SortBy,
+                AccountList = _accountDataAccess.GetAccountList(0),
+                OnlinePlayerCount = _accountDataAccess.GetOnlinePlayerCount(),
+                ActivePlayerCount = _accountDataAccess.GetPlayerCount(),
+                InGameStellarCount = _accountDataAccess.GetInGameStellarCount(),
                 LoginUserInfo = loginUser
             };
         }
         
-         public AccountViewModel GetAdministratorViewModel(SearchFilter filter){
+         public HomeAdminstratorViewModel GetHomeAdministratorViewModel(){
             var loginUser = GetLoginUser();
-
-            int currentPage = filter.PageNumber ?? 1;
-            int currentPageSize = filter.PageSize ?? 30;
-            string currentOrderBy = "id";
-            string currentSortBy = SQLHelper.SanitizeSortBy(filter.SortBy);
-
-            int memberLevel = 3;
-            var total = _accountDataAccess.GetAccountCount(memberLevel, filter.Search);
-            var paged = _accountDataAccess.GetAccountListPaged(
-                currentPage,
-                currentPageSize,
-                memberLevel,
-                filter.Search,
-                currentOrderBy,
-                currentSortBy
-            );
-
-            return new AccountViewModel
+            return new HomeAdminstratorViewModel
             {
                 MenuOut = 1,
-                MenuIn = "admin",
+                MenuIn = "administrator",
                 MenuTitle = "Account Management",
-                UserAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
-                Search = filter.Search,
-                SortBy = filter.SortBy,
+                AccountList = _accountDataAccess.GetAccountList(1),
                 LoginUserInfo = loginUser
             };
         }
