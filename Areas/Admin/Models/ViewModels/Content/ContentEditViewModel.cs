@@ -12,7 +12,7 @@ namespace Winterra.Areas.Admin.Models.ViewModels
       new SelectListItem { Text = "Lore", Value = "lore" },
       new SelectListItem { Text = "Features", Value = "features" },
       new SelectListItem { Text = "News", Value = "news" },
-      new SelectListItem { Text = "Update", Value = "update" },
+      new SelectListItem { Text = "Updates", Value = "updates" },
       new SelectListItem { Text = "Code of Conduct", Value = "code-of-conduct" },
       new SelectListItem { Text = "Terms of Use", Value = "terms-of-use" },
       new SelectListItem { Text = "Privacy Policy", Value = "privacy-policy" },

@@ -113,7 +113,7 @@ namespace Winterra.Services
             var characterList = _contentDataAccess.GetContentList("characters");
             var featureList = _contentDataAccess.GetContentList("features");
             var newsList = _contentDataAccess.GetContentList("news");
-            var updateList = _contentDataAccess.GetContentList("update");
+            var updateList = _contentDataAccess.GetContentList("updates");
             var highlightList = _contentDataAccess.GetContentList("highlights");
 
             return new HomeIndexViewModel

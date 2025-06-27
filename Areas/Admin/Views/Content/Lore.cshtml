@@ -6,8 +6,8 @@
                 {
                     Search = Model.Search,
                     SortBy = Model.SortBy,
-                    PageNumber = Model.LoreContentList.PageNumber,
-                    PageSize = Model.LoreContentList.PageSize,
+                    PageNumber = Model.ContentList.PageNumber,
+                    PageSize = Model.ContentList.PageSize,
                     StartDate = Model.StartDate,
                     FinishDate = Model.FinishDate,
                     FormController = "Content",
@@ -20,8 +20,8 @@
                 {
                     Search = Model.Search,
                     SortBy = Model.SortBy,
-                    PageNumber = Model.LoreContentList.PageNumber,
-                    PageSize = Model.LoreContentList.PageSize,
+                    PageNumber = Model.ContentList.PageNumber,
+                    PageSize = Model.ContentList.PageSize,
                     StartDate = Model.StartDate,
                     FinishDate = Model.FinishDate,
                     FormController = "Content",
@@ -33,32 +33,32 @@
         @await Html.PartialAsync("_ContentTablePartial", new ContentTableModel
         {
             MenuIn = Model.MenuIn,
-            Items = Model.LoreContentList.Items
+            Items = Model.ContentList.Items
         })
 
         <ul class="pg_btn_list"> 
-            @if(Model.LoreContentList != null && Model.LoreContentList.Pages.Count > 0){
+            @if(Model.ContentList != null && Model.ContentList.Pages.Count > 0){
                 <li class="pg_item">
-                    <a class="pg_lnk @(Model.LoreContentList.HasPreviousPage ? "" : "disabled")" 
-                    asp-route-pageNumber="@(Model.LoreContentList.PageNumber - 1)"
-                    asp-route-pageSize="@Model.LoreContentList.PageSize"
+                    <a class="pg_lnk @(Model.ContentList.HasPreviousPage ? "" : "disabled")" 
+                    asp-route-pageNumber="@(Model.ContentList.PageNumber - 1)"
+                    asp-route-pageSize="@Model.ContentList.PageSize"
                     asp-route-search="@Model.Search"
                     asp-route-sortBy="@Model.SortBy">&laquo;</a>
                 </li>
-                @foreach (var pg in Model.LoreContentList.Pages)
+                @foreach (var pg in Model.ContentList.Pages)
                 {
                     <li class="pg_item">
-                        <a class="pg_lnk @(Model.LoreContentList.PageNumber == pg ? "active" : "")"
+                        <a class="pg_lnk @(Model.ContentList.PageNumber == pg ? "active" : "")"
                         asp-route-pageNumber="@pg"
-                        asp-route-pageSize="@Model.LoreContentList.PageSize"
+                        asp-route-pageSize="@Model.ContentList.PageSize"
                         asp-route-search="@Model.Search"
                         asp-route-sortBy="@Model.SortBy">@pg</a>
                     </li>
                 }
                 <li class="pg_item">
-                    <a class="pg_lnk @(Model.LoreContentList.HasNextPage ? "" : "disabled")" 
-                    asp-route-pageNumber="@(Model.LoreContentList.PageNumber + 1)"
-                    asp-route-pageSize="@Model.LoreContentList.PageSize"
+                    <a class="pg_lnk @(Model.ContentList.HasNextPage ? "" : "disabled")" 
+                    asp-route-pageNumber="@(Model.ContentList.PageNumber + 1)"
+                    asp-route-pageSize="@Model.ContentList.PageSize"
                     asp-route-search="@Model.Search"
                     asp-route-sortBy="@Model.SortBy">&raquo;</a>
                 </li>

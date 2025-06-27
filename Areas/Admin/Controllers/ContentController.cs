@@ -36,7 +36,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                CharacterContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -66,7 +66,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                HighlightContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -96,7 +96,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                LoreContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -126,7 +126,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -156,7 +156,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -186,7 +186,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -216,7 +216,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                NewsContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -227,9 +227,9 @@ namespace Winterra.Areas.Admin.Controllers
             return View(model);
         }
 
-        public IActionResult Update(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
+        public IActionResult Updates(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {
-            string menuIn = "update";
+            string menuIn = "updates";
             var loginUser = HttpContext.Items["LoginUser"] as Account;
 
             // Pagination config
@@ -246,7 +246,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                UpdateContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -276,7 +276,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                CodeOfConductContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -306,7 +306,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                TermsOfUseContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -336,7 +336,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                PrivacyPolicyContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -366,7 +366,7 @@ namespace Winterra.Areas.Admin.Controllers
                 MenuOut = 2,
                 MenuIn = menuIn,
                 MenuTitle = "Content Management",
-                PlaybookContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                ContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
                 Search = search,
                 SortBy = sortBy,
                 StartDate = startDate,
@@ -421,7 +421,7 @@ namespace Winterra.Areas.Admin.Controllers
                 "lore" => nameof(Lore),
                 "features" => nameof(Features),
                 "news" => nameof(News),
-                "update" => nameof(Update),
+                "updates" => nameof(Updates),
                 "code-of-conduct" => nameof(CodeOfConduct),
                 "terms-of-use" => nameof(TermsOfUse),
                 "privacy-policy" => nameof(PrivacyPolicy),
@@ -479,11 +479,13 @@ namespace Winterra.Areas.Admin.Controllers
                 "lore" => nameof(Lore),
                 "features" => nameof(Features),
                 "news" => nameof(News),
-                "update" => nameof(Update),
+                "updates" => nameof(Updates),
                 "code-of-conduct" => nameof(CodeOfConduct),
                 "terms-of-use" => nameof(TermsOfUse),
                 "privacy-policy" => nameof(PrivacyPolicy),
                 "playbook" => nameof(Playbook),
+                "stellar" => nameof(Stellar),
+                "events" => nameof(Events),
                 _ => nameof(Features)
             };
             return RedirectToAction(redirectTo, new { menuIn });
@@ -504,11 +506,13 @@ namespace Winterra.Areas.Admin.Controllers
                 "lore" => nameof(Lore),
                 "features" => nameof(Features),
                 "news" => nameof(News),
-                "update" => nameof(Update),
+                "updates" => nameof(Updates),
                 "code-of-conduct" => nameof(CodeOfConduct),
                 "terms-of-use" => nameof(TermsOfUse),
                 "privacy-policy" => nameof(PrivacyPolicy),
                 "playbook" => nameof(Playbook),
+                "stellar" => nameof(Stellar),
+                "events" => nameof(Events),
                 _ => nameof(Features)
             };
             return RedirectToAction(redirectTo, new { menuIn });
