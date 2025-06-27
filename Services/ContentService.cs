@@ -133,7 +133,7 @@ namespace Winterra.Services
             return new LoreItemViewModel
             {
                 Id = content.Id,
-                Image = StringHelper.ExtractImageSrc(content.Data ?? ""),
+                ImageList = StringHelper.ExtractImageSrcList(content.Data ?? ""),
                 Title = content.Title ?? "",
                 Content = content.Data ?? ""
             };

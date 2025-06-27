@@ -6,8 +6,10 @@
         <p>Unravel the stories of Winterra and the Terrarians</p>
     </div>
     <div class="lore-body-view">
-        <div class="page-item">
-            @Html.Raw(Model.Item.Content)
+        <div class="page-item container">
+            @foreach(var loreImg in Model.Item.ImageList){
+                <img src="@loreImg" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
+            }
         </div> 
     </div>
 </section>

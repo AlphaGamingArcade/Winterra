@@ -27,6 +27,31 @@ namespace Winterra.Helpers
 			return string.IsNullOrWhiteSpace(imageSrc) ? string.Empty : imageSrc;
 		}
 
+		public static List<string> ExtractImageSrcList(string input)
+		{
+			var imageSources = new List<string>();
+
+			if (string.IsNullOrEmpty(input))
+				return imageSources;
+
+			var htmlDoc = new HtmlDocument();
+			htmlDoc.LoadHtml(input);
+
+			var imgNodes = htmlDoc.DocumentNode.SelectNodes("//img");
+
+			if (imgNodes != null)
+			{
+				foreach (var img in imgNodes)
+				{
+					var src = img.GetAttributeValue("src", "");
+					if (!string.IsNullOrWhiteSpace(src))
+						imageSources.Add(src);
+				}
+			}
+
+			return imageSources;
+		}
+
 		public static string ExtractFirstParagraph(string input)
 		{
 			if (string.IsNullOrEmpty(input))
