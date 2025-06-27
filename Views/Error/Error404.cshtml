@@ -1,12 +1,10 @@
 @model Winterra.Models.ViewModels.ErrorViewModel
 
-<div class="d-flex justify-content-center align-items-center w-100 h-100">
-    <div class="position-relative">
-        <img src="~/assets/img/error401.png" alt="Not found">
-        <div class="error-body">
-            <span class="error-text">404</span>
-            <span class="error-details">SORRY, BUT THE PAGE YOU REQUESTED WAS NOT FOUND</span>
-            <button onclick="history.back()" class="primary-btn mt-5">GO BACK</button>
-        </div>
+<section class="error-container">
+    <div class="d-flex flex-column align-items-center mt-5 pt-5">
+        <img class="error-logo" src="/assets/images/error-logo.png" alt="">
+        <span class="error-title">404</span>
+        <span class="error-details">Page Not Found</span>
+        <button class="error-btn mt-5">Reload</button>
     </div>
-</div>
+</section>

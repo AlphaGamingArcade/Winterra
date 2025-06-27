@@ -1,12 +1,10 @@
 @model Winterra.Models.ViewModels.ErrorViewModel
 
-<div class="d-flex justify-content-center align-items-center w-100 h-100">
-    <div class="position-relative">
-        <img src="~/assets/img/error401.png" alt="Access Forbidden">
-        <div class="error-body text-center">
-            <span class="error-text">403</span>
-            <span class="error-details">Access Denied – You don’t have the required permissions to view this page.</span>
-            <button onclick="history.back()" class="primary-btn mt-5">Go Back</button>
-        </div>
+<section class="error-container">
+    <div class="d-flex flex-column align-items-center mt-5 pt-5">
+        <img class="error-logo" src="/assets/images/error-logo.png" alt="">
+        <span class="error-title">403</span>
+        <span class="error-details">Access Denied</span>
+        <button class="error-btn mt-5">Reload</button>
     </div>
-</div>
+</section>

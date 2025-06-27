@@ -17,6 +17,8 @@ html, body {
   font-weight: 500;
   overflow-y: auto;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 ::-webkit-scrollbar {
@@ -1836,6 +1838,10 @@ footer p {
   opacity: 1;
 }
 
+main {
+  flex: 1;
+}
+
 .stellar-container {
   position: relative;
   background-image: url(/assets/images/stellar-background.png);
@@ -1856,7 +1862,6 @@ footer p {
   margin-top: 100px;
 }
 .stellar-container .stellar-paper p {
-  margin-top: 50px;
   margin-left: 100px;
 }
 .stellar-container .stellar-coin {
@@ -1865,6 +1870,53 @@ footer p {
   flex-shrink: 0;
   aspect-ratio: 288/355;
   margin-top: 150px;
+}
+
+.error-container {
+  background: #BDCAD9;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-title {
+  color: #000;
+  font-size: 128px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.error-details {
+  color: #000;
+  text-align: center;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.error-logo {
+  max-width: 650px;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.error-btn {
+  display: flex;
+  width: 142px;
+  height: 40px;
+  padding: 4px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #000;
 }
 
 @media (max-width: 1024px) {
@@ -1885,7 +1937,6 @@ footer p {
     margin-left: 0;
   }
   .stellar-paper p {
-    margin-top: 100px !important;
     margin-left: 0 !important;
   }
 }

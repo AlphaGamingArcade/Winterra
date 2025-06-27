@@ -58,7 +58,9 @@ namespace Winterra.Services
             {
                 Id = content.Id,
                 Title = content.Title ?? "",
-                PublishDate = content.PublishedAt
+                PublishDate = content.PublishedAt,
+                Image = StringHelper.ExtractImageSrc(content.Data ?? ""),
+                Content = content.Data ?? ""
             };
         }
 
@@ -213,13 +215,41 @@ namespace Winterra.Services
         }
 
         // News
-        public NewsIndexViewModel GetNewsIndexViewModel()
+        public NewsIndexViewModel GetNewsIndexViewModel(string? t)
         {
-            var newsList = _contentDataAccess.GetContentList("news");
+            var tab = t ?? "latest";
+
+            var contentList = tab switch
+            {
+                "latest" => _contentDataAccess.GetContentListByTypeList(new List<string> { "news", "updates", "events" }),
+                "news" => _contentDataAccess.GetContentList("news"),
+                "updates" => _contentDataAccess.GetContentList("updates"),
+                "events" => _contentDataAccess.GetContentList("events"),
+                _ => _contentDataAccess.GetContentList("news")
+            };
+
             return new NewsIndexViewModel
             {
                 MenuOut = 3,
-                NewsItemList = GetNewsItemListViewModel(newsList),
+                NewsItemList = GetNewsItemListViewModel(contentList),
+                NewsTab = new NewsTabViewModel { Tab = tab }
+            };
+        }
+        
+        public NewsDetailsVideModel GetNewsDetailsViewModel(long id, string? t)
+        {
+            var tab = t ?? "latest";
+            var content = _contentDataAccess.GetContentData(id);
+            if (content == null)
+            {
+                throw new NotFoundException($"Content not found ID: {id}");
+            }
+
+            return new NewsDetailsVideModel
+            {
+                MenuOut = 3,
+                NewsItem = GetNewsItemViewModel(content),
+                NewsTab = new NewsTabViewModel { Tab = tab }
             };
         }
 

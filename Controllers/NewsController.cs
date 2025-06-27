@@ -12,9 +12,18 @@ namespace Winterra.Controllers
             _contentService = contentService;
         }
 
-		public IActionResult Index()
+		public IActionResult Index(string? t)
         {
-            var model = _contentService.GetNewsIndexViewModel();
+            var model = _contentService.GetNewsIndexViewModel(t);
+			return View(model);
+        }
+
+        public IActionResult Details(long id, string? t)
+        {
+            var model = _contentService.GetNewsDetailsViewModel(
+                id,
+                t
+            );
 			return View(model);
         }
 

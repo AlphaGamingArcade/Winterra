@@ -1,61 +1,35 @@
+@model NewsIndexViewModel
+
 <section>
     <div class="body-header">
         <h1>News & Updates</h1>
     </div>
     <div class="legacy-background flex-column justify-content-center align-items-center">
         <div class="container_container justify-content-between flex-column">
-            @await Html.PartialAsync("_NewsTab")
-
+            @await Html.PartialAsync("_NewsTab", Model.NewsTab)
             <div class="card-container mt-5 mb-5">
-    
-                <div class="card-item">
-                    <a href="">
-                        <img src="~/assets/images/background.png" alt="">
+                @foreach(var item in Model.NewsItemList.ItemList){
+                    <div class="card-item">
+                        <img src="@item.Image" alt="" onerror="this.onerror=null;this.src='/assets/images/placeholder.png';">
                         <div class="card-footer">
                             <div class="d-flex justify-content-between">
-                                <h3>News Title</h3>
-                                <span class="news-type">Info</span>
+                                <h3>@item.Title</h3>
+                                <span class="news-type" style="cursor: pointer;" data-url="@Url.Action("Details", "News", new { id = item.Id, t = Model.NewsTab.Tab })">Info</span>
                             </div>
-                            <span>April 01, 2025</span>
+                            <span>@item.PublishDate.ToString("MMMM dd, yyyy")</span>
                         </div>
-                    </a>
-                </div>
-                <div class="card-item">
-                    <a href="">
-                         <img src="~/assets/images/background.png" alt="">
-                        <div class="card-footer">
-                            <div class="d-flex justify-content-between">
-                                <h3>News Title</h3>
-                                <span class="news-type">Info</span>
-                            </div>
-                            <span>April 01, 2025</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-item">
-                    <a href="">
-                         <img src="~/assets/images/background.png" alt="">
-                        <div class="card-footer">
-                            <div class="d-flex justify-content-between">
-                                <h3>News Title</h3>
-                                <span class="news-type">Info</span>
-                            </div>
-                            <span>April 01, 2025</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-item">
-                    <a href="">
-                         <img src="~/assets/images/background.png" alt="">
-                        <div class="card-footer">
-                            <div class="d-flex justify-content-between">
-                                <h3>News Title</h3>
-                                <span class="news-type">Info</span>
-                            </div>
-                            <span>April 01, 2025</span>
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                }
             </div>
         </div>
 </section>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.news-type').forEach(el => {
+            el.addEventListener('click', () => {
+                location.href = el.getAttribute('data-url');
+            });
+        });
+    </script>
+}

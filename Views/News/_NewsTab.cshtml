@@ -1,8 +1,10 @@
+@model NewsTabViewModel
+
 <div class="sort-type mt-5">
     <div class="sort-items">
-        <button class="active">Latest</button>
-        <button>News</button>
-        <button>Updates</button>
-        <button>Events</button>
+        <button class="@(Model.Tab == "latest" ? "active": "")" onclick="location.href='@Url.Action("Index", "News", new { t = "latest" })'">Latest</button>
+        <button class="@(Model.Tab == "news" ? "active": "")" onclick="location.href='@Url.Action("Index", "News", new { t = "news" })'">News</button>
+        <button class="@(Model.Tab == "updates" ? "active": "")" onclick="location.href='@Url.Action("Index", "News", new { t = "updates" })'">Updates</button>
+        <button class="@(Model.Tab == "events" ? "active": "")" onclick="location.href='@Url.Action("Index", "News", new { t = "events" })'">Events</button>
     </div>
 </div>

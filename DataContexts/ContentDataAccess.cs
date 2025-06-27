@@ -104,6 +104,63 @@ namespace Winterra.DataContexts
 
 			return contentList;
 		}
+
+		public List<Content> GetContentListByTypeList(List<string> contentTypeList)
+		{
+			List<Content> contentList = new List<Content>();
+
+			if (contentTypeList == null || contentTypeList.Count == 0)
+				return contentList;
+
+			try
+			{
+				using (SqlConnection connection = new SqlConnection(_connectionString))
+				{
+					connection.Open();
+
+					// Dynamically build parameter placeholders
+					var parameters = contentTypeList.Select((type, index) => $"@type{index}").ToList();
+					string inClause = string.Join(", ", parameters);
+					string query = $"SELECT TOP 10 * FROM ww_content WHERE content_type IN ({inClause}) ORDER BY content_published_at DESC";
+
+					using (SqlCommand command = new SqlCommand(query, connection))
+					{
+						for (int i = 0; i < contentTypeList.Count; i++)
+						{
+							command.Parameters.AddWithValue($"@type{i}", contentTypeList[i]);
+						}
+
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							while (reader.Read())
+							{
+								Content content = new Content
+								{
+									Id = Convert.ToInt32(reader["content_id"]),
+									Type = Convert.ToString(reader["content_type"]),
+									Title = Convert.ToString(reader["content_title"]),
+									Data = Convert.ToString(reader["content_data"]),
+									PublishedAt = Convert.ToDateTime(reader["content_published_at"]),
+								};
+
+								contentList.Add(content);
+							}
+						}
+					}
+				}
+			}
+			catch (SqlException ex)
+			{
+				Console.WriteLine($"SQL-Exception [ContentDataAccess -> GetContentListByTypeList]: {ex.Message}");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Exception [ContentDataAccess -> GetContentListByTypeList]: {ex.Message}");
+			}
+
+			return contentList;
+		}
+
 		public Content? GetContentData(long? id)
 		{
 			Content? contentData = null;
