@@ -5,7 +5,9 @@
         <img class="stellar-coin" src="~/assets/images/stellar-coin.gif" alt="">
         <div class="stellar-paper">
             @foreach(var stellar in Model.StellarItemList.ItemList){
+                <br />
                 <h3>@stellar.Title</h3>
+                <br />
                 @Html.Raw(stellar.Content)
                 <br />
             }

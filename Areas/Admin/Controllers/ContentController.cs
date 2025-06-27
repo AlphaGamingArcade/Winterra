@@ -107,6 +107,65 @@ namespace Winterra.Areas.Admin.Controllers
             return View(model);
         }
 
+        public IActionResult Stellar(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
+        {
+            string menuIn = "stellar";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 30;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
+
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                Search = search,
+                SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
+                LoginUserInfo = loginUser
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Events(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
+        {
+            string menuIn = "events";
+            var loginUser = HttpContext.Items["LoginUser"] as Account;
+
+            // Pagination config
+            int currentPage = pageNumber ?? 1;
+            int currentPageSize = pageSize ?? 30;
+            string currentOrderBy = "content_published_at";
+            string currentSortBy = sortBy == "oldest" ? "asc" : "desc";
+
+            int total = _contentDataAccess.GetContentCount(menuIn, search, startDate, finishDate);
+            var paged = _contentDataAccess.GetContentListPaged(currentPage, currentPageSize, menuIn, search, currentOrderBy, currentSortBy, startDate, finishDate);
+
+            var model = new ContentViewModel
+            {
+                MenuOut = 2,
+                MenuIn = menuIn,
+                MenuTitle = "Content Management",
+                FeatureContentList = new Pagination<Content>(paged, total, currentPage, currentPageSize),
+                Search = search,
+                SortBy = sortBy,
+                StartDate = startDate,
+                FinishDate = finishDate,
+                LoginUserInfo = loginUser
+            };
+
+            return View(model);
+        }
 
         public IActionResult Features(int? pageNumber, int? pageSize, string? search, string? sortBy, DateTime? startDate, DateTime? finishDate)
         {

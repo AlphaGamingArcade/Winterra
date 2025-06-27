@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Winterra.Models.DataModels;
 
 namespace Winterra.Areas.Admin.Services
 {
@@ -11,9 +12,10 @@ namespace Winterra.Areas.Admin.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        protected string? GetCurrentAccount()
+        protected Account? GetLoginUser()
         {
-            return _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.Email)?.Value;
+            var loginUser = _httpContextAccessor.HttpContext?.Items["LoginUser"] as Account;
+            return loginUser;
         }
 
         // Add other common user-access methods as needed

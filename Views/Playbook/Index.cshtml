@@ -9,6 +9,7 @@
             @foreach(var playbook in Model.PlaybookItemList.ItemList){
                 <br />
                 <h3>@playbook.Title</h3>
+                <br />
                 @Html.Raw(playbook.Content)
                 <br />
             }

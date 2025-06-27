@@ -16,6 +16,8 @@ namespace Winterra.Areas.Admin.Services
 
         public AccountViewModel GetHomeIndexViewModel(SearchFilter filter)
         {
+            var loginUser = GetLoginUser();
+
             int currentPage = filter.PageNumber ?? 1;
             int currentPageSize = filter.PageSize ?? 30;
             string currentOrderBy = "id";
@@ -40,10 +42,13 @@ namespace Winterra.Areas.Admin.Services
                 UserAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
                 Search = filter.Search,
                 SortBy = filter.SortBy,
+                LoginUserInfo = loginUser
             };
         }
         
-         public AccountViewModel GetHomeAdministratorViewModel(SearchFilter filter){
+         public AccountViewModel GetAdministratorViewModel(SearchFilter filter){
+            var loginUser = GetLoginUser();
+
             int currentPage = filter.PageNumber ?? 1;
             int currentPageSize = filter.PageSize ?? 30;
             string currentOrderBy = "id";
@@ -68,6 +73,7 @@ namespace Winterra.Areas.Admin.Services
                 UserAccountList = new Pagination<Account>(paged, total, currentPage, currentPageSize),
                 Search = filter.Search,
                 SortBy = filter.SortBy,
+                LoginUserInfo = loginUser
             };
         }
     }
