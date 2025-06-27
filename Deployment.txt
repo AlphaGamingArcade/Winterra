@@ -1,0 +1,4 @@
+Publish App:
+
+dotnet publish -c Release -p:UseAppHost=false
+dotnet publish -c Debug -r win-x86 --self-contained

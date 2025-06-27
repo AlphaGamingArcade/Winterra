@@ -24,7 +24,7 @@ namespace Winterra.DataContexts
 
 					string query = @"
 						SELECT COUNT(*) AS cnt 
-						FROM ww_content 
+						FROM p2egames_content 
 						WHERE content_type = @content_type 
 						AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))
 						AND (@start_date IS NULL OR content_published_at >= @start_date)
@@ -69,7 +69,7 @@ namespace Winterra.DataContexts
 				{
 					connection.Open();
 
-					string query = "SELECT TOP 10 * FROM ww_content where content_type = @content_type order by content_published_at DESC";
+					string query = "SELECT TOP 10 * FROM p2egames_content where content_type = @content_type order by content_published_at DESC";
 					using (SqlCommand command = new SqlCommand(query, connection))
 					{
 						command.Parameters.AddWithValue("@content_type", contentType);
@@ -121,7 +121,7 @@ namespace Winterra.DataContexts
 					// Dynamically build parameter placeholders
 					var parameters = contentTypeList.Select((type, index) => $"@type{index}").ToList();
 					string inClause = string.Join(", ", parameters);
-					string query = $"SELECT TOP 10 * FROM ww_content WHERE content_type IN ({inClause}) ORDER BY content_published_at DESC";
+					string query = $"SELECT TOP 10 * FROM p2egames_content WHERE content_type IN ({inClause}) ORDER BY content_published_at DESC";
 
 					using (SqlCommand command = new SqlCommand(query, connection))
 					{
@@ -173,7 +173,7 @@ namespace Winterra.DataContexts
 					{
 						connection.Open();
 
-						string query = "SELECT * FROM ww_content WHERE content_id = @content_id";
+						string query = "SELECT * FROM p2egames_content WHERE content_id = @content_id";
 						using (SqlCommand command = new SqlCommand(query, connection))
 						{
 							command.Parameters.Add("@content_id", System.Data.SqlDbType.Int, 32).Value = id;
@@ -216,7 +216,7 @@ namespace Winterra.DataContexts
 				{
 					connection.Open();
 
-					string query = "DELETE FROM ww_content WHERE content_id = @content_id";
+					string query = "DELETE FROM p2egames_content WHERE content_id = @content_id";
 
 					using (SqlCommand command = new SqlCommand(query, connection))
 					{
@@ -243,7 +243,7 @@ namespace Winterra.DataContexts
 					connection.Open();
 
 					string query = @"
-                        UPDATE ww_content 
+                        UPDATE p2egames_content 
                         SET 
                             content_type = @content_type,
                             content_title = @content_title,
@@ -304,7 +304,7 @@ namespace Winterra.DataContexts
 					string safeSortBy = sortBy?.ToLower() == "desc" ? "DESC" : "ASC";
 
 					string query = $@"
-						SELECT * FROM ww_content
+						SELECT * FROM p2egames_content
 						WHERE content_type = @content_type 
 						AND (@content_title IS NULL OR LOWER(content_title) LIKE LOWER(@content_title))
 						AND (@start_date IS NULL OR content_published_at >= @start_date)
@@ -364,7 +364,7 @@ namespace Winterra.DataContexts
 					connection.Open();
 
 					string query = @"
-						INSERT INTO ww_content 
+						INSERT INTO p2egames_content 
 						(content_type, content_title, content_published_at, content_data) 
 						VALUES 
 						(@content_type, @content_title, @content_published_at, @content_data)";
