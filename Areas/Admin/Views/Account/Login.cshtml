@@ -19,7 +19,6 @@
 <div class="content" style="width:300px;margin:0 auto;margin-top:100px;">
 	<form asp-controller="Account" asp-action="Login" method="post">
 		<h2 style="text-align:center;">LOGIN</h2>
-		<div style="text-align: center;" asp-validation-summary="ModelOnly"></div>
 		<div class="tbl_frm01 tbl_wrap">
 			<table>
 				<tbody>
@@ -44,7 +43,9 @@
 				</tbody>
 			</table>
 		</div>
-        <div class="btn_confirm win_btn">
+		<div style="text-align: center;" class="text-danger" asp-validation-summary="ModelOnly"></div>
+        
+		<div class="btn_confirm win_btn">
 			<button type="submit" class="btn btn_03" style="width:100%;">Login</button>
 		</div>
     </form>
