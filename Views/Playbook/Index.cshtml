@@ -7,6 +7,7 @@
     <div class="legacy-background flex-column justify-content-center align-items-center">
         <div class="container_container justify-content-start flex-column align-items-start conduct container">
             @foreach(var playbook in Model.PlaybookItemList.ItemList){
+                <br />
                 <h3>@playbook.Title</h3>
                 @Html.Raw(playbook.Content)
                 <br />

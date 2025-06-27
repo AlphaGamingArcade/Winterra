@@ -158,6 +158,26 @@ namespace Winterra.Services
             };
         }
 
+        private TermsAndPolicyItemViewModel GetTermsAndPolicyItemViewModel(Content content)
+        {
+            return new TermsAndPolicyItemViewModel
+            {
+                Id = content.Id,
+                Title = content.Title ?? "",
+                Content = content.Data ?? ""
+            };
+        }
+
+
+        private TermsAndPolicyItemListViewModel GetTermsAndPolicyItemListViewModel(List<Content> contentList)
+        {
+            var contentItemList = contentList.Select(GetTermsAndPolicyItemViewModel);
+            return new TermsAndPolicyItemListViewModel
+            {
+                ItemList = contentItemList.ToList(),
+            };
+        }
+
         private StellarItemListViewModel GetStellarItemListViewModel(List<Content> contentList)
         {
             var contentItemList = contentList.Select(GetStellarItemViewModel);
@@ -192,6 +212,7 @@ namespace Winterra.Services
             };
         }
 
+        // News
         public NewsIndexViewModel GetNewsIndexViewModel()
         {
             var newsList = _contentDataAccess.GetContentList("news");
@@ -202,6 +223,7 @@ namespace Winterra.Services
             };
         }
 
+        // Stellar
         public StellarIndexViewModel GetStellarIndexViewModel()
         {
             var newsList = _contentDataAccess.GetContentList("stellar");
@@ -210,7 +232,7 @@ namespace Winterra.Services
                 MenuOut = 4,
                 StellarItemList = GetStellarItemListViewModel(newsList),
             };
-        } 
+        }
 
         private PlaybookItemViewModel GetPlaybookItemViewModel(Content content)
         {
@@ -230,7 +252,8 @@ namespace Winterra.Services
                 ItemList = contentItemList.ToList(),
             };
         }
-        
+
+        // Playbook
         public PlaybookIndexViewModel GetPlaybookIndexViewModel()
         {
             var newsList = _contentDataAccess.GetContentList("playbook");
@@ -238,6 +261,37 @@ namespace Winterra.Services
             {
                 MenuOut = 5,
                 PlaybookItemList = GetPlaybookItemListViewModel(newsList),
+            };
+        }
+
+        // TERMS & POLICIES
+        public PrivacyPolicyViewModel GetPrivacyPolicyViewModel()
+        {
+            var newsList = _contentDataAccess.GetContentList("privacy-policy");
+            return new PrivacyPolicyViewModel
+            {
+                MenuOut = 6,
+                TermsAndPolicyItemList = GetTermsAndPolicyItemListViewModel(newsList),
+            };
+        }
+
+        public TermsOfUseViewModel GetTermsOfUsViewModel()
+        {
+            var newsList = _contentDataAccess.GetContentList("terms-of-use");
+            return new TermsOfUseViewModel
+            {
+                MenuOut = 6,
+                TermsAndPolicyItemList = GetTermsAndPolicyItemListViewModel(newsList),
+            };
+        } 
+        
+        public CodeOfConductViewModel GetCodeOfConductViewModel()
+        {
+            var newsList = _contentDataAccess.GetContentList("code-of-conduct");
+            return new CodeOfConductViewModel
+            {
+                MenuOut = 6,
+                TermsAndPolicyItemList = GetTermsAndPolicyItemListViewModel(newsList),
             };
         } 
     }

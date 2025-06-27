@@ -1,26 +1,35 @@
 using Microsoft.AspNetCore.Mvc;
 using Winterra.Models.ViewModels;
 using System.Diagnostics;
+using Winterra.Services;
 
 namespace Winterra.Controllers
 {
     public class TermsAndPolicyController : Controller
     {
-		public TermsAndPolicyController(){}
+
+        private readonly ContentService _contentService;
+        public TermsAndPolicyController(ContentService contentService)
+        {
+            _contentService = contentService;
+        }
 
 		public IActionResult PrivacyPolicy()
         {
-			return View();
+            var model = _contentService.GetPrivacyPolicyViewModel();
+			return View(model);
         }
 
         public IActionResult TermsOfUse()
         {
-			return View();
+            var model = _contentService.GetTermsOfUsViewModel();
+			return View(model);
         }
 
         public IActionResult CodeOfConduct()
         {
-			return View();
+            var model = _contentService.GetCodeOfConductViewModel();
+			return View(model);
         }
 
 
