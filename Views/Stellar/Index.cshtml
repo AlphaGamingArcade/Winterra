@@ -6,10 +6,12 @@
         <div class="stellar-paper">
             <div class="ms-5 ps-5 mt-5">
                 @foreach(var stellar in Model.StellarItemList.ItemList){
-                    <br />
-                    <h3>@stellar.Title</h3>
-                    <br />
-                    @Html.Raw(stellar.Content)
+                        <br />
+                        <h3>@stellar.Title</h3>
+                        <br />
+                        <div class="ckeditor-content">
+                            @Html.Raw(stellar.Content)
+                        </div>
                     <br />
                 }
             </div>

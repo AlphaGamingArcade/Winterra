@@ -10,7 +10,9 @@
                 <br />
                 <h3>@playbook.Title</h3>
                 <br />
-                @Html.Raw(playbook.Content)
+                <div class="ckeditor-content">
+                    @Html.Raw(playbook.Content)
+                </div>
                 <br />
             }
         </div>

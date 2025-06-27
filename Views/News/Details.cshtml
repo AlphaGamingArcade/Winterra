@@ -9,7 +9,9 @@
             @await Html.PartialAsync("_NewsTab", Model.NewsTab)
 
             <div class="card-container mt-5 mb-5">
-                @Html.Raw(Model.NewsItem.Content)
+                <div class="ckeditor-content">
+                    @Html.Raw(Model.NewsItem.Content)
+                </div>
             </div>
         </div>
 </section>

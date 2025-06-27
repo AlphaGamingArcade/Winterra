@@ -67,6 +67,9 @@
         function initEditor() {
             ClassicEditor.create(document.querySelector("#editor"), {
                 extraPlugins: [CustomUploadAdapterPluginFactory("create-content-form")],
+                mediaEmbed: {
+                    previewsInData: true
+                }
             })
                 .then(() => {})
                 .catch((error) => {

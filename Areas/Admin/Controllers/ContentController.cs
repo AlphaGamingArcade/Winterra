@@ -426,6 +426,8 @@ namespace Winterra.Areas.Admin.Controllers
                 "terms-of-use" => nameof(TermsOfUse),
                 "privacy-policy" => nameof(PrivacyPolicy),
                 "playbook" => nameof(Playbook),
+                "stellar" => nameof(Stellar),
+                "events" => nameof(Events),
                 _ => nameof(Features)
             };
             return RedirectToAction(redirectTo, new { menuIn });

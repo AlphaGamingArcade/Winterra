@@ -10,7 +10,9 @@
                 <br />
                     <h3>@stellar.Title</h3>
                     <br />
-                    @Html.Raw(stellar.Content)
+                    <div class="ckeditor-content">
+                        @Html.Raw(stellar.Content)
+                    </div>
                 <br />
             }
         </div>

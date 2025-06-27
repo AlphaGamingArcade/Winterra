@@ -2097,3 +2097,166 @@ main {
     width: calc(50% - 5px);
   }
 } /*# sourceMappingURL=style.css.map */
+
+/* Main wrapper for CKEditor content */
+.ckeditor-content {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Headings */
+.ckeditor-content h1,
+.ckeditor-content h2,
+.ckeditor-content h3,
+.ckeditor-content h4,
+.ckeditor-content h5,
+.ckeditor-content h6 {
+  margin: 1.2em 0 0.5em;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Paragraphs */
+.ckeditor-content p {
+  margin: 0.5em 0;
+}
+
+/* Bold / Italic / Underline */
+.ckeditor-content b,
+.ckeditor-content strong {
+  font-weight: bold;
+}
+
+.ckeditor-content i,
+.ckeditor-content em {
+  font-style: italic;
+}
+
+.ckeditor-content u {
+  text-decoration: underline;
+}
+
+/* Links */
+.ckeditor-content a {
+  color: #007bff;
+  text-decoration: underline;
+}
+.ckeditor-content a:hover {
+  color: #0056b3;
+}
+
+/* Lists */
+.ckeditor-content ul,
+.ckeditor-content ol {
+  margin: 1em 0;
+  padding-left: 2em;
+}
+
+.ckeditor-content li {
+  margin: 0.3em 0;
+}
+
+/* Blockquotes */
+.ckeditor-content blockquote {
+  border-left: 4px solid #ccc;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  background-color: #f9f9f9;
+  color: #555;
+  font-style: italic;
+}
+
+/* Code blocks */
+.ckeditor-content pre {
+  background-color: #f4f4f4;
+  padding: 1em;
+  overflow-x: auto;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.ckeditor-content code {
+  background-color: #f4f4f4;
+  padding: 0.2em 0.4em;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+/* Horizontal rules */
+.ckeditor-content hr {
+  margin: 2em 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+/* Images */
+.ckeditor-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em 0;
+  border-radius: 4px;
+}
+
+/* Video & Iframes */
+.ckeditor-content iframe,
+.ckeditor-content video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em 0;
+  border: none;
+}
+
+/* Tables: clean, with borders only */
+.ckeditor-content table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  border: 1px solid #ccc;
+}
+
+.ckeditor-content th,
+.ckeditor-content td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  background: transparent;
+}
+
+.ckeditor-content thead {
+  background: transparent;
+  font-weight: bold;
+}
+
+/* Optional: hover effect for rows */
+.ckeditor-content tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Alignment classes (optional from CKEditor styles) */
+.ckeditor-content .text-left {
+  text-align: left;
+}
+.ckeditor-content .text-center {
+  text-align: center;
+}
+.ckeditor-content .text-right {
+  text-align: right;
+}
+.ckeditor-content .text-justify {
+  text-align: justify;
+}
+
+.ckeditor-content iframe {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: none;
+}
