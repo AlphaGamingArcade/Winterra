@@ -4,7 +4,8 @@ using Winterra.Helpers;
 
 namespace Winterra.Areas.Admin.Controllers
 {
-     public class UploadController : BaseController
+    [Authorize(AuthenticationSchemes = "Auth")]
+    public class UploadController : BaseController
     {
         private readonly IWebHostEnvironment _environment;
 
@@ -16,7 +17,6 @@ namespace Winterra.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         [Route("Upload/Attach/Image")]
         public async Task<IActionResult> UploadAttachImage(IFormFile upload)
         {
@@ -68,7 +68,6 @@ namespace Winterra.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         [Route("Upload/Banner")]
         public async Task<IActionResult> UploadBanner(IFormFile upload)
         {

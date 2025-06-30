@@ -21,8 +21,8 @@ namespace Winterra.Areas.Admin.Controllers
             _accountDataAccess = accountDataAccess;
         }
 
-        [Authorize]
-        [ValidateSession]
+        [Authorize(AuthenticationSchemes = "Auth")]
+        [AttachLoginUser]
         public IActionResult Index(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -49,8 +49,8 @@ namespace Winterra.Areas.Admin.Controllers
             return View(model);
         }
 
-        [Authorize]
-        [ValidateSession]
+        [Authorize(AuthenticationSchemes = "Auth")]
+        [AttachLoginUser]
         public IActionResult Administrator(int? pageNumber, int? pageSize, string? search, string? sortBy)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -77,7 +77,7 @@ namespace Winterra.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        [ValidateSession]
+        [AttachLoginUser]
         public IActionResult Edit(string? menuIn, int id)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -94,7 +94,7 @@ namespace Winterra.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateSession]
+        [AttachLoginUser]
         public IActionResult Edit(string? menuIn, Account account)
         {
             var loginUser = HttpContext.Items["LoginUser"] as Account;
@@ -144,7 +144,7 @@ namespace Winterra.Areas.Admin.Controllers
 
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, member.Email),
+                        new Claim(ClaimTypes.Email, member.Email),
                         new Claim(ClaimTypes.Hash, session)
                     };
 
@@ -157,6 +157,7 @@ namespace Winterra.Areas.Admin.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+
                 ModelState.AddModelError("", "Invalid username or password");
             }
             return View(member);
@@ -165,12 +166,12 @@ namespace Winterra.Areas.Admin.Controllers
         [Authorize]
         public async Task<IActionResult> Logout()
         {
-            string? account = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+            string? email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
 
             await HttpContext.SignOutAsync();
 
-            if (account != null)
-                _accountDataAccess.UpdateAfterLogout(account);
+            if (email != null)
+                _accountDataAccess.UpdateAfterLogout(email);
 
             return RedirectToAction("Index", "Home", new { area = "Admin" });
         }

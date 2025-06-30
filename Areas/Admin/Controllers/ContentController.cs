@@ -6,8 +6,8 @@ using Winterra.Models.DataModels;
 
 namespace Winterra.Areas.Admin.Controllers
 {
-    [Authorize]
-    [ValidateSession]
+    [Authorize(AuthenticationSchemes = "Auth")]
+    [AttachLoginUser]
     public class ContentController : BaseController
     {
         private readonly ContentDataAccess _contentDataAccess;

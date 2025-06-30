@@ -4,8 +4,8 @@ using Winterra.Areas.Admin.Services;
 
 namespace Winterra.Areas.Admin.Controllers
 {
-    [Authorize]
-    [ValidateSession]
+    [Authorize(AuthenticationSchemes = "Auth")]
+    [AttachLoginUser]
     public class HomeController : BaseController
     {
         private readonly AccountService _accountService;

@@ -14,6 +14,42 @@ namespace Winterra.DataContexts
             this._connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        private Account MapToAccount(SqlDataReader reader)
+        {
+            return new Account
+            {
+                Id = Convert.ToInt32(reader["id"]),
+                Name = Convert.ToString(reader["name"]),
+                DeviceId = Convert.ToString(reader["device_id"]),
+                Stellar = Convert.ToInt32(reader["gems"]),
+                IsOnline = Convert.ToInt32(reader["is_online"]),
+                ClientId = Convert.ToInt32(reader["client_id"]),
+                Trophies = Convert.ToInt32(reader["trophies"]),
+                Banned = Convert.ToInt32(reader["banned"]),
+                Shield = Convert.ToDateTime(reader["shield"]),
+                Xp = Convert.ToInt32(reader["xp"]),
+                Level = Convert.ToInt32(reader["level"]),
+                ClanJoinTimer = reader.IsDBNull(reader.GetOrdinal("clan_join_timer")) ? (DateTime?)null : Convert.ToDateTime(reader["clan_join_timer"]),
+                ClanId = Convert.ToInt32(reader["clan_id"]),
+                ClanRank = Convert.ToInt32(reader["clan_rank"]),
+                WarId = Convert.ToInt32(reader["war_id"]),
+                GlobalChatBlocked = Convert.ToInt32(reader["global_chat_blocked"]),
+                LastChat = reader.IsDBNull(reader.GetOrdinal("last_chat")) ? (DateTime?)null : Convert.ToDateTime(reader["last_chat"]),
+                ChatColor = Convert.ToString(reader["chat_color"]),
+                Email = Convert.ToString(reader["email"]),
+                Password = Convert.ToString(reader["password"]),
+                MapLayout = Convert.ToInt32(reader["map_layout"]),
+                ShieldCouldron1 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_1")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_1"]),
+                ShieldCouldron2 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_2")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_2"]),
+                ShieldCouldron3 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_3")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_3"]),
+                LastLogin = reader.IsDBNull(reader.GetOrdinal("last_login")) ? (DateTime?)null : Convert.ToDateTime(reader["last_login"]),
+                CampaignLevel = Convert.ToInt32(reader["campaign_level"]),
+                Admin = Convert.ToInt32(reader["admin"]),
+                Verified = Convert.ToString(reader["verified"]),
+                Session = Convert.ToString(reader["account_session"])  
+            };
+        }
+
         public bool CheckLogin(Login account)
         {
             bool isLoginSuccessful = false;
@@ -112,35 +148,7 @@ namespace Winterra.DataContexts
                                 {
                                     accountData = new Account
                                     {
-                                        Id = Convert.ToInt32(reader["id"]),
-                                        Name = Convert.ToString(reader["name"]),
-                                        DeviceId = Convert.ToString(reader["device_id"]),
-                                        Stellar = Convert.ToInt32(reader["gems"]),
-                                        IsOnline = Convert.ToInt32(reader["is_online"]),
-                                        ClientId = Convert.ToInt32(reader["client_id"]),
-                                        Trophies = Convert.ToInt32(reader["trophies"]),
-                                        Banned = Convert.ToInt32(reader["banned"]),
-                                        Shield = Convert.ToDateTime(reader["shield"]),
-                                        Xp = Convert.ToInt32(reader["xp"]),
-                                        Level = Convert.ToInt32(reader["level"]),
-                                        ClanJoinTimer = reader.IsDBNull(reader.GetOrdinal("clan_join_timer")) ? (DateTime?)null : Convert.ToDateTime(reader["clan_join_timer"]),
-                                        ClanId = Convert.ToInt32(reader["clan_id"]),
-                                        ClanRank = Convert.ToInt32(reader["clan_rank"]),
-                                        WarId = Convert.ToInt32(reader["war_id"]),
-                                        GlobalChatBlocked = Convert.ToInt32(reader["global_chat_blocked"]),
-                                        LastChat = reader.IsDBNull(reader.GetOrdinal("last_chat")) ? (DateTime?)null : Convert.ToDateTime(reader["last_chat"]),
-                                        ChatColor = Convert.ToString(reader["chat_color"]),
-                                        Email = Convert.ToString(reader["email"]),
-                                        Password = Convert.ToString(reader["password"]),
-                                        MapLayout = Convert.ToInt32(reader["map_layout"]),
-                                        ShieldCouldron1 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_1")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_1"]),
-                                        ShieldCouldron2 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_2")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_2"]),
-                                        ShieldCouldron3 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_3")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_3"]),
-                                        LastLogin = reader.IsDBNull(reader.GetOrdinal("last_login")) ? (DateTime?)null : Convert.ToDateTime(reader["last_login"]),
-                                        CampaignLevel = Convert.ToInt32(reader["campaign_level"]),
-                                        Admin = Convert.ToInt32(reader["admin"]),
-                                        Verified = Convert.ToString(reader["verified"]),
-                                        Session = Convert.ToString(reader["account_session"])
+                                        
                                     };
                                 }
                             }
@@ -311,40 +319,7 @@ namespace Winterra.DataContexts
                         {
                             while (reader.Read())
                             {
-                                Account character = new Account
-                                {
-                                    Id = Convert.ToInt32(reader["id"]),
-                                    Name = Convert.ToString(reader["name"]),
-                                    DeviceId = Convert.ToString(reader["device_id"]),
-                                    Stellar = Convert.ToInt32(reader["gems"]),
-                                    IsOnline = Convert.ToInt32(reader["is_online"]),
-                                    ClientId = Convert.ToInt32(reader["client_id"]),
-                                    Trophies = Convert.ToInt32(reader["trophies"]),
-                                    Banned = Convert.ToInt32(reader["banned"]),
-                                    Shield = Convert.ToDateTime(reader["shield"]),
-                                    Xp = Convert.ToInt32(reader["xp"]),
-                                    Level = Convert.ToInt32(reader["level"]),
-                                    ClanJoinTimer = reader.IsDBNull(reader.GetOrdinal("clan_join_timer")) ? (DateTime?)null : Convert.ToDateTime(reader["clan_join_timer"]),
-                                    ClanId = Convert.ToInt32(reader["clan_id"]),
-                                    ClanRank = Convert.ToInt32(reader["clan_rank"]),
-                                    WarId = Convert.ToInt32(reader["war_id"]),
-                                    GlobalChatBlocked = Convert.ToInt32(reader["global_chat_blocked"]),
-                                    LastChat = reader.IsDBNull(reader.GetOrdinal("last_chat")) ? (DateTime?)null : Convert.ToDateTime(reader["last_chat"]),
-                                    ChatColor = Convert.ToString(reader["chat_color"]),
-                                    Email = Convert.ToString(reader["email"]),
-                                    Password = Convert.ToString(reader["password"]),
-                                    MapLayout = Convert.ToInt32(reader["map_layout"]),
-                                    ShieldCouldron1 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_1")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_1"]),
-                                    ShieldCouldron2 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_2")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_2"]),
-                                    ShieldCouldron3 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_3")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_3"]),
-                                    LastLogin = reader.IsDBNull(reader.GetOrdinal("last_login")) ? (DateTime?)null : Convert.ToDateTime(reader["last_login"]),
-                                    CampaignLevel = Convert.ToInt32(reader["campaign_level"]),
-                                    Admin = Convert.ToInt32(reader["admin"]),
-                                    Verified = Convert.ToString(reader["verified"]),
-                                    Session = Convert.ToString(reader["account_session"])
-                                };
-
-                                accountList.Add(character);
+                                accountList.Add(MapToAccount(reader));
                             }
                         }
 
@@ -383,38 +358,7 @@ namespace Winterra.DataContexts
                             {
                                 if (reader.Read())
                                 {
-                                    accountData = new Account
-                                    {
-                                        Id = Convert.ToInt32(reader["id"]),
-                                        Name = Convert.ToString(reader["name"]),
-                                        DeviceId = Convert.ToString(reader["device_id"]),
-                                        Stellar = Convert.ToInt32(reader["gems"]),
-                                        IsOnline = Convert.ToInt32(reader["is_online"]),
-                                        ClientId = Convert.ToInt32(reader["client_id"]),
-                                        Trophies = Convert.ToInt32(reader["trophies"]),
-                                        Banned = Convert.ToInt32(reader["banned"]),
-                                        Shield = Convert.ToDateTime(reader["shield"]),
-                                        Xp = Convert.ToInt32(reader["xp"]),
-                                        Level = Convert.ToInt32(reader["level"]),
-                                        ClanJoinTimer = reader.IsDBNull(reader.GetOrdinal("clan_join_timer")) ? (DateTime?)null : Convert.ToDateTime(reader["clan_join_timer"]),
-                                        ClanId = Convert.ToInt32(reader["clan_id"]),
-                                        ClanRank = Convert.ToInt32(reader["clan_rank"]),
-                                        WarId = Convert.ToInt32(reader["war_id"]),
-                                        GlobalChatBlocked = Convert.ToInt32(reader["global_chat_blocked"]),
-                                        LastChat = reader.IsDBNull(reader.GetOrdinal("last_chat")) ? (DateTime?)null : Convert.ToDateTime(reader["last_chat"]),
-                                        ChatColor = Convert.ToString(reader["chat_color"]),
-                                        Email = Convert.ToString(reader["email"]),
-                                        Password = Convert.ToString(reader["password"]),
-                                        MapLayout = Convert.ToInt32(reader["map_layout"]),
-                                        ShieldCouldron1 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_1")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_1"]),
-                                        ShieldCouldron2 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_2")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_2"]),
-                                        ShieldCouldron3 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_3")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_3"]),
-                                        LastLogin = reader.IsDBNull(reader.GetOrdinal("last_login")) ? (DateTime?)null : Convert.ToDateTime(reader["last_login"]),
-                                        CampaignLevel = Convert.ToInt32(reader["campaign_level"]),
-                                        Admin = Convert.ToInt32(reader["admin"]),
-                                        Verified = Convert.ToString(reader["verified"]),
-                                        Session = Convert.ToString(reader["account_session"])
-                                    };
+                                    accountData = MapToAccount(reader);
                                 }
                             }
 
@@ -522,40 +466,7 @@ namespace Winterra.DataContexts
                         {
                             while (reader.Read())
                             {
-                                Account account = new Account
-                                {
-                                    Id = Convert.ToInt32(reader["id"]),
-                                    Name = Convert.ToString(reader["name"]),
-                                    DeviceId = Convert.ToString(reader["device_id"]),
-                                    Stellar = Convert.ToInt32(reader["gems"]),
-                                    IsOnline = Convert.ToInt32(reader["is_online"]),
-                                    ClientId = Convert.ToInt32(reader["client_id"]),
-                                    Trophies = Convert.ToInt32(reader["trophies"]),
-                                    Banned = Convert.ToInt32(reader["banned"]),
-                                    Shield = Convert.ToDateTime(reader["shield"]),
-                                    Xp = Convert.ToInt32(reader["xp"]),
-                                    Level = Convert.ToInt32(reader["level"]),
-                                    ClanJoinTimer = reader.IsDBNull(reader.GetOrdinal("clan_join_timer")) ? (DateTime?)null : Convert.ToDateTime(reader["clan_join_timer"]),
-                                    ClanId = Convert.ToInt32(reader["clan_id"]),
-                                    ClanRank = Convert.ToInt32(reader["clan_rank"]),
-                                    WarId = Convert.ToInt32(reader["war_id"]),
-                                    GlobalChatBlocked = Convert.ToInt32(reader["global_chat_blocked"]),
-                                    LastChat = reader.IsDBNull(reader.GetOrdinal("last_chat")) ? (DateTime?)null : Convert.ToDateTime(reader["last_chat"]),
-                                    ChatColor = Convert.ToString(reader["chat_color"]),
-                                    Email = Convert.ToString(reader["email"]),
-                                    Password = Convert.ToString(reader["password"]),
-                                    MapLayout = Convert.ToInt32(reader["map_layout"]),
-                                    ShieldCouldron1 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_1")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_1"]),
-                                    ShieldCouldron2 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_2")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_2"]),
-                                    ShieldCouldron3 = reader.IsDBNull(reader.GetOrdinal("shld_cldn_3")) ? (DateTime?)null : Convert.ToDateTime(reader["shld_cldn_3"]),
-                                    LastLogin = reader.IsDBNull(reader.GetOrdinal("last_login")) ? (DateTime?)null : Convert.ToDateTime(reader["last_login"]),
-                                    CampaignLevel = reader.IsDBNull(reader.GetOrdinal("campaign_level")) ? (int?)null : Convert.ToInt32(reader["campaign_level"]),
-                                    Admin = Convert.ToInt32(reader["admin"]),
-                                    Verified = Convert.ToString(reader["verified"]),
-                                    Session = Convert.ToString(reader["account_session"])
-                                };
-
-                                accountList.Add(account);
+                                accountList.Add(MapToAccount(reader));
                             }
                         }
                     }
