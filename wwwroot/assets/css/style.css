@@ -913,6 +913,9 @@ strong h3 {
 .one-time .slick-prev {
   left: -55px;
 }
+.one-time .slick-list {
+  min-height: 1000px;
+}
 
 .fades {
   width: 100%;
