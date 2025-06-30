@@ -20,6 +20,9 @@
                         </div>
                     </div>
                 }
+                @if(!Model.NewsItemList.ItemList.Any()){
+                    <span>No content</span>
+                }
             </div>
         </div>
 </section>

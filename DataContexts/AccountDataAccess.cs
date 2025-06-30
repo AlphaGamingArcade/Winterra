@@ -136,7 +136,6 @@ namespace Winterra.DataContexts
                     using (SqlConnection connection = new SqlConnection(_connectionString))
                     {
                         connection.Open();
-
                         string query = "SELECT * FROM accounts WHERE email = @account_email";
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
@@ -146,10 +145,7 @@ namespace Winterra.DataContexts
                             {
                                 if (reader.Read())
                                 {
-                                    accountData = new Account
-                                    {
-                                        
-                                    };
+                                    accountData = MapToAccount(reader);
                                 }
                             }
 

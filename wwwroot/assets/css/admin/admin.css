@@ -159,7 +159,7 @@ h2 {
   text-align: center;
 }
 #btn_gnb {
-  background: url(../images/menu-cl.png) 50% 50% no-repeat #223390;
+  background: url(/assets/images/menu-cl.png) 50% 50% no-repeat #223390;
   width: 50px;
   height: 50px;
   border: 0;
@@ -170,7 +170,7 @@ h2 {
   overflow: hidden;
 }
 #btn_gnb.btn_gnb_open {
-  background: url(../images/menu-op.png) 50% 50% no-repeat #223390;
+  background: url(/assets/images/menu-op.png) 50% 50% no-repeat #223390;
   width: 50px;
   height: 50px;
   border: 0;
@@ -258,7 +258,7 @@ h2 {
   float: none;
 }
 #tnb .tnb_community {
-  background: url(../images/home_icon.png) no-repeat 50% 50%;
+  background: url(/assets/images/home_icon.png) no-repeat 50% 50%;
   width: 30px;
   height: 30px;
   overflow: hidden;
@@ -269,7 +269,7 @@ h2 {
   background-color: #2b3d9f;
 }
 #tnb .tnb_shop {
-  background: url(../images/shop_icon.png) no-repeat 50% 50%;
+  background: url(/assets/images/shop_icon.png) no-repeat 50% 50%;
   width: 30px;
   height: 30px;
   overflow: hidden;
@@ -1070,7 +1070,7 @@ a.ov_listall:hover {
   width: 100%;
 }
 .required {
-  background: url("../images/wrest.gif") top right no-repeat #fff !important;
+  background: url("/assets/images/wrest.gif") top right no-repeat #fff !important;
 }
 select {
   height: 35px;
@@ -1766,7 +1766,7 @@ tfoot th {
 
 #menulist .sub_menu_class {
   padding-left: 25px;
-  background: url("../images/sub_menu_ico.gif") 5px 15px no-repeat;
+  background: url("/assets/images/sub_menu_ico.gif") 5px 15px no-repeat;
 }
 .exist_menu_link {
   font-weight: bold;
@@ -3830,25 +3830,25 @@ strong.sodr_nonpay {
   text-decoration: none;
 }
 .pg_start {
-  background: url(../images/page_1.png) 50% 50% no-repeat;
+  background: url(/assets/images/page_1.png) 50% 50% no-repeat;
   width: 32px;
   text-indent: -999px;
   overflow: hidden;
 }
 .pg_prev {
-  background: url(../images/page_2.png) 50% 50% no-repeat;
+  background: url(/assets/images/page_2.png) 50% 50% no-repeat;
   width: 32px;
   text-indent: -999px;
   overflow: hidden;
 }
 .pg_next {
-  background: url(../images/page_3.png) 50% 50% no-repeat;
+  background: url(/assets/images/page_3.png) 50% 50% no-repeat;
   width: 32px;
   text-indent: -999px;
   overflow: hidden;
 }
 .pg_end {
-  background: url(../images/page_4.png) 50% 50% no-repeat;
+  background: url(/assets/images/page_4.png) 50% 50% no-repeat;
   width: 32px;
   text-indent: -999px;
   overflow: hidden;
@@ -3867,7 +3867,7 @@ strong.sodr_nonpay {
 /* social member_list.php member_form.php */
 .sns-icon .ico {
   display: inline-block;
-  background: url("../images/social/sns_logo.png") no-repeat;
+  background: url("/assets/images/social/sns_logo.png") no-repeat;
   vertical-align: top;
 }
 .sns-icon .txt {
@@ -4046,21 +4046,21 @@ strong.sodr_nonpay {
 }
 
 .svc_card {
-  background: url("../images/service_img1.jpg") no-repeat top center;
+  background: url("/assets/images/service_img1.jpg") no-repeat top center;
   margin-right: 13px;
 }
 .svc_card ul li {
   width: 33%;
 }
 .svc_phone {
-  background: url("../images/service_img2.jpg") no-repeat top center;
+  background: url("/assets/images/service_img2.jpg") no-repeat top center;
   margin-right: 13px;
 }
 .svc_phone ul li {
   width: 33%;
 }
 .svc_ipin {
-  background: url("../images/service_img3.jpg") no-repeat top center;
+  background: url("/assets/images/service_img3.jpg") no-repeat top center;
 }
 
 .service_2 {
@@ -4178,7 +4178,7 @@ strong.sodr_nonpay {
   vertical-align: middle;
   overflow: hidden;
   cursor: pointer;
-  background: url("../../images/captcha2.png") no-repeat;
+  background: url("..//assets/images/captcha2.png") no-repeat;
   text-indent: -999px;
   border-radius: 3px;
 }
@@ -4192,7 +4192,7 @@ strong.sodr_nonpay {
   vertical-align: middle;
   overflow: hidden;
   cursor: pointer;
-  background: url("../../images/captcha2.png") no-repeat 0 -40px;
+  background: url("..//assets/images/captcha2.png") no-repeat 0 -40px;
   text-indent: -999px;
   border-radius: 3px;
 }
@@ -4405,7 +4405,7 @@ strong.sodr_nonpay {
 #theme_detail .theme_dt_btn .close_btn {
   border: 0;
   border-left: 1px solid #d8d8d8;
-  background: url("../images/close.png") 50% 50% no-repeat;
+  background: url("/assets/images/close.png") 50% 50% no-repeat;
   width: 40px;
   height: 40px;
   overflow: hidden;
@@ -4490,7 +4490,7 @@ strong.sodr_nonpay {
   width: 300px;
   height: 300px;
   margin: 0 auto;
-  background: url(../images/ajax_loader.gif) no-repeat 0 0;
+  background: url(/assets/images/ajax_loader.gif) no-repeat 0 0;
 }
 #processing {
   margin: 0 auto;
@@ -4506,7 +4506,7 @@ strong.sodr_nonpay {
   width: 300px;
   height: 300px;
   margin: 0 auto;
-  background: url(../images/check.png) no-repeat 50% 50%;
+  background: url(/assets/images/check.png) no-repeat 50% 50%;
 }
 
 #processing button {
@@ -4536,7 +4536,7 @@ strong.sodr_nonpay {
 
 /*상품문의 */
 #itemqalist .qa_href .tit_op {
-  background: url(./../images/op_btn1.gif) no-repeat 50% 50%;
+  background: url(.//assets/images/op_btn1.gif) no-repeat 50% 50%;
   display: inline-block;
   text-indent: -999px;
   overflow: hidden;
@@ -4579,7 +4579,7 @@ strong.sodr_nonpay {
   display: block;
 }
 #itemuselist .use_href .tit_op {
-  background: url(./../images/op_btn1.gif) no-repeat 50% 50%;
+  background: url(.//assets/images/op_btn1.gif) no-repeat 50% 50%;
   display: inline-block;
   text-indent: -999px;
   overflow: hidden;
@@ -4694,4 +4694,8 @@ strong.sodr_nonpay {
 /* Target the editable area of CKEditor */
 .ck-editor__editable {
   min-height: 300px; /* Adjust this value as needed */
+}
+
+.ck-content ul {
+  padding-left: 15px;
 }

@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/assets/css/animate.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="~/assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <link href="https://fonts.cdnfonts.com/css/grobold" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 </head>
 <body>
     <header>
@@ -43,7 +44,7 @@
                         <li>
                             <a class="menu-item @(Model.MenuOut == 6 ? "active" : "")" >
                                 Terms & Policies 
-                                <svg class="menu-item_arrowIcon__W61OP menu-item-arrow" style="fill:currentColor" viewBox="0 0 24 24" width="16" height="16"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.22 9.375a1 1 0 0 1 1.405-.156L12 12.72l4.375-3.5a1 1 0 0 1 1.25 1.562l-5 4a1 1 0 0 1-1.25 0l-5-4a1 1 0 0 1-.156-1.406Z" fill="currentColor"></path></svg>
+                                <i class="fa-solid fa-chevron-down"></i>
                             </a>
                             <div class="sub-menu">
                                 <a asp-controller="TermsAndPolicy" asp-action="PrivacyPolicy" class="menu-item">Privacy Policy</a>
@@ -72,46 +73,34 @@
         <section>
             <div class="menu-nav">
                 <div class="menu-header">
-                    <img src="~/assets/images/logo-wintera-white.png" alt="">
+                    <img src="/assets/images/logo-wintera-white.png" alt="">
                     <button>
                         <i class="fa-solid fa-xmark close-nav"></i>
                     </button>
                 </div>
                 <div class="mobile-menu">
                     <div class="mobile-menu-item">
-                        <span>About</span>
-                        <button>
+                        <a asp-controller="Home" action="Index">Home</a>
+                    </div>
+                    <div class="mobile-menu-item">
+                        <a asp-controller="Lore" action="Index">Lore</a>
+                    </div>
+                    <div class="mobile-menu-item">
+                        <a asp-controller="News" action="Index">News</a>
+                    </div>
+                    <div class="mobile-menu-item">
+                        <a asp-controller="Stellar" action="Index">Stellar</a>
+                    </div>
+                    <div class="mobile-menu-item">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                            <a href="">Terms & Policies</a>
                             <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                        
-                    </div>
-                    <div class="mobile-menu-item">
-                        <span>NEWS</span>
-                    </div>
-                    <div class="mobile-menu-item">
-                        <span>LORE</span>
-                    </div>
-                    <div class="mobile-menu-item">
-                        <span>STELLAR</span>
-                    </div>
-                    <div class="mobile-menu-item">
-                        <span>Privacy Policy</span>
-                        <button>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="mobile-menu-item">
-                        <span>Terms Of Use</span>
-                        <button>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                    </div>
-
-                    <div class="mobile-menu-item">
-                        <span>Code of Conduct</span>
-                        <button>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
+                        </div>
+                        <div class="mobile-sub-menu">
+                            <a asp-controller="TermsPolicy" asp-action="PrivacyPolicy" class="menu-item">Privacy Policy</a>
+                            <a asp-controller="TermsPolicy" asp-action="TermsOfUse" class="menu-item">Terms of use</a>
+                            <a asp-controller="TermsPolicy" asp-action="CodeOfConduct" class="menu-item">Code of conduct</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -136,8 +125,8 @@
                 <img class="footer-logo" src="~/assets/images/logo-wintera-white.png" alt="">
                 <div class="footer-terms flex-row mt-3 opacity-50">
                     <a asp-controller="TermsAndPolicy" asp-action="PrivacyPolicy">Privacy Policy</a>
-                    <a asp-controller="TermsAndPolicy" action="TermsOfUse">Terms of use</a>
-                    <a asp-controller="">Code Of conduct</Code></a>
+                    <a asp-controller="TermsAndPolicy" asp-action="TermsOfUse">Terms of use</a>
+                    <a asp-controller="TermsAndPolicy" asp-action="CodeOfConduct">Code Of conduct</Code></a>
                 </div>
                 <p class="mt-3">“Made by a AGA who love strategy games.”</p>
                 <div class="footer-content-menu flex-row gap-5">
@@ -152,8 +141,8 @@
     </footer>
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="~/assets/js/script.js" type="text/javascript"></script>
-    <script src="~/assets/js/ckeditor.js" type="text/javascript"></script>
+    <script src="~/assets/js/script.js" type="text/javascript" asp-append-version="true"></script>
+    <script src="~/assets/js/ckeditor.js" type="text/javascript" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
